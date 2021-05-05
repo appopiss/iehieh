@@ -59,7 +59,7 @@ public class MissionMileStone : BASE {
         });
         gameObject.AddComponent<MS>().awakeMS(275, 21, "Enable normal skills to be set in Global Slot");
         gameObject.AddComponent<MS>().awakeMS(300, 17, "All Passive Effects of skill apply to every class");
-        gameObject.AddComponent<MS>().awakeMS(325, 22, "Gem Worker quantity persists through Rebirth");
+        gameObject.AddComponent<MS>().awakeMS(325, 22, "Workers persist through Rebirth & Reincarnation");
         gameObject.AddComponent<MS>().awakeMS(350, 23, "Monster Gold Cap + 50 per Reincarnation");
         gameObject.AddComponent<MS>().awakeMS(375, 24, "Worker&Gem Effect + 100% & half complete time");
         gameObject.AddComponent<MS>().awakeMS(384, 25, "Gain Core when you defeat Lv 1 Challenge Boss");

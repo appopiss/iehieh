@@ -6,7 +6,6 @@ using UnityEngine.UI;
 using static UsefulMethod;
 using static BASE;
 using TMPro;
-using UniRx.Async;
 
 public enum Language
 {

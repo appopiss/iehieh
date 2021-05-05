@@ -159,7 +159,7 @@ public class REIN : BASE {
         main.S.SRPfromQuest = 0;
         main.S.SRPinstantConsumed = 0;
     }
-    void ResetForReincarnate()
+    IEnumerator ResetForReincarnate()
     {
         //裏AreaでなくNormalエリアに
         main.S.isHidden = false;
@@ -237,11 +237,19 @@ public class REIN : BASE {
         {
             if (!arti.stayAfterReincarnation)
             {
-                arti.isEquipped = false;
-                arti.isFavoriteEquipped = false;
-                arti.level = 0;
-                arti.EvolutionNum = 0;
-                arti.condition = ARTIFACT.Condition.locked;
+                if (main.S.PersistentFavoriteEquip && arti.isFavoriteEquipped)
+                {
+                    arti.level = 1;
+                    arti.EvolutionNum = (int)Math.Ceiling(arti.EvolutionNum / 2d);
+                }
+                else
+                {
+                    arti.isEquipped = false;
+                    arti.isFavoriteEquipped = false;
+                    arti.level = 0;
+                    arti.EvolutionNum = 0;
+                    arti.condition = ARTIFACT.Condition.locked;
+                }
             }
         }
         //素材を全部０に
@@ -268,34 +276,52 @@ public class REIN : BASE {
         main.S.SlimeCoin = 0;
         main.S.slimeReputation = 0;
         //SuperQueue
-        for (int i = 0; i < main.StoneUpgrade.Length; i++)
+        if (!main.S.PersistentSuperQueue)
         {
-            main.S.isSuperQueueAssignedforStoneUpgrade[i] = false;
-        }
-        for (int i = 0; i < main.CristalUpgrade.Length; i++)
-        {
-            main.S.isSuperQueueAssignedforCrystalUpgrade[i] = false;
-        }
-        for (int i = 0; i < main.LeafUpgrade.Length; i++)
-        {
-            main.S.isSuperQueueAssignedforLeafUpgrade[i] = false;
-        }
-        for (int i = 0; i < main.StatusUpgrade.Length; i++)
-        {
-            main.S.isSuperQueueAssignedforStatusUpgrade[i] = false;
-        }
-        for (int i = 0; i < main.bankCtrl.BankUpgrades.Length; i++)
-        {
-            main.S.isSuperQueueSBAssigned[i] = false;
+            for (int i = 0; i < main.StoneUpgrade.Length; i++)
+            {
+                main.S.isSuperQueueAssignedforStoneUpgrade[i] = false;
+            }
+            for (int i = 0; i < main.CristalUpgrade.Length; i++)
+            {
+                main.S.isSuperQueueAssignedforCrystalUpgrade[i] = false;
+            }
+            for (int i = 0; i < main.LeafUpgrade.Length; i++)
+            {
+                main.S.isSuperQueueAssignedforLeafUpgrade[i] = false;
+            }
+            for (int i = 0; i < main.StatusUpgrade.Length; i++)
+            {
+                main.S.isSuperQueueAssignedforStatusUpgrade[i] = false;
+            }
+            for (int i = 0; i < main.bankCtrl.BankUpgrades.Length; i++)
+            {
+                main.S.isSuperQueueSBAssigned[i] = false;
+            }
+            main.S.Queue_unleashed = 0;
         }
 
-        main.S.WorkerNum = 0;
-        //DarkRitual系->全部解禁！
-        for (int i = 0; i < main.S.currentWorkerNum.Length; i++)
+        if (main.S.isMission325Completed)
         {
-            main.S.currentWorkerNum[i] = 0;
+            main.S.WorkerNum = main.SR.WorkerNum;
+            main.S.BuyLevel = main.SR.BuyLevel;
+            main.S.CapLevel = main.SR.CapLevel;
+            for (int i = 0; i < main.SR.currentWorkerNum.Length; i++)
+            {
+                main.S.currentWorkerNum[i] = main.SR.currentWorkerNum[i];
+            }
         }
-        main.DRctrl.workerNum = main.DRctrl.MaxWorkerNum();
+        else
+        {
+            main.S.WorkerNum = 0;
+            main.S.BuyLevel = 0;
+            main.S.CapLevel = 0;
+            //DarkRitual系->全部解禁！
+            for (int i = 0; i < main.S.currentWorkerNum.Length; i++)
+            {
+                main.S.currentWorkerNum[i] = 0;
+            }
+        }
 
         //Alchemy
         //AlchemyInventory
@@ -357,8 +383,8 @@ public class REIN : BASE {
         //    quest.clearedNum = 0;
         //    quest.isCleared = false;
         //}
-        //Nitro系
-        main.S.CurrentNitro = 0;
+        //Nitro系→2021.04.15~リセットしなくした
+        //main.S.CurrentNitro = 0;
         //Dungeonの到達階層
         for (int i = 0; i < main.S.maxDungeonFloorNum.Length; i++)
         {
@@ -388,7 +414,7 @@ public class REIN : BASE {
         main.TutorialController.isUpgradeIcon15 = false;
         main.S.unleashBank = false;
         //main.S.unleashDarkRitual = false;
-        main.S.Queue_unleashed = 0;
+        yield return null;
     }
     public bool isStartedRein;
     public IEnumerator Reincarnate()
@@ -410,15 +436,18 @@ public class REIN : BASE {
         {
             main.S.SR_level[(int)upgrade.SR_thisId] = upgrade.tempLevel;
         }
-        ResetForReincarnate();
+        yield return StartCoroutine(ResetForReincarnate());
         //カースモードを代入する
         main.cc.CurrentCurseId = main.cc.InputCurseId;
         if (main.cc.InputCurseId == CurseId.curse_of_angel3 ||
              main.cc.InputCurseId == CurseId.curse_of_warrior3 ||
             main.cc.InputCurseId == CurseId.curse_of_wizard3)
             main.S.isHidden = true;
+        main.toggles[6].isOn = true;
+        main.S.toggleSave[6] = true;//AutoProgressは常にON
+        yield return null;
         main.saveCtrl.setSaveKey();
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(1f);
         //消す処理
         PlayerPrefs.DeleteKey(keyList.resetSaveKey);
         PlayerPrefs.DeleteKey(keyList.Wiz_saveKey);

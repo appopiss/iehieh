@@ -30,7 +30,7 @@ public class Curse_ROW3 : CURSE_RAIN
     }
     public override string RestrictionText()
     {
-        return "You can only play as a warrior and you can't REBIRTH and you have to progress HIDDEN area!";
+        return "You can only play as a warrior and you have to progress HIDDEN area!";
     }
     public override string RewardText()
     {

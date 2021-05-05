@@ -82,7 +82,7 @@ public class Purification : ANGEL_SKILL
             skillNameString = "Purification < <color=\"green\">Lv " + BuffedLevelString() + " </color>>";
             linageString = "Angel <color=#32ff32>Spirit</color>";
             effectString = optStr + "- Skill Proficiency + 5000% (Passive)" + "\n- Multiplies Stats by <color=green>" + tDigit(Damage(), 3) + " ^ X </color> (Passive)"
-                + "\n<color=orange><size=12>X is the # of Angel's skills you set.\nThese effect is active even while not equipped and\nthe level never resets even through Reincarnation.</size></color>";
+                + "\n<color=orange><size=12>X is the # of Angel's skills you set.\nThese effects are active even while not equipped and\nthe level never resets even through Reincarnation.</size></color>";
             explainString = "- Gain " + tDigit(-1 * ConsumeMp(), 2) + " MP / s\n- Purifies you to gain skill proficiency more effectively.\n- The effect is passive but you should\n  equip this to gain proficiency.";
 
                 if (canGetExp)

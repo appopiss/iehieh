@@ -30,7 +30,7 @@ public class Curse_ROWiz3 : CURSE_RAIN
     }
     public override string RestrictionText()
     {
-        return "You can only play as a wizard and you can't REBIRTH and you have to progress HIDDEN area!";
+        return "You can only play as a wizard and you have to progress HIDDEN area!";
     }
     public override string RewardText()
     {

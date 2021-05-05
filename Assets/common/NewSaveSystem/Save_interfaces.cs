@@ -4,7 +4,7 @@ using System;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UniRx.Async;
+using Cysharp.Threading.Tasks;
 
 /// <summary>
 /// PlayerPrefs, Local, Editor, PlayFabなどの保存先のバリエーション
@@ -87,8 +87,8 @@ public class SaveExecutor : ISaveExecutor
         string data_str = string.Join(Separator.ToString(), dataStrList);
 
         var task = saveLocation.SetUserData(data_str);
-        await task;
-        bool? successed = task.Result;
+        //await task;
+        bool? successed = await task;
 
         if (successed == true)
         {
@@ -113,9 +113,11 @@ public class SaveExecutor : ISaveExecutor
 
         // 文字列を呼び出す
         var dataTask = saveLocation.GetUserData();
-        await dataTask;
+        //await dataTask;
         // 分割
-        var dataStrList = dataTask.Result.Split(Separator);
+        //var dataStrList = dataTask.Result.Split(Separator);
+        var result = await dataTask;
+        var dataStrList = result.Split(Separator);
         if (dataStrList.Length == 0) { LoadFailureAction?.Invoke(); return; }
         // 復号化
         if (toEncrypt)
@@ -170,7 +172,9 @@ public class SaveExecutor : ISaveExecutor
         var dataTask = saveLocation.GetUserData();
         await dataTask;
         // 分割
-        var dataStrList = dataTask.Result.Split(Separator);
+        //var dataStrList = dataTask.Result.Split(Separator);
+        var result = await dataTask;
+        var dataStrList = result.Split(Separator);
         if (dataStrList.Length == 0) { LoadFailureAction?.Invoke(); return; }
         // 復号化
         if (toEncrypt)

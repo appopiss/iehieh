@@ -17,23 +17,24 @@ public class ToggleSave : BASE {
 
 	// Use this for initialization
 	void Start () {
-        for (int i = 0; i < main.toggles.Length; i++)
-        {
-            main.toggles[i].isOn = false;
-            main.toggles[i].isOn = main.S.toggleSave[i];
-        }
         StartCoroutine(Saving());
 	}
 	
     IEnumerator Saving()
     {
+        for (int i = 0; i < main.toggles.Length; i++)
+        {
+            //main.toggles[i].isOn = false;
+            main.toggles[i].isOn = main.S.toggleSave[i];
+        }
+        yield return new WaitForSeconds(1f);
         while (true)
         {
+            yield return new WaitForSeconds(0.05f);
             for (int i = 0; i < main.toggles.Length; i++)
             {
                 main.S.toggleSave[i] = main.toggles[i].isOn;
             }
-            yield return new WaitForSeconds(0.16f);
         }
 
     }

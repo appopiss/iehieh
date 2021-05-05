@@ -40,7 +40,17 @@ public class JEM : BASE, IPointerDownHandler, IPointerEnterHandler, IPointerExit
             yield return new WaitForSeconds(0.5f);
         }
     }
-    public long CurrentWorkerNum { get => main.SR.currentWorkerNum[(int)id]; set => main.SR.currentWorkerNum[(int)id] = value; }
+    public long CurrentWorkerNum
+    {
+        get
+        {
+            return main.SR.currentWorkerNum[(int)id];
+        }
+        set
+        {
+                main.SR.currentWorkerNum[(int)id] = value;
+        }
+    }
     public double JemLevel { get => main.S.JemLevel[(int)id]; set => main.S.JemLevel[(int)id] = value; }
     public enum ID
     {

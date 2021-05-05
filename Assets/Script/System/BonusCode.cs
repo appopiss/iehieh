@@ -281,50 +281,61 @@ public class BonusCode : BASE {
                     confirmWindow.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "\n\nPlay \"Your Chronicle\" once and try again!";
                 }
                 break;
-
-            
-          case "IEHdebug1624test":
-          confirmWindow.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text += "70000 EC\n1E100 Resources\n1E7 materials";
-          foreach (ArtiCtrl.MaterialList material in Enum.GetValues(typeof(ArtiCtrl.MaterialList)))
-          {
-              main.ArtiCtrl.CurrentMaterial[material] += (int)1E07;
-          }
-          main.SR.stone += 1E300;
-          main.SR.cristal += 1E300;
-          main.SR.leaf += 1E300;
-          main.S.ECforDebug += 1;
-                for (int i = 0; i < main.skillsForCoolTime.Length; i++)
+            case "IEHanniversary":
+                if(main.S.BCanniversary)
+                    confirmWindow.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "You had already received.";
+                else
                 {
-                    main.skillsForCoolTime[i].P_level += 300;
+                    confirmWindow.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text += "1000 Epic Coin\n3 Super Rebirth Ticket";
+                    main.S.SuperRebirthNum += 3;
+                    if (!main.S.boughtSuperRebirth)
+                        main.S.boughtSuperRebirth = true;
+                    main.S.BCanniversary = true;
                 }
-              foreach (DUNGEON dungeon in main.dungeonAry)
-              {
-                  dungeon.isDungeon = true;
-              }
-              for (int i = 0; i < main.SR.isDungeon.Length; i++)
-              {
-                  main.SR.isDungeon[i] = true;
-              }
-              foreach (QUEST quest in main.QuestCtrl.Quests)
-              {
-                  quest.isCleared = true;
-              }
-              main.S.isDistortionBeated = true;
-              main.S.isMontblangoBeated = true;
-              main.QuestCtrl.Quests[(int)QuestCtrl.QuestId.montblango].clearedNum += 1;
-              main.S.unleashBank = true;
-              main.rein.ResetButton.gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
-              break;
-      case "IEHdebughs":
-          confirmWindow.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text += "5 Heart Stone";
-          main.S.RP += 15;
-          if (!main.S.isMontblangoBeated)
-          {
-              main.TutorialController.ReincarnationButton.GetComponent<RectTransform>().anchoredPosition += new Vector2(400, 0);
-              main.S.isMontblangoBeated = true;
-          }
-          main.QuestCtrl.Quests[(int)QuestCtrl.QuestId.montblango].isCleared = true;
-          break;
+                break;
+            
+      //    case "IEHdebug1624test":
+      //    confirmWindow.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text += "70000 EC\n1E100 Resources\n1E7 materials";
+      //    foreach (ArtiCtrl.MaterialList material in Enum.GetValues(typeof(ArtiCtrl.MaterialList)))
+      //    {
+      //        main.ArtiCtrl.CurrentMaterial[material] += (int)1E07;
+      //    }
+      //    main.SR.stone += 1E300;
+      //    main.SR.cristal += 1E300;
+      //    main.SR.leaf += 1E300;
+      //    main.S.ECforDebug += 1;
+      //          for (int i = 0; i < main.skillsForCoolTime.Length; i++)
+      //          {
+      //              main.skillsForCoolTime[i].P_level += 300;
+      //          }
+      //        foreach (DUNGEON dungeon in main.dungeonAry)
+      //        {
+      //            dungeon.isDungeon = true;
+      //        }
+      //        for (int i = 0; i < main.SR.isDungeon.Length; i++)
+      //        {
+      //            main.SR.isDungeon[i] = true;
+      //        }
+      //        foreach (QUEST quest in main.QuestCtrl.Quests)
+      //        {
+      //            quest.isCleared = true;
+      //        }
+      //        main.S.isDistortionBeated = true;
+      //        main.S.isMontblangoBeated = true;
+      //        main.QuestCtrl.Quests[(int)QuestCtrl.QuestId.montblango].clearedNum += 1;
+      //        main.S.unleashBank = true;
+      //        main.rein.ResetButton.gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
+      //        break;
+      //case "IEHdebughs":
+      //    confirmWindow.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text += "5 Heart Stone";
+      //    main.S.RP += 15;
+      //    if (!main.S.isMontblangoBeated)
+      //    {
+      //        main.TutorialController.ReincarnationButton.GetComponent<RectTransform>().anchoredPosition += new Vector2(400, 0);
+      //        main.S.isMontblangoBeated = true;
+      //    }
+      //    main.QuestCtrl.Quests[(int)QuestCtrl.QuestId.montblango].isCleared = true;
+      //    break;
                         
 
 

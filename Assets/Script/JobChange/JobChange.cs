@@ -266,7 +266,7 @@ public class JobChange : BASE {
 
     public　void AfterRebirth()
     {
-        if (!main.SR.afterRebirth)//Rebirth後一回だけ呼ばれる
+        if (!main.SR.afterRebirth)//Rebirth/Rein後一回だけ呼ばれる
         {
             //呪い転生からの体液
             Curse_MC.GetMonsterFluid();
@@ -287,8 +287,13 @@ public class JobChange : BASE {
             //リバース直後のみ呼ばなければいけない？
             if (main.S.isMission325Completed)
             {
-                main.SR.WorkerNum = main.S.workerNum;
-                main.SR.BuyLevel = main.SR.WorkerNum;
+                main.SR.WorkerNum = main.S.WorkerNum;
+                main.SR.BuyLevel = main.S.BuyLevel;
+                main.SR.CapLevel = main.S.CapLevel;
+                for (int i = 0; i < main.SR.currentWorkerNum.Length; i++)
+                {
+                    main.SR.currentWorkerNum[i] = main.S.currentWorkerNum[i];
+                }
             }
             if (!main.S.SkillSetSaveLoad)//SkillSaveを買ってなかったら
             {
@@ -348,7 +353,7 @@ public class JobChange : BASE {
     public IEnumerator BeforeRebirth()
     {
         main.S.toggleSave[6] = true;//AutoProgressは常にON
-
+        main.toggles[6].isOn = true;
         if (main.S.SkillSetSaveLoad)//SkillSaveを買っていたらStanceを引き継ぐ
         {
             switch (main.S.job)
@@ -393,6 +398,16 @@ public class JobChange : BASE {
             for (int i = 0; i < main.bankCtrl.BankUpgrades.Length; i++)
             {
                 main.S.isSuperQueueSBAssigned[i] = false;
+            }
+        }
+        if (main.S.isMission325Completed)
+        {
+            main.S.WorkerNum = main.SR.WorkerNum;
+            main.S.BuyLevel = main.SR.BuyLevel;
+            main.S.CapLevel = main.SR.CapLevel;
+            for (int i = 0; i < main.SR.currentWorkerNum.Length; i++)
+            {
+                main.S.currentWorkerNum[i] = main.SR.currentWorkerNum[i];
             }
         }
         yield return null;

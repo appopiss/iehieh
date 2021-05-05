@@ -232,7 +232,7 @@ public class SkillSetController : BASE {
             UnleashGrobalSkillSlot();
         if (main.S.isGlobalSlotbyMissionMilestone)
             UnleashGrobalSkillSlot();
-        if (main.S.dlcGlobal)//DLC
+        if (main.S.dlcGlobalGotFixed)//DLC
             UnleashGrobalSkillSlot();
         return;
     }

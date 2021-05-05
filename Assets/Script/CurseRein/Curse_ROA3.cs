@@ -30,7 +30,7 @@ public class Curse_ROA3 : CURSE_RAIN
     }
     public override string RestrictionText()
     {
-        return "You can only play as a angel and you can't REBIRTH and you have to progress HIDDEN area!";
+        return "You can only play as a angel and you have to progress HIDDEN area!";
     }
     public override string RewardText()
     {

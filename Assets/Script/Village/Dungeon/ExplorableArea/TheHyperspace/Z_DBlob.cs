@@ -9,7 +9,7 @@ public class Z_DBlob : DUNGEON
 {
     // Use this for initialization
     void Awake () {
-        AwakeDungeon(Main.Dungeon.Z_BBD, "The Hyperspace", 999999, 32, 6000, false, "8");
+        AwakeDungeon(Main.Dungeon.Z_BBD, "The Hyperspace", 999999, 79, 6000, false, "8");
     }
 
     // Use this for initialization

@@ -847,7 +847,6 @@ public abstract class DUNGEON : POPTEXT_DG
             //AutoRebirth
             if (main.S.canAutoRebirth && main.S.autoRebirthArea == dungeon && main.cc.CurrentCurseId == CurseId.normal)
             {
-                Debug.Log("aaa");
                 switch (main.S.job)
                 {
                     case ALLY.Job.Warrior:
@@ -901,8 +900,9 @@ public abstract class DUNGEON : POPTEXT_DG
                                 main.QuestCtrl.Quests[(int)montblango].GetReward();
                                 main.S.didAutoRein = true;
                                 main.S.autoReinJob = ALLY.Job.Warrior;
+                                yield return new WaitForSeconds(0.1f);
                                 main.buttons[4].onClick.Invoke();
-                                yield return new WaitForSeconds(0.5f);
+                                yield return new WaitForSeconds(1f);
                                 StartCoroutine(main.rein.Reincarnate());
                             }
                             break;
@@ -913,8 +913,9 @@ public abstract class DUNGEON : POPTEXT_DG
                                 main.QuestCtrl.Quests[(int)montblango].GetReward();
                                 main.S.didAutoRein = true;
                                 main.S.autoReinJob = ALLY.Job.Wizard;
+                                yield return new WaitForSeconds(0.1f);
                                 main.buttons[4].onClick.Invoke();
-                                yield return new WaitForSeconds(0.5f);
+                                yield return new WaitForSeconds(1f);
                                 StartCoroutine(main.rein.Reincarnate());
                             }
                             break;
@@ -925,8 +926,9 @@ public abstract class DUNGEON : POPTEXT_DG
                                 main.QuestCtrl.Quests[(int)montblango].GetReward();
                                 main.S.didAutoRein = true;
                                 main.S.autoReinJob = ALLY.Job.Angel;
+                                yield return new WaitForSeconds(0.1f);
                                 main.buttons[4].onClick.Invoke();
-                                yield return new WaitForSeconds(0.5f);
+                                yield return new WaitForSeconds(1f);
                                 StartCoroutine(main.rein.Reincarnate());
                             }
                             break;

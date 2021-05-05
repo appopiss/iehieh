@@ -906,13 +906,17 @@ public abstract class ENEMY : BASE//,IPointerDownHandler
     public bool CanAttack() {
         return !isDebuff[(int)Main.Debuff.freeze] && vectorAbs(thisRect.anchoredPosition - targetEnemyPosition.anchoredPosition) <= AttackRange;
     }
-    //ダメージの計算を行う．
+    //ダメージの計算を行う。
     public double calculatedDamage(double damage = 0, double mDamage = 0, double critDamage = 0)
     { return (damage * dmgReduction(damage) + mDamage * mDmgReduction(mDamage) + critDamage)* Math.Max(Normal.Sample(1, 0.05), 0.8); }//Math.Max(((damage * (1-(DEF()/(DEF()+damage))) * Math.Max(Normal.Sample(1, 0.05), 0.8)) + (mDamage * (1 - MDEF() / (MDEF() + mDamage)) * Math.Max(Normal.Sample(1, 0.05), 0.8)) + critDamage),0.1) ; }
     public double dmgReduction(double damage)
     {
+        if (main.cc.CurrentCurseId == CurseId.curse_of_metal && main.GameController.battleMode == GameController.BattleMode.challange)
+            return 1 - DEF() / (DEF() + damage);
+
         if (main.skillList.WarriorSkills[(int)SkillList.WarriorSkill.criticalEye].P_level > 0)
             return 1;
+
         if (DEF() <= 0)
         {
             return 1;
@@ -924,8 +928,12 @@ public abstract class ENEMY : BASE//,IPointerDownHandler
     }
     public double mDmgReduction(double mDamage)
     {
+        if (main.cc.CurrentCurseId == CurseId.curse_of_metal && main.GameController.battleMode == GameController.BattleMode.challange)
+            return 1 - MDEF() / (MDEF() + mDamage);
+
         if (main.skillList.WizardSkills[(int)SkillList.WizardSkill.criticalBolt].P_level > 0)
             return 1;
+
 
         if (MDEF() <= 0)
         {

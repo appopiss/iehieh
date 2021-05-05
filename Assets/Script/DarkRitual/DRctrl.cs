@@ -98,20 +98,22 @@ public class DRctrl : BASE {
         }
         set
         {
-            if(main.S.isMission325Completed)
-            {
-                main.S.workerNum = value;
-                main.SR.WorkerNum = value;
-            }
-            else
-            {
-                main.SR.WorkerNum = value;
-            }
+            main.SR.WorkerNum = value;
         }
     }
     private void Start()
     {
+        CheckWorkerNum();
+    }
 
+    void CheckWorkerNum()
+    {
+        long tempValue = main.SR.WorkerNum;
+        for (int i = 0; i < main.jems.Length; i++)
+        {
+            tempValue += main.jems[i].CurrentWorkerNum;
+        }
+        main.SR.BuyLevel = tempValue;
     }
 
     public long MaxWorkerNum()
@@ -161,16 +163,16 @@ public class DRctrl : BASE {
         switch (W_buymode)
         {
             case WorkerBuyMode.mode1:
-                return (100 * Math.Pow(1.2f, main.SR.BuyLevel), 1);
+                return (100 * Math.Pow(1.05f, main.SR.BuyLevel), 1);
             case WorkerBuyMode.modeMax:
-                if(main.SR.gold < 100 * Math.Pow(1.2f, main.SR.BuyLevel))
-                    return (100 * Math.Pow(1.2f, main.SR.BuyLevel), 1);
+                if(main.SR.gold < 100 * Math.Pow(1.05f, main.SR.BuyLevel))
+                    return (100 * Math.Pow(1.05f, main.SR.BuyLevel), 1);
                 while (tempCost < main.SR.gold )
                 {
-                    tempCost += 100 * Math.Pow(1.2f, tempLevel);
+                    tempCost += 100 * Math.Pow(1.05f, tempLevel);
                     tempLevel++;
                 }
-                tempCost -= 100 * Math.Pow(1.2f, tempLevel - 1);
+                tempCost -= 100 * Math.Pow(1.05f, tempLevel - 1);
                 tempLevel--;
                 return (tempCost, tempLevel - main.SR.BuyLevel);
             default:
@@ -185,11 +187,11 @@ public class DRctrl : BASE {
         switch (W_buymode)
         {
             case WorkerBuyMode.mode1:
-                return (1000 * Mathf.Pow(1.2f,main.SR.CapLevel), 1);
+                return (1000 * Mathf.Pow(1.05f,main.SR.CapLevel), 1);
             case WorkerBuyMode.modeMax:
                 while(tempCost < main.SR.gold)
                 {
-                    tempCost += 1000 * Math.Pow(1.2f, tempLevel);
+                    tempCost += 1000 * Math.Pow(1.05f, tempLevel);
                     tempLevel++;
                 }
                 return (tempCost, tempLevel - main.SR.CapLevel);

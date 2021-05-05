@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 
 [System.Serializable]
-public class Save
+public partial class Save
 {
     public bool isLanguageGotOnce;//一度でもlanguageを取得したかどうか
     public Language language;
@@ -84,6 +84,8 @@ public class Save
     public bool AutoNitro;
     public bool AutoMaxSkill;
     public bool SuperQueueMemory;
+    public bool PersistentSuperQueue;
+    public bool PersistentFavoriteEquip;
     public bool isReinbowFishPurchase;
     public bool isDarkRitualPurchase;
     public bool isEXPMulti1;
@@ -115,6 +117,7 @@ public class Save
     public bool BCSteam;
     public bool isInstalledYC;
     public bool BCYC;
+    public bool BCanniversary;
     public int octoMaxReachedLevel;
     //public int MajorPotionNum;
     //public int PotentPotionNum;
@@ -573,7 +576,7 @@ public class Save
     public int[] leafUpgradeLevel;
     public int[] statusUpgradeLevel;
     public long WorkerNum;
-    public long workerNum;
+    //public long workerNum;
     public long BuyLevel;
     public long CapLevel;
     public long[] currentWorkerNum;
@@ -648,7 +651,6 @@ public class Save
     public bool dlcGlobal;
     public bool dlcNitro;
     public bool dlcGold;
-    public bool dlcGlobalGot;//GlobalSlot購入後、スロットを解禁したかどうか。これはUnity側でのみtrueにする。
     public bool dlcGlobalGotFixed;//こっちを使う！
 
     public bool dlcStarterECGot;

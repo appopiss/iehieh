@@ -8,7 +8,7 @@ using Steamworks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UniRx.Async;
+using Cysharp.Threading.Tasks;
 using static BASE;
 
 public class SteamDLCUnlock : MonoBehaviour {
@@ -88,7 +88,6 @@ public class SteamDLCUnlock : MonoBehaviour {
                 main.S.dlcGlobalGotFixed = true;
             }
         }
-
 
         CheckDLC();
     }

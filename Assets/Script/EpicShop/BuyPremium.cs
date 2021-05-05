@@ -91,6 +91,8 @@ public class BuyPremium : BASE {
         MonsterGoldCap3,
         MonsterGoldCap4,
         SuperQueueForAlchemy,
+        PersistentSuperQueue,
+        PersistentFavoriteEquip,
     }
 
     // Use this for initializationx
@@ -381,6 +383,14 @@ public class BuyPremium : BASE {
             case GoodsId.SuperQueueMemory:
                 Cost = () => 1000;
                 LimitCondition = () => main.S.SuperQueueMemory;
+                break;
+            case GoodsId.PersistentSuperQueue:
+                Cost = () => 10000;
+                LimitCondition = () => main.S.PersistentSuperQueue;
+                break;
+            case GoodsId.PersistentFavoriteEquip:
+                Cost = () => 15000;
+                LimitCondition = () => main.S.PersistentFavoriteEquip;
                 break;
 
             case GoodsId.RainbowFish:
@@ -766,6 +776,14 @@ public class BuyPremium : BASE {
                 main.S.isMonsterGoldCap4 = true;
                 main.S.monsterGoldCapFactor++;
                 break;
+
+            case GoodsId.PersistentSuperQueue:
+                main.S.PersistentSuperQueue = true;
+                break;
+            case GoodsId.PersistentFavoriteEquip:
+                main.S.PersistentFavoriteEquip = true;
+                break;
+
 
         }
 

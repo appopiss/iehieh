@@ -9,6 +9,7 @@ using TMPro;
 
 public class GameController : BASE {
 
+    
     public bool isAuto;
     public bool isDlcIEH2;
     //村
@@ -1355,7 +1356,7 @@ public class GameController : BASE {
             //トグルの更新
             for (int i = 0; i < main.toggles.Length; i++)
             {
-                main.toggles[i].isOn = false;
+                //main.toggles[i].isOn = false;
                 main.toggles[i].isOn = main.S.toggleSave[i];
             }
         }

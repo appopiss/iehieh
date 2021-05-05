@@ -106,6 +106,8 @@ public class EpicStoreLocal : MonoBehaviour
                 explain[65].text = "モンスターゴールドキャップを+1000します";
                 explain[66].text = "モンスターゴールドキャップを+1000します";
                 explain[67].text = "錬金術(Alchemy)で\"Q\"キーを押すことでスーパーキューを割り当てられます. スーパーキューは永久にそれを買い続けます. ";
+                explain[68].text = "スーパーキュー(Super Queue)の設定が、転生(Reincarnation)後も引き継ぐようになります. ";
+                explain[69].text = "Favorite Craftが、進化回数は半分、レベルは１になって、転生(Reincarnation)を通しても引き継ぐようになります. ";
                 break;
             case Language.chi:
                 explain[0].text = "在Alchemy中, 您可以同时将水储存在所有容器中. ";
@@ -189,6 +191,8 @@ public class EpicStoreLocal : MonoBehaviour
                 explain[65].text = "Monster Gold Cap + 1000. ";
                 explain[66].text = "Monster Gold Cap + 1000. ";
                 explain[67].text = "你也可以通过按\"Q\"键在Alchemy中分配SuperQueue. SuperQueue会一直买下去, 直到永远. ";
+                explain[68].text = "在Reincarnation之后, Super Queue的设置将被继承. ";
+                explain[69].text = "在Reincarnation之后, Favorite Craft的设置将被继承. 进化编号将减半, 等级将为1.";
                 break;
             default:
                 for (int i = 0; i < units.Length; i++)

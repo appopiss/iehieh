@@ -130,7 +130,8 @@ public class EpicShop : BASE {
             + Convert.ToInt32(main.S.BC10IEHhapiwakuSeptemberKong) * 1000 + Convert.ToInt32(main.S.BC10IEHhapiwakuSeptemberArmorGames) * 1000
             + Convert.ToInt32(main.S.BC11IEHhapiwakuOctoberKong) * 1000 + Convert.ToInt32(main.S.BC11IEHhapiwakuOctoberArmorGames) * 1000
             + Convert.ToInt32(main.S.BCSteam) * 1000
-            + Convert.ToInt32(main.S.BCYC) * 500;
+            + Convert.ToInt32(main.S.BCYC) * 500
+            + Convert.ToInt32(main.S.BCanniversary) * 1000;
     }
     public long ECbyContest()
     {

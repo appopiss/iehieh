@@ -14,7 +14,7 @@ using UnityEngine.UI;
 
 using static UsefulMethod;
 using TMPro;
-using UniRx.Async;
+using Cysharp.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 

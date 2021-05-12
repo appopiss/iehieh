@@ -37,6 +37,6 @@
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0",
-    "com.unity.idle-library": "file:../../FrameWork/LibraryEditor/Assets/Script/IdleLibrary"
+    "com.unity.idle-library": "file:../../IdleFramework/LibraryEditor/Assets/Script/IdleLibrary"
   }
 }

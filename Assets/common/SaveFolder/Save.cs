@@ -188,13 +188,6 @@ public partial class Save
     public double SlimeCoin;
     public double TempStoreSlimeCoin;
 
-    //Expedition
-    public float[] EX_currentTime;
-    public Hour[] EX_hour;
-    public int[] EX_level;
-    public double[] EX_exp;
-    public bool[] EX_isUnlocked;
-
     //ミッション
     public int MissionCount;
     public int MissionCountHidden;

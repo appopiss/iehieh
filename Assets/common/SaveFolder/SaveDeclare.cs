@@ -155,11 +155,7 @@ public class SaveDeclare : BASE {
         InitializeArray(ref main.S.CurseReinClearNum, Enum.GetNames(typeof(CurseId)).Length);
 
         //Expedition
-        InitializeArray(ref main.S.EX_currentTime, Enum.GetNames(typeof(SquidId)).Length);
-        InitializeArray(ref main.S.EX_hour, Enum.GetNames(typeof(SquidId)).Length);
-        InitializeArray(ref main.S.EX_level, Enum.GetNames(typeof(SquidId)).Length);
-        InitializeArray(ref main.S.EX_exp, Enum.GetNames(typeof(SquidId)).Length);
-        InitializeArray(ref main.S.EX_isUnlocked, Enum.GetNames(typeof(SquidId)).Length);
+        InitializeArray(ref main.S.expedition, Enum.GetNames(typeof(ExpeditionKind)).Length);
 
         //SteamAchievement
         InitializeArray(ref main.S.isAchievedSteam, 24);

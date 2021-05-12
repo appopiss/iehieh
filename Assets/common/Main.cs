@@ -247,7 +247,8 @@ public class Main : MonoBehaviour
     public INFO_bank INFO_bank = new INFO_bank();
     public LocalizeInitialize local;
     public IEBBonusController iebCtrl;
-   
+    public ExpeditionController expeditionCtrl;
+    public MaterialNumber[] materials;
 
     public bool[] isDropped = new bool[25];//単位時間あたり何個もドロップさせないためのブール
 
@@ -299,7 +300,11 @@ public class Main : MonoBehaviour
         S.isDistortionBeated = true;
         S.unleashBank = true;
         */
-
+        materials = new MaterialNumber[Enum.GetNames(typeof(ArtiCtrl.MaterialList)).Length];
+        for (int i = 0; i < materials.Length; i++)
+        {
+            materials[i] = new MaterialNumber((ArtiCtrl.MaterialList)i);
+        }
     }
     /*
      enum

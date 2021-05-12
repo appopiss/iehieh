@@ -8,6 +8,7 @@ using static BASE;
 
 public class DropInfo : BASE {
 
+    
    //まず，コモンスライム（ドロップテーブル）と，その確率のリストを作る．
    public Dictionary<DropTable, int> DropInfoDic = new Dictionary<DropTable, int>();
 
@@ -943,6 +944,7 @@ public class DropInfo : BASE {
        ChallengeOctobaddie,
        ChallengeDistortion
    }
+    
    //死んだときのドロップの処理を作る．
    public DropTable ChooseTable()
    {
@@ -1076,23 +1078,8 @@ public class DropInfo : BASE {
    }
    void DropMaterial(ArtiCtrl.MaterialList material)
     {
-        dropNum = 1 + main.S.SR_level[(int)R_UPGRADE.SR_upgradeID.Loot];
-        main.ArtiCtrl.CurrentMaterial[material] += dropNum;
-        if (main.GameController.battleMode != GameController.BattleMode.challange)
-        {
-            main.DeathPanel.materials[material] += dropNum;
-        }
-        else
-        {
-            main.DeathPanel.C_materials[material] += dropNum;
-        }
-        if (!main.systemController.disableLootLog)
-        {
-            if (dropNum == 1)
-                main.Log("Gained <color=green>" + main.ArtiCtrl.ConvertEnum(material));
-            else
-                main.Log("Gained <color=green>" + main.ArtiCtrl.ConvertEnum(material) + " * " + dropNum);
-        }
+        var materialNumber = new MaterialNumber(material);
+        materialNumber.EnemyDrop();
     }
 
    public void DropByTable(DropTable dropTable)

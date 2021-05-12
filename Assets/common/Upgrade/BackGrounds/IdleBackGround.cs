@@ -67,6 +67,8 @@ public class IdleBackGround : POPTEXT_GoldBar,IPointerDownHandler {
         main.Log("<color=green>Leaf + " + tDigit(factor * IdleDPS( M_UPGRADE.Attribute.leaf)), showTime);
         main.S.CurrentNitro += factor * 0.25f;
         main.Log("<color=red>Nitro + " + tDigit(factor * 0.25f), showTime);
+        main.expeditionCtrl.OfflineBonus(factor);
+
         foreach (JEM jem in main.jems)
         {
             if (jem.CurrentWorkerNum == 0)

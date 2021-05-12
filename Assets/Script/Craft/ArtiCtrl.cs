@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using static UsefulMethod;
 using static ArtiCtrl.MaterialList;
+using IdleLibrary;
+using static BASE;
 
 public class ArtiCtrl : BASE {
 
@@ -1333,5 +1335,39 @@ public class ArtiCtrl : BASE {
 
             yield return new WaitForSeconds(1.0f);
         }
+    }
+}
+
+public class MaterialNumber : NUMBER
+{
+    ArtiCtrl.MaterialList material;
+    public override double Number { get => BASE.main.ArtiCtrl.materialNum[(int)material]; set => BASE.main.ArtiCtrl.materialNum[(int)material] = (int)value; }
+
+    public MaterialNumber(ArtiCtrl.MaterialList material)
+    {
+        this.material = material;
+    }
+
+    public void EnemyDrop()
+    {
+        IncrementNumber(1 + main.S.SR_level[(int)R_UPGRADE.SR_upgradeID.Loot]);
+        int dropNum = 1 + main.S.SR_level[(int)R_UPGRADE.SR_upgradeID.Loot];
+        //main.ArtiCtrl.CurrentMaterial[material] += dropNum;
+        if (main.GameController.battleMode != GameController.BattleMode.challange)
+        {
+            main.DeathPanel.materials[material] += dropNum;
+        }
+        else
+        {
+            main.DeathPanel.C_materials[material] += dropNum;
+        }
+        if (!main.systemController.disableLootLog)
+        {
+            if (dropNum == 1)
+                main.Log("Gained <color=green>" + main.ArtiCtrl.ConvertEnum(material));
+            else
+                main.Log("Gained <color=green>" + main.ArtiCtrl.ConvertEnum(material) + " * " + dropNum);
+        }
+
     }
 }

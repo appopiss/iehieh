@@ -16,7 +16,7 @@ using static BASE;
 public class DropMaterial : Serialize.TableBase<ArtiCtrl.MaterialList, int, DropMaterialPair>
 {
 
-
+    
 }
 [System.Serializable]
 public class DropMaterialPair : Serialize.KeyAndValue<ArtiCtrl.MaterialList, int>

@@ -40,6 +40,24 @@ public class UpdateRanking : MonoBehaviour
         ));
         missionMileStoneHiddenButton.onClick.AddListener(() => EasySteamLeaderboards.Instance.GetLeaderboard
         (milestoneHiddenId, (x) => { }));
+
+        //Debug:
+        missionMileStoneButton.onClick.AddListener(() =>
+        {
+            EasySteamLeaderboards.Instance.UploadScoreToLeaderboard(milestoneId, main.S.MissionCount, (result) =>
+            {
+                if (result.resultCode == ESL_ResultCode.Success)
+                {
+                    main.Log("Succesfully Uploaded!", 10);
+                    Debug.Log("Succesfully Uploaded!");
+                }
+                else
+                {
+                    main.Log("Failed Uploading: " + result.resultCode.ToString(), 10);
+                    Debug.Log("Failed Uploading: " + result.resultCode.ToString());
+                }
+            });
+        });
     }
 
     async void UploadScore()

@@ -11,7 +11,7 @@ public class ExpeditionController : MonoBehaviour
 {
     [SerializeField] private EXPEDITION[] expeditions;
     [NonSerialized] public OpenClose thisOpenClose;
-
+    [NonSerialized] public int unleashedNumFromQuest;
     public void OfflineBonus(float timeSec)
     {
         for (int i = 0; i < expeditions.Length; i++)
@@ -22,15 +22,28 @@ public class ExpeditionController : MonoBehaviour
             }
         }
     }
-
+    int UnleashedNum()
+    {
+        return unleashedNumFromQuest;
+    }
+    public void UpdateUnleashExpedition()
+    {
+        for (int i = 0; i < expeditions.Length; i++)
+        {
+            if (i < UnleashedNum()) expeditions[i].thisCanvas.enabled = true;
+            else expeditions[i].thisCanvas.enabled = false;
+        }
+    }
     private void Awake()
     {
         thisOpenClose = gameObject.GetComponent<OpenClose>();
+        thisOpenClose.openAction += UpdateUnleashExpedition;
     }
 
     // Start is called before the first frame update
     void Start()
     {
+
     }
 
     // Update is called once per frame

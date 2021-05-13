@@ -10,4 +10,5 @@ public class keyList : MonoBehaviour
     public static string Wiz_saveKey = "saveWiz";
     public static string Ang_saveKey = "saveAng";
     public static string reincarnationSaveKey = "saveT";
+    public static string odinSaveKey = "saveOdin";
 }

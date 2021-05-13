@@ -73,6 +73,15 @@ public class saveCtrl : BASE
         {
             main.ST = saveClass.GetObject<saveRein>(keyList.reincarnationSaveKey);
         }
+        //OdinSave
+        if (saveClass.GetObject<SaveO>(keyList.odinSaveKey) == null)
+        {
+            main.SO = new SaveO();
+        }
+        else
+        {
+            main.SO = saveClass.GetObject<SaveO>(keyList.odinSaveKey);
+        }
     }
 
     //セーブの処理
@@ -84,6 +93,7 @@ public class saveCtrl : BASE
         saveClass.SetObject(keyList.Wiz_saveKey, main.saveWiz);
         saveClass.SetObject(keyList.War_saveKey, main.saveWar);
         saveClass.SetObject(keyList.Ang_saveKey, main.saveAng);
+        saveClass.SetObject(keyList.odinSaveKey, main.SO);
     }
 
 
@@ -105,9 +115,10 @@ public class saveCtrl : BASE
     
     IEnumerator doSave()
     {
+        var wait = new WaitForSeconds(1.0f);
         while (true)
         {
-            yield return new WaitForSeconds(1.0f);
+            yield return wait;
             //常に現在の時刻をセーブし続けている．
             main.lastTime = DateTime.Now;
             setSaveKey();

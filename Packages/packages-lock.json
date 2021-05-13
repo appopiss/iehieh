@@ -69,6 +69,12 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+    "com.unity.idle-library": {
+      "version": "file:../../IdleFramework/LibraryEditor/Assets/Script/IdleLibrary",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {}
+    },
     "com.unity.purchasing": {
       "version": "2.2.2",
       "depth": 0,

@@ -16,12 +16,14 @@ public class OpenClose : BASE
     public bool isOpen;
     public bool IsOpen => isOpen;
     public bool isOpenFirst;
+    public Action openAction;
     void Open()
     {
         if (isOpen)
             return;
         thisRect.anchoredPosition = Vector2.zero;
         isOpen = true;
+        if (openAction != null) openAction();
     }
     void Close()
     {

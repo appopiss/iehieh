@@ -6,6 +6,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using static UsefulMethod;
+using Sirenix.Serialization;
+using Sirenix.OdinInspector;
 
 public enum Platform
 {
@@ -15,7 +17,7 @@ public enum Platform
     steam,
     crazygames,
 }
-public class Main : MonoBehaviour
+public class Main : SerializedMonoBehaviour
 {
     public double allTime { get => S.allTime; set => S.allTime = value; }
     public double realAllTime { get => S.realAllTime; set => S.realAllTime = value; }
@@ -42,6 +44,7 @@ public class Main : MonoBehaviour
     public SaveR SR;
     [SerializeField]
     public Save S;
+    [OdinSerialize, NonSerialized] public SaveO SO;
     [SerializeField]
     public saveRein ST;
 

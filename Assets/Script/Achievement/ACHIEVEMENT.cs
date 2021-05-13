@@ -114,6 +114,7 @@ public class ACHIEVEMENT : BASE {
         metal,
         P_octoSE,
         explore,
+        expedition
     }
 
     // Use this for initialization

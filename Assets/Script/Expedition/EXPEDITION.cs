@@ -97,6 +97,7 @@ public class EXPEDITION : BASE
 {
     public ExpeditionKind kind;
     float[] requiredHours = new float[] { 0.5f, 1.0f, 2.0f, 4.0f, 8.0f, 24.0f };
+    [NonSerialized] public Canvas thisCanvas;
     public Button startClaimButton, rightButton, leftButton;
     public TextMeshProUGUI nameText, startClaimText, requiredHourText, progressPercentText, bonusText, rewardText;
     public Slider progressBar;
@@ -110,6 +111,7 @@ public class EXPEDITION : BASE
         var transaction = new Transaction(new MaterialNumber(ArtiCtrl.MaterialList.BlackPearl), cost);
         expedition.SetTransaction(transaction);
         expedition.SetTimeSpeedFactor(TimeSpeedFactor);
+        thisCanvas = gameObject.GetComponent<Canvas>();
     }
     public void LinkExpedition(Expedition expedition)
     {
@@ -149,7 +151,7 @@ public class EXPEDITION : BASE
     }
     void UpdateProgress()
     {
-        progressPercentText.text = UsefulMethod.DoubleTimeToDate(expedition.CurrentTimesec()) + " ( " + UsefulMethod.percent(expedition.ProgressPercent()) + " )";
+        progressPercentText.text = UsefulMethod.DoubleTimeToDate(expedition.CurrentTimesec()) + " (" + UsefulMethod.percent(expedition.ProgressPercent()) + ")";
         progressBar.value = expedition.ProgressPercent();
     }
     void UpdateRequiredHour()

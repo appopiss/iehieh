@@ -395,6 +395,11 @@ public class REIN : BASE {
         {
             main.S.dungeonClearNum[i] = 0;
         }
+        //Expedition
+        for (int i = 0; i < main.S.expedition.Length; i++)
+        {
+            main.S.expedition[i] = new IdleLibrary.ExpeditionForSave();
+        }
         //Tutorial系のboolを全てfalseにする↓
         main.GameController.isJobbed = false;
         main.GameController.FirstButton = false;

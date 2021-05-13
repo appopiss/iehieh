@@ -6,6 +6,7 @@ using TMPro;
 using System;
 using IdleLibrary;
 using static IdleLibrary.UsefulMethod;
+using static UsefulMethod;
 using static BASE;
 
 public enum ExpeditionKind
@@ -92,49 +93,41 @@ public class ExpeditionLevel : ILevel
     }
     public long level { get => Level.level * LevelCaptureNumFactor(kind); set => throw new NotImplementedException(); }
 }
-
-//↓UIと実装（パラメータ設定）の処理が混在しているので分けたい
 public class EXPEDITION : BASE
 {
-
-    float[] initRequiredHours = new float[] { 0.01f, 1.0f, 2.0f, 4.0f, 8.0f, 24.0f };
-    public float[] RequiredHours()
-    {
-        if (level == null)
-            return initRequiredHours;
-        float[] tempHours = initRequiredHours;
-        for (int i = 0; i < tempHours.Length; i++)
-        {
-            tempHours[i] = Mathf.Floor(initRequiredHours[i] * Mathf.Max(0.5f, Mathf.Pow(0.99f, level.level)) * 10) / 10f;
-        }
-        return tempHours;
-    }
     public ExpeditionKind kind;
+    float[] requiredHours = new float[] { 0.5f, 1.0f, 2.0f, 4.0f, 8.0f, 24.0f };
     public Button startClaimButton, rightButton, leftButton;
-    public TextMeshProUGUI levelText, startClaimText, requiredHourText, progressPercentText, rewardText;
+    public TextMeshProUGUI nameText, startClaimText, requiredHourText, progressPercentText, bonusText, rewardText;
     public Slider progressBar;
     public Expedition expedition;
     public ExpeditionLevel level;
     private void Awake()
     {
-        expedition = new Expedition((int)kind, main.S.expedition, () => RequiredHours(), null, new SampleExpeditionReward(main.inventory_mono.inventoryInfo.inventory));
+        expedition = new Expedition((int)kind, main.S.expedition, null, null, requiredHours);
         level = new ExpeditionLevel(expedition, kind);
         var cost = new LinearCost(10, 10, level);
-        var transaction = new Transaction(new MaterialNumber(ArtiCtrl.MaterialList.SlimeKingCore), cost);
-       // expedition.SetTransaction(transaction);
+        var transaction = new Transaction(new MaterialNumber(ArtiCtrl.MaterialList.BlackPearl), cost);
+        expedition.SetTransaction(transaction);
+        expedition.SetTimeSpeedFactor(TimeSpeedFactor);
     }
     public void LinkExpedition(Expedition expedition)
     {
         this.expedition = expedition;
     }
-
+    public float TimeSpeedFactor()
+    {
+        if (level == null) return 1;
+        return Math.Min(5, 1f + 0.01f * level.level);
+    }
     public void UpdateUI()
     {
         UpdateStartClaimButton();
         UpdateProgress();
         UpdateRequiredHour();
         UpdateRightLeftButton();
-        levelText.text = "<color=green>Lv " + tDigit(level.level) + "</color>";
+        nameText.text = optStr + NameString() + "  < <color=green>Lv " + UsefulMethod.tDigit(level.level) + "</color> >";
+        bonusText.text = optStr + "Speed Bonus : <color=green>x " + UsefulMethod.tDigit(TimeSpeedFactor(), 2) + "</color>";
     }
     void UpdateStartClaimButton()
     {
@@ -156,7 +149,7 @@ public class EXPEDITION : BASE
     }
     void UpdateProgress()
     {
-        progressPercentText.text = DoubleTimeToDate(expedition.CurrentTimesec()) + " ( " + percent(expedition.ProgressPercent()) + " )";
+        progressPercentText.text = UsefulMethod.DoubleTimeToDate(expedition.CurrentTimesec()) + " ( " + UsefulMethod.percent(expedition.ProgressPercent()) + " )";
         progressBar.value = expedition.ProgressPercent();
     }
     void UpdateRequiredHour()
@@ -167,7 +160,30 @@ public class EXPEDITION : BASE
     {
         expedition.SwitchRequiredHour(isRight);
     }
-
+    string NameString()
+    {
+        switch (kind)
+        {
+            case ExpeditionKind.slime:
+                return "Slime";
+            case ExpeditionKind.bat:
+                return "Bat";
+            case ExpeditionKind.spider:
+                return "Spider";
+            case ExpeditionKind.fairy:
+                return "Fairy";
+            case ExpeditionKind.fox:
+                return "Fox";
+            case ExpeditionKind.magicslime:
+                return "Magic Slime";
+            case ExpeditionKind.devilfish:
+                return "Devil Fish";
+            case ExpeditionKind.blob:
+                return "Blob";
+            default:
+                return "Slime";
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {

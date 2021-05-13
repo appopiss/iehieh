@@ -22,24 +22,46 @@ public class UpdateRanking : MonoBehaviour
     {
         UploadScore();
         missionMileStoneButton.onClick.AddListener(() => EasySteamLeaderboards.Instance.GetLeaderboard
-        ("MISSION_MILESTONE", (x) => { }));
+        (milestoneId, (result) =>
+        {
+            if (result.resultCode == ESL_ResultCode.Success)
+            {
+                main.Log("Global Entries Count : " + result.GlobalEntries.Count, 10);
+                main.Log("Local Steam User Rank : " + result.SteamUserEntry.GlobalRank, 10);
+                Debug.Log("Global Entries Count : " + result.GlobalEntries.Count);
+                Debug.Log("Local Steam User Rank : " + result.SteamUserEntry.GlobalRank);
+            }
+            else
+            {
+                main.Log("Failed Fetching: " + result.resultCode.ToString(), 10);
+                Debug.Log("Failed Fetching : " + result.resultCode.ToString());
+            }
+        }
+        ));
         missionMileStoneHiddenButton.onClick.AddListener(() => EasySteamLeaderboards.Instance.GetLeaderboard
-        ("MISSION_MILESTONE_HIDDEN", (x) => { }));
+        (milestoneHiddenId, (x) => { }));
     }
 
     async void UploadScore()
     {
-        await UniTask.Delay(3000);
+        main.Log("called UpdateScore", 10);
+        await UniTask.Delay(600);//(3000);Debug
+        int i = 0;
         while (true)
         {
+            i++;
+            main.Log("called UpdateScore" + i.ToString(), 10);
+
             EasySteamLeaderboards.Instance.UploadScoreToLeaderboard(milestoneId, main.S.MissionCount, (result) =>
             {
                 if (result.resultCode == ESL_ResultCode.Success)
                 {
+                    main.Log("Succesfully Uploaded!", 10);
                     Debug.Log("Succesfully Uploaded!");
                 }
                 else
                 {
+                    main.Log("Failed Uploading: " + result.resultCode.ToString(), 10);
                     Debug.Log("Failed Uploading: " + result.resultCode.ToString());
                 }
             });
@@ -48,14 +70,16 @@ public class UpdateRanking : MonoBehaviour
             {
                 if (result.resultCode == ESL_ResultCode.Success)
                 {
+                    main.Log("Succesfully Uploaded! Hidden", 10);
                     Debug.Log("Succesfully Uploaded!");
                 }
                 else
                 {
+                    main.Log("Failed Uploading Hidden : " + result.resultCode.ToString(), 10);
                     Debug.Log("Failed Uploading: " + result.resultCode.ToString());
                 }
             });
-            await UniTask.Delay(1000 * 60);
+            await UniTask.Delay(10 * 1000);//Debug(1000 * 60);
         }
     }
 }

@@ -249,6 +249,7 @@ public class Main : MonoBehaviour
     public IEBBonusController iebCtrl;
     public ExpeditionController expeditionCtrl;
     public MaterialNumber[] materials;
+    public Inventory inventory_mono;
 
     public bool[] isDropped = new bool[25];//単位時間あたり何個もドロップさせないためのブール
 

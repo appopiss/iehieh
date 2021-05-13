@@ -92,10 +92,12 @@ public class ExpeditionLevel : ILevel
     }
     public long level { get => Level.level * LevelCaptureNumFactor(kind); set => throw new NotImplementedException(); }
 }
+
+//↓UIと実装（パラメータ設定）の処理が混在しているので分けたい
 public class EXPEDITION : BASE
 {
 
-    float[] initRequiredHours = new float[] { 0.5f, 1.0f, 2.0f, 4.0f, 8.0f, 24.0f };
+    float[] initRequiredHours = new float[] { 0.01f, 1.0f, 2.0f, 4.0f, 8.0f, 24.0f };
     public float[] RequiredHours()
     {
         if (level == null)
@@ -115,11 +117,11 @@ public class EXPEDITION : BASE
     public ExpeditionLevel level;
     private void Awake()
     {
-        expedition = new Expedition((int)kind, main.S.expedition, () => RequiredHours(), null, null);
+        expedition = new Expedition((int)kind, main.S.expedition, () => RequiredHours(), null, new SampleExpeditionReward(main.inventory_mono.inventoryInfo.inventory));
         level = new ExpeditionLevel(expedition, kind);
         var cost = new LinearCost(10, 10, level);
         var transaction = new Transaction(new MaterialNumber(ArtiCtrl.MaterialList.SlimeKingCore), cost);
-        expedition.SetTransaction(transaction);
+       // expedition.SetTransaction(transaction);
     }
     public void LinkExpedition(Expedition expedition)
     {

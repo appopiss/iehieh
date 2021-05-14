@@ -100,10 +100,6 @@ public class saveCtrl : BASE
     private void Awake()
     {
         StartBASE();
-        for (int i = 0; i < main.Ascends.Length; i++)
-        {
-            main.Ascends[i].upgradeId = i;
-        }
         getSaveKey();
     }
 

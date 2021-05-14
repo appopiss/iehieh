@@ -42,8 +42,8 @@ public class Inventory : Subject, IInventoryUIInfo
 	// Use this for initialization
 	void Awake()
 	{
-		inventoryInfo = new InventoryInfo(new IdleLibrary.Inventory.Inventory(inputItem, ref BASE.main.SO.inventory), canvas, items, item, inputItem);
-		equipmentInventoryInfo = new InventoryInfo(new IdleLibrary.Inventory.Inventory(inputItem, ref BASE.main.SO.equipmentInventory), EquipmentCanvas, EquippedItems, item, inputItem);
+		inventoryInfo = new InventoryInfo(new IdleLibrary.Inventory.Inventory(inputItem, ref BASE.main.SO.inventory, 10), canvas, items, item, inputItem);
+		equipmentInventoryInfo = new InventoryInfo(new IdleLibrary.Inventory.Inventory(inputItem, ref BASE.main.SO.equipmentInventory, 10), EquipmentCanvas, EquippedItems, item, inputItem);
 
 		//UIと紐づける
 		UIInfoList.Add(inventoryInfo);

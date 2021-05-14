@@ -13,8 +13,8 @@ using static UsefulStatic;
 /// のようにして初期化する。アップデートなどで途中から変更することも可能。
 /// 初期化はAwake()のAwakeBASE();のあとに書くことを推奨。
 /// </summary>
-public class SaveDeclare : BASE {
-
+public class SaveDeclare : BASE
+{
 	// Use this for initialization/
 	void Awake () {
 		StartBASE();

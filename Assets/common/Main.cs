@@ -304,6 +304,11 @@ public class Main : SerializedMonoBehaviour
         S.isDistortionBeated = true;
         S.unleashBank = true;
         */
+        for (int i = 0; i < Ascends.Length; i++)
+        {
+            Ascends[i].upgradeId = i;
+        }
+
         materials = new MaterialNumber[Enum.GetNames(typeof(ArtiCtrl.MaterialList)).Length];
         for (int i = 0; i < materials.Length; i++)
         {

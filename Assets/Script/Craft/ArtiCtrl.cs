@@ -1341,7 +1341,7 @@ public class ArtiCtrl : BASE {
 public class MaterialNumber : NUMBER
 {
     ArtiCtrl.MaterialList material;
-    public override double Number { get => BASE.main.ArtiCtrl.materialNum[(int)material]; set => BASE.main.ArtiCtrl.materialNum[(int)material] = (int)value; }
+    public override double Number { get => BASE.main.S.materialNum[(int)material]; set => BASE.main.S.materialNum[(int)material] = (int)value; }
 
     public MaterialNumber(ArtiCtrl.MaterialList material)
     {

@@ -20,6 +20,12 @@ public partial class SaveO
 	public Chest tier1chest, tier2chest, tier3chest;
 }
 
+//新しい素材...
+public class ArtifactMaterial : NUMBER
+{
+
+}
+
 public class Inventory : Subject, IInventoryUIInfo
 {
 	public GameObject item;

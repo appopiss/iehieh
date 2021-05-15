@@ -4,6 +4,7 @@ using UnityEngine;
 using IdleLibrary;
 using IdleLibrary.Inventory;
 using Sirenix.Serialization;
+using System;
 
 namespace IdleLibrary
 {
@@ -18,7 +19,7 @@ namespace IdleLibrary
 public class ArtifactReward : IExpeditionAction
 {
     private IdleLibrary.Inventory.Inventory inventory;
-    [OdinSerialize] private Artifact recordedArtifact;
+    [OdinSerialize] private Action recordedAction;
     public ArtifactReward(IdleLibrary.Inventory.Inventory inventory)
     {
         this.inventory = inventory;
@@ -31,9 +32,10 @@ public class ArtifactReward : IExpeditionAction
 
     public void OnStart()
     {
+        Action action = () => { };
         var ArtifactFactory = new ArtifactFactory();
         var artifact = ArtifactFactory.CreateArtifact();
-        recordedArtifact = artifact;
+        
     }
 
 }

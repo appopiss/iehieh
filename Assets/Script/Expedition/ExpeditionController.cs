@@ -12,6 +12,7 @@ public class ExpeditionController : MonoBehaviour
     [SerializeField] private EXPEDITION[] expeditions;
     [NonSerialized] public OpenClose thisOpenClose;
     [NonSerialized] public int unleashedNumFromQuest;
+    public Sprite[] monsterSprites1, monsterSprites2;
     public void OfflineBonus(float timeSec)
     {
         for (int i = 0; i < expeditions.Length; i++)

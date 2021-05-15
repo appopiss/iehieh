@@ -3,24 +3,37 @@ using System.Collections.Generic;
 using UnityEngine;
 using IdleLibrary;
 using IdleLibrary.Inventory;
+using Sirenix.Serialization;
 
+namespace IdleLibrary
+{
+    public interface IExpeditionAction
+    {
+        void OnStart();
+        void OnClaim();
+    }
+}
 //最も簡単な例
-public class SampleExpeditionReward : IReward
+//どこのtierに属するかと何をするかを決める？
+public class ArtifactReward : IExpeditionAction
 {
     private IdleLibrary.Inventory.Inventory inventory;
-    public SampleExpeditionReward(IdleLibrary.Inventory.Inventory inventory)
+    [OdinSerialize] private Artifact recordedArtifact;
+    public ArtifactReward(IdleLibrary.Inventory.Inventory inventory)
     {
         this.inventory = inventory;
     }
-    public void Reward()
+
+    public void OnClaim()
     {
-        var ArtifactFactory = new ItemFactory();
-        var artifact = ArtifactFactory.CreateRandomItem();
-        inventory.SetItemByOrder(artifact);
+        //宝箱のリストに追加する処理を書きます。
     }
 
-    public string Text()
+    public void OnStart()
     {
-        return "ランダムにアーティファクトを獲得します";
+        var ArtifactFactory = new ArtifactFactory();
+        var artifact = ArtifactFactory.CreateArtifact();
+        recordedArtifact = artifact;
     }
+
 }

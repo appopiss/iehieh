@@ -8,6 +8,7 @@ using TMPro;
 using static UsefulMethod;
 using Sirenix.Serialization;
 using Sirenix.OdinInspector;
+using IdleLibrary;
 
 public enum Platform
 {
@@ -499,6 +500,18 @@ public class Main : SerializedMonoBehaviour
             RestoreMissionEC();
         */
     }
+    //public class Description : IText
+    //{
+    //    string description;
+    //    public Description(string description)
+    //    {
+    //        this.description = description;
+    //    }
+    //    public string Text()
+    //    {
+    //        return description;
+    //    }
+    //}
     /*
     IEnumerator StatsTotalEnemyKill()
     {
@@ -730,7 +743,22 @@ public class Main : SerializedMonoBehaviour
         yield break;
     }
 
-
+    //PopupConfirm
+    public PopupConfirm popupConfirm;
+    public void Confirm(IText descriptionText, IText buttonText = null, Action confirmAction = null)
+    {
+        setActive(popupConfirm.gameObject);
+        popupConfirm.UpdateUI(descriptionText, buttonText, confirmAction);
+        setFalse(popupConfirm.gameObject);
+        setActive(popupConfirm.gameObject);
+    }
+    public void Confirm(string descriptionText, string buttonText = null, Action confirmAction = null)
+    {
+        setActive(popupConfirm.gameObject);
+        popupConfirm.UpdateUI(descriptionText, buttonText, confirmAction);
+        setFalse(popupConfirm.gameObject);
+        setActive(popupConfirm.gameObject);
+    }
 
     public IEnumerator InstantiateAnimation(GameObject animatedObj, RectTransform transform, double damage=0, double consumeMp = 0, 
         SKILL.DamageKind damageKind = SKILL.DamageKind.physical,Main.Debuff debuff = Debuff.nothing,SKILL skill = null)

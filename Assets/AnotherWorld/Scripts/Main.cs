@@ -52,10 +52,6 @@ namespace Another
         // Start is called before the first frame update
         void Start()
         {
-            Debug.Log(S.totalEnemiesKilled[3]);
-            Debug.Log(SR.currentSkill[2]);
-            Debug.Log(S.condition[5]);
-            Debug.Log(S.isEquipped[3]);
             //初めてのプレイだったら現在の値を代入
             if (!S.isContinuePlay)
             {

@@ -17,6 +17,7 @@ using static BASE;
 public partial class SaveO
 {
 	public IdleLibrary.Inventory.InventoryForSave inventory, equipmentInventory;
+	public Chest tier1chest, tier2chest, tier3chest;
 }
 
 public class Inventory : Subject, IInventoryUIInfo
@@ -37,6 +38,9 @@ public class Inventory : Subject, IInventoryUIInfo
 
 	public InventoryInfo inventoryInfo;
 	public InventoryInfo equipmentInventoryInfo;
+
+	//宝箱
+
 
 
 	// Use this for initialization
@@ -63,20 +67,10 @@ public class Inventory : Subject, IInventoryUIInfo
 		var swap2 = new StackAndSwapItem(equipmentInventoryInfo.inventory);
 		equipmentInventoryInfo.RegisterHoldAction(swap2, new Releaseitem(inputItem), swap2);
 		equipmentInventoryInfo.AddRightaction(new RevertItemToOtherInventory(equipmentInventoryInfo.inventory, inventoryInfo.inventory));
-
-		Notify();
 	}
 
 	private void Update()
 	{
 		Notify();
-		if (Input.GetMouseButtonDown(1))
-		{
-			inputItem.ReleaseItem();
-		}
-		if (Input.GetMouseButtonUp(0) || Input.GetMouseButtonUp(1))
-		{
-			Notify();
-		}
 	}
 }

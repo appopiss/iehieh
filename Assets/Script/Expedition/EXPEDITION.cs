@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Cysharp.Threading.Tasks;
 using TMPro;
 using System;
 using IdleLibrary;
@@ -103,6 +104,7 @@ public class EXPEDITION : BASE
     public Slider progressBar;
     public Expedition expedition;
     public ExpeditionLevel level;
+    public Image monsterImage;
     private void Awake()
     {
         expedition = new Expedition((int)kind, main.S.expedition, null, null, requiredHours);
@@ -186,12 +188,27 @@ public class EXPEDITION : BASE
                 return "Slime";
         }
     }
+    async void ChangeSprite()
+    {
+        monsterImage.sprite = main.expeditionCtrl.monsterSprites1[(int)kind];
+        while (true)
+        {
+            if (expedition.IsStarted())
+            {
+                monsterImage.sprite = main.expeditionCtrl.monsterSprites1[(int)kind];
+                await UniTask.Delay(1000);
+                monsterImage.sprite = main.expeditionCtrl.monsterSprites2[(int)kind];
+            }
+            await UniTask.Delay(1000);
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
         startClaimButton.onClick.AddListener(() => { expedition.StartOrClaim(); });
         rightButton.onClick.AddListener(() => SwitchRequiredHour(true));
         leftButton.onClick.AddListener(() => SwitchRequiredHour(false));
+        ChangeSprite();
     }
 }
 

@@ -18,12 +18,30 @@ public partial class SaveO
 {
 	public IdleLibrary.Inventory.InventoryForSave inventory, equipmentInventory;
 	public Chest tier1chest, tier2chest, tier3chest;
+	public ArtifactMaterial[] artifactMaterials;
 }
 
 //新しい素材...
-public class ArtifactMaterial : NUMBER
+public class ArtifactMaterial : NUMBER, IText
 {
-
+	private readonly ID id;
+    public override double Number { get => main.SO.artifactMaterials[(int)id].Number; set => main.SO.artifactMaterials[(int)id].Number = value; }
+    public enum ID
+    {
+		//Tier1
+		MysteriousStone,
+		BlessingPowder
+    }
+	public ArtifactMaterial(int id)
+    {
+		this.id = (ID)id;
+    }
+	public string Text() => id switch
+	{
+		ID.MysteriousStone => "Mysterious Stone",
+		ID.BlessingPowder => "Blessing Powder",
+		_ => ""
+	};
 }
 
 public class Inventory : Subject, IInventoryUIInfo

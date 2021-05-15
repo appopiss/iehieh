@@ -160,6 +160,9 @@ public class SaveDeclare : BASE
         //SteamAchievement
         InitializeArray(ref main.S.isAchievedSteam, 24);
         InitializeArray(ref main.S.isPurchasedIEBBonus, 23);
+
+        //ArtifactMaterial
+        InitializeArray(ref main.SO.artifactMaterials, Enum.GetValues(typeof(ArtifactMaterial.ID)).Length);
     }
 
     // Use this for initialization

@@ -20,6 +20,7 @@ public class ArtifactReward : IExpeditionAction
     public void OnClaim()
     {
         //宝箱のリストに追加する処理を書きます。
+        Debug.Log(recordedAction == null);
         switch (UnityEngine.Random.Range(0, 4))
         {
             case 0: BASE.main.SO.tier1chest.RegisterAction(recordedAction); break;
@@ -49,7 +50,7 @@ public class ArtifactReward : IExpeditionAction
             action = () =>
             {
                 BASE.main.Confirm($"You got some materials for artifacts!");
-                BASE.main.SO.artifactMaterials[(int)ArtifactMaterial.ID.MysteriousStone].IncrementNumber(1);
+                BASE.main.SO.artifactMaterials[(int)ArtifactMaterial.ID.MysteriousStone] += 1;
             };
         }
         recordedAction = action;

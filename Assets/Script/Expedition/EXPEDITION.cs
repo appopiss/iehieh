@@ -21,7 +21,7 @@ public enum ExpeditionKind
     devilfish,
     blob,
 }
-public partial class Save
+public partial class SaveO
 {
     public ExpeditionForSave[] expedition;
 }

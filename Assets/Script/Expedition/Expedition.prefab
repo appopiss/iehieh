@@ -65,7 +65,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Artifact (Qualiry 10 ~ 100 ) * 3 '
+  m_text: 'Reward : <sprite="chests" index=0> x 9   <sprite="chests" index=1> x 3  
+    <sprite="chests" index=2> x 1'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

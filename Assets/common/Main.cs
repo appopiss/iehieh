@@ -9,6 +9,7 @@ using static UsefulMethod;
 using Sirenix.Serialization;
 using Sirenix.OdinInspector;
 using IdleLibrary;
+using Cysharp.Threading.Tasks;
 
 public enum Platform
 {
@@ -750,13 +751,17 @@ public class Main : SerializedMonoBehaviour
     {
         setActive(popupConfirm.gameObject);
         popupConfirm.UpdateUI(descriptionText, buttonText, confirmAction);
-        setFalse(popupConfirm.gameObject);
-        setActive(popupConfirm.gameObject);
+        FixSizePopup();
     }
     public void Confirm(string descriptionText, string buttonText = null, Action confirmAction = null)
     {
         setActive(popupConfirm.gameObject);
         popupConfirm.UpdateUI(descriptionText, buttonText, confirmAction);
+        FixSizePopup();
+    }
+    async void FixSizePopup()
+    {
+        await UniTask.DelayFrame(1);
         setFalse(popupConfirm.gameObject);
         setActive(popupConfirm.gameObject);
     }

@@ -254,6 +254,7 @@ public class Main : SerializedMonoBehaviour
     public ExpeditionController expeditionCtrl;
     public MaterialNumber[] materials;
     public Inventory inventory_mono;
+   // public PopupConfirm popUpConfirm;
 
     public bool[] isDropped = new bool[25];//単位時間あたり何個もドロップさせないためのブール
 

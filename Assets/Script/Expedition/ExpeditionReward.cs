@@ -6,14 +6,6 @@ using IdleLibrary.Inventory;
 using Sirenix.Serialization;
 using System;
 
-namespace IdleLibrary
-{
-    public interface IExpeditionAction
-    {
-        void OnStart();
-        void OnClaim();
-    }
-}
 //最も簡単な例
 //どこのtierに属するかと何をするかを決める？
 public class ArtifactReward : IExpeditionAction
@@ -28,6 +20,12 @@ public class ArtifactReward : IExpeditionAction
     public void OnClaim()
     {
         //宝箱のリストに追加する処理を書きます。
+        switch (UnityEngine.Random.Range(0, 4))
+        {
+            case 0: BASE.main.SO.tier1chest.RegisterAction(recordedAction); break;
+            case 1: BASE.main.SO.tier2chest.RegisterAction(recordedAction); break;
+            case 2: BASE.main.SO.tier3chest.RegisterAction(recordedAction); break;
+        }
     }
 
     public void OnStart()
@@ -39,13 +37,22 @@ public class ArtifactReward : IExpeditionAction
         {
             var ArtifactFactory = new ArtifactFactory();
             var artifact = ArtifactFactory.CreateArtifact();
+            action = () =>
+            {
+                BASE.main.Confirm($"You got new artifact!\n" + artifact.Text());
+                inventory.SetItemByOrder(artifact);
+            };
         }
         //素材だったら
         else
         {
-
+            action = () =>
+            {
+                BASE.main.Confirm($"You got some materials for artifacts!");
+                BASE.main.SO.artifactMaterials[(int)ArtifactMaterial.ID.MysteriousStone].IncrementNumber(1);
+            };
         }
-        
+        recordedAction = action;
     }
 
 }

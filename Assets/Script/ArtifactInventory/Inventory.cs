@@ -64,6 +64,7 @@ public class Inventory : Subject, IInventoryUIInfo
 	public InventoryInfo equipmentInventoryInfo;
 
 	//宝箱
+	[SerializeField] Button chest1, chest2, chest3;
 
 
 
@@ -91,6 +92,13 @@ public class Inventory : Subject, IInventoryUIInfo
 		var swap2 = new StackAndSwapItem(equipmentInventoryInfo.inventory);
 		equipmentInventoryInfo.RegisterHoldAction(swap2, new Releaseitem(inputItem), swap2);
 		equipmentInventoryInfo.AddRightaction(new RevertItemToOtherInventory(equipmentInventoryInfo.inventory, inventoryInfo.inventory));
+
+		main.SO.tier1chest = main.SO.tier1chest ?? new Chest();
+		main.SO.tier2chest = main.SO.tier2chest ?? new Chest();
+		main.SO.tier3chest = main.SO.tier3chest ?? new Chest();
+		chest1.onClick.AddListener(() => main.SO.tier1chest.OpenChest());
+		chest1.onClick.AddListener(() => main.SO.tier2chest.OpenChest());
+		chest1.onClick.AddListener(() => main.SO.tier3chest.OpenChest());
 	}
 
 	private void Update()

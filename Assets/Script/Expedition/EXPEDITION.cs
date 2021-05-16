@@ -97,7 +97,7 @@ public class ExpeditionLevel : ILevel
 public class EXPEDITION : BASE
 {
     public ExpeditionKind kind;
-    float[] requiredHours = new float[] { 0.01f, 1.0f, 2.0f, 4.0f, 8.0f, 24.0f };
+    float[] requiredHours = new float[] { 0.001f, 1.0f, 2.0f, 4.0f, 8.0f, 24.0f };
     [NonSerialized] public Canvas thisCanvas;
     public Button startClaimButton, rightButton, leftButton;
     public TextMeshProUGUI nameText, startClaimText, requiredHourText, progressPercentText, bonusText, rewardText;
@@ -107,7 +107,7 @@ public class EXPEDITION : BASE
     public Image monsterImage;
     private void Awake()
     {
-        expedition = new Expedition((int)kind, main.S.expedition, null, new ArtifactReward(main.inventory_mono.inventoryInfo.inventory), requiredHours);
+        expedition = new Expedition((int)kind, main.SO.expedition, null, new ArtifactReward(), requiredHours);
         level = new ExpeditionLevel(expedition, kind);
         var cost = new LinearCost(10, 10, level);
         var transaction = new Transaction(new MaterialNumber(ArtiCtrl.MaterialList.BlackPearl), cost);

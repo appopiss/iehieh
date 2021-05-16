@@ -97,12 +97,15 @@ public class Inventory : Subject, IInventoryUIInfo
 		main.SO.tier2chest = main.SO.tier2chest ?? new Chest();
 		main.SO.tier3chest = main.SO.tier3chest ?? new Chest();
 		chest1.onClick.AddListener(() => main.SO.tier1chest.OpenChest());
-		chest1.onClick.AddListener(() => main.SO.tier2chest.OpenChest());
-		chest1.onClick.AddListener(() => main.SO.tier3chest.OpenChest());
+		chest2.onClick.AddListener(() => main.SO.tier2chest.OpenChest());
+		chest3.onClick.AddListener(() => main.SO.tier3chest.OpenChest());
 	}
 
 	private void Update()
 	{
 		Notify();
+		chest1.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = UsefulMethod.tDigit(main.SO.tier1chest.ChestNum);
+		chest2.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = UsefulMethod.tDigit(main.SO.tier2chest.ChestNum);
+		chest3.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = UsefulMethod.tDigit(main.SO.tier3chest.ChestNum);
 	}
 }

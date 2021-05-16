@@ -155,7 +155,7 @@ public class SaveDeclare : BASE
         InitializeArray(ref main.S.CurseReinClearNum, Enum.GetNames(typeof(CurseId)).Length);
 
         //Expedition
-        InitializeArray(ref main.S.expedition, Enum.GetNames(typeof(ExpeditionKind)).Length);
+        InitializeArray(ref main.SO.expedition, Enum.GetNames(typeof(ExpeditionKind)).Length);
 
         //SteamAchievement
         InitializeArray(ref main.S.isAchievedSteam, 24);

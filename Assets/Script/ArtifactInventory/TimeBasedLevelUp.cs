@@ -75,13 +75,14 @@ public class TimeBasedLevelUp
     [OdinSerialize] private ILevel level;
     public long levelCap;
     public long maxLevelCap;
-    [OdinSerialize] private Func<ITransaction> transaction;
+    public Func<(ITransaction transaction, IText text)> transactionsInfo;
     public Func<float> requiredTimeSec;
     public float currentTimesec;
 
-    public TimeBasedLevelUp(ILevel level, Func<ITransaction> transaction, Func<float> requiredTimeSec)
+    public TimeBasedLevelUp(ILevel level, Func<(ITransaction transaction, IText text)> transactionsInfo, Func<float> requiredTimeSec)
     {
-        this.transaction = transaction;
+        this.level = level;
+        this.transactionsInfo = transactionsInfo;
         this.requiredTimeSec = requiredTimeSec;
     }
     //実時間１秒間あたり１回呼ぶ
@@ -94,7 +95,7 @@ public class TimeBasedLevelUp
     {
         if (CanIncreaseLevelCap())
         {
-            transaction().Pay();
+            transactionsInfo().transaction.Pay();
             maxLevelCap += incrementLevelCap;
         }
     }
@@ -117,7 +118,7 @@ public class TimeBasedLevelUp
     }
     bool CanIncreaseLevelCap()
     {
-        return transaction().CanBuy() && levelCap < maxLevelCap;
+        return transactionsInfo().transaction.CanBuy() && levelCap < maxLevelCap;
     }
     bool CanLevelUp()
     {

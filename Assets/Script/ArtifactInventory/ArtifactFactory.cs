@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using IdleLibrary.Inventory;
 using IdleLibrary;
+using System;
 
 public class ArtifactFactory
 {
@@ -18,7 +19,22 @@ public class ArtifactFactory
         item.quality = quality;
 
         //TimeBasedActionの設定
-        //var time = new TimeBasedLevelUp(item, new Transaction(new ArtifactMaterial((int)ArtifactMaterial.ID.BlessingPowder),new FixedCost(1)), () => item.level * 100);
+        //例えばレベル3までは単一素材　レベル５からは複数素材が必要
+        var artifactTransaction = new ArtifactMaterialTransaction(ArtifactMaterial.ID.MysteriousStone, new LinearCost(1, 1, item));
+        var artifactTransaction2 = new ArtifactMaterialMultipleTransaction(artifactTransaction, new ArtifactMaterialTransaction(ArtifactMaterial.ID.BlessingPowder, new LinearCost(0, 2, item)));
+        Func<(ITransaction transaction, IText text)> func = () =>
+        {
+            if (item.level <= 3)
+            {
+                return (artifactTransaction, artifactTransaction);
+            }
+            else
+            {
+                return (artifactTransaction2, artifactTransaction2);
+            }
+        };
+        var timeManager = new TimeBasedLevelUp(item, func, () => 10 * item.level);
+        item.timeManager = timeManager;
 
         List<IEffect> effectList = new List<IEffect>();
         effectList.Add(new BasicEffect(BasicEffectKind.goldGain, () => item.level * 3, Calway.add));
@@ -27,4 +43,4 @@ public class ArtifactFactory
 
         return item;
     }
-}
+}   

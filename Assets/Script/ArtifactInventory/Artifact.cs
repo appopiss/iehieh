@@ -18,6 +18,7 @@ public class Artifact : ITEM, ILevel
     }
     public override string Text()
     {
+        Debug.Log(timeManager == null);
         return $"----ARTIFACT----\n- " +
             $"ID : {id}" +
             $"\n\n- Level : {level} " +

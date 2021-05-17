@@ -762,8 +762,8 @@ public class Main : SerializedMonoBehaviour
     async void FixSizePopup()
     {
         await UniTask.DelayFrame(1);
-        setFalse(popupConfirm.gameObject);
-        setActive(popupConfirm.gameObject);
+        setFalse(popupConfirm.gameObject.transform.GetChild(0).gameObject);
+        setActive(popupConfirm.gameObject.transform.GetChild(0).gameObject);
     }
 
     public IEnumerator InstantiateAnimation(GameObject animatedObj, RectTransform transform, double damage=0, double consumeMp = 0, 

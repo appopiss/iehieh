@@ -26,6 +26,7 @@ public class ExpeditionController : MonoBehaviour
             }
         }
     }
+
     int UnleashedNum()
     {
         return unleashedNumFromQuest;

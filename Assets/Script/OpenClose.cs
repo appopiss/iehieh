@@ -11,8 +11,8 @@ public class OpenClose : BASE
 {
 
     RectTransform thisRect;
-    public Button CloseButton;
-    public Button OpenButton;
+    public Button[] CloseButton;
+    public Button[] OpenButton;
     public bool isOpen;
     public bool IsOpen => isOpen;
     public bool isOpenFirst;
@@ -37,8 +37,14 @@ public class OpenClose : BASE
     {
         StartBASE();
         thisRect = gameObject.GetComponent<RectTransform>();
-        OpenButton.onClick.AddListener(Open);
-        CloseButton.onClick.AddListener(Close);
+        for (int i = 0; i < OpenButton.Length; i++)
+        {
+            OpenButton[i].onClick.AddListener(Open);
+        }
+        for (int i = 0; i < CloseButton.Length; i++)
+        {
+            CloseButton[i].onClick.AddListener(Close);
+        }
     }
 
     // Use this for initialization

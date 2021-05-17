@@ -90,14 +90,14 @@ public class ExpeditionLevel : ILevel
             default:
                 break;
         }
-        return (long)Math.Log10(1 + tempCaptureNum);
+        return (long)Math.Log10(Math.Max(1, tempCaptureNum));
     }
     public long level { get => Level.level * LevelCaptureNumFactor(kind); set => throw new NotImplementedException(); }
 }
 public class EXPEDITION : BASE
 {
     public ExpeditionKind kind;
-    float[] requiredHours = new float[] { 0.001f, 1.0f, 2.0f, 4.0f, 8.0f, 24.0f };
+    float[] requiredHours = new float[] { 0.5f, 1.0f, 2.0f, 4.0f, 8.0f, 24.0f };
     [NonSerialized] public Canvas thisCanvas;
     public Button startClaimButton, rightButton, leftButton;
     public TextMeshProUGUI nameText, startClaimText, requiredHourText, progressPercentText, bonusText, rewardText;
@@ -109,9 +109,9 @@ public class EXPEDITION : BASE
     {
         expedition = new Expedition((int)kind, main.SO.expedition, null, new ArtifactReward(), requiredHours);
         level = new ExpeditionLevel(expedition, kind);
-        var cost = new LinearCost(10, 10, level);
-        var transaction = new Transaction(new MaterialNumber(ArtiCtrl.MaterialList.BlackPearl), cost);
-        expedition.SetTransaction(transaction);
+        //var cost = new LinearCost(10, 10, level);
+        //var transaction = new Transaction(new MaterialNumber(ArtiCtrl.MaterialList.BlackPearl), cost);
+        expedition.SetTransaction(new NullTransaction());
         expedition.SetTimeSpeedFactor(TimeSpeedFactor);
         thisCanvas = gameObject.GetComponent<Canvas>();
     }
@@ -153,7 +153,7 @@ public class EXPEDITION : BASE
     }
     void UpdateProgress()
     {
-        progressPercentText.text = UsefulMethod.DoubleTimeToDate(expedition.CurrentTimesec()) + " (" + UsefulMethod.percent(expedition.ProgressPercent()) + ")";
+        progressPercentText.text = optStr + expedition.LeftTimesecString() + " (" + UsefulMethod.percent(expedition.ProgressPercent()) + ")";
         progressBar.value = expedition.ProgressPercent();
     }
     void UpdateRequiredHour()

@@ -27,6 +27,9 @@ public class BuildBronzeArtifact : IArtifactBuilder
         var quality = UnityEngine.Random.Range(0, 40);
         _artifact.quality = quality;
 
+        //antimagicpower‚Ìİ’è
+        _artifact.antimagicPower = ChooseAntiMagicPower(_artifact.quality);
+
         //TimeBased‚ÌƒŒƒxƒ‹İ’è (‚Ç‚¤‚â‚Á‚Äİ’è‚·‚é‚©H)
         var timeLevel = new TimeBasedLevel();
         timeLevel.level = 1;

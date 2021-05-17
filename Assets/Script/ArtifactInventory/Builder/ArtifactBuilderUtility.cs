@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class ArtifactBuilderUtility
+public partial class ArtifactBuilderUtility
 {
     public static (double initialValue, double steep) ChooseMaterialCost(int quality, ArtifactMaterial.ID id)
     {
@@ -41,6 +41,20 @@ public class ArtifactBuilderUtility
             int i when i <= 60 => () => 60 * 60 * (level.level + 1),
             int i when i <= 80 => () => 200 * 60 * (level.level + 1),
             _ => () => 10 * 60 * (level.level + 1),
+        };
+        return result;
+    }
+
+    public static double ChooseAntiMagicPower(int quality)
+    {
+        double result = (object)quality switch
+        {
+            int i when i <= 20 => UnityEngine.Random.Range(1,60),
+            int i when i <= 40 => UnityEngine.Random.Range(1, 60) + UnityEngine.Random.Range(40, 120),
+            int i when i <= 60 => UnityEngine.Random.Range(1, 60) + UnityEngine.Random.Range(40, 120) + UnityEngine.Random.Range(100, 200),
+            int i when i <= 80 => UnityEngine.Random.Range(1, 60) + UnityEngine.Random.Range(40, 120)
+            + UnityEngine.Random.Range(100, 200) + UnityEngine.Random.Range(180, 400),
+            _ => UnityEngine.Random.Range(0, 60),
         };
         return result;
     }

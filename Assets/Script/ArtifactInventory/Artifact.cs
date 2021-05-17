@@ -23,7 +23,7 @@ public class Artifact : ITEM, ILevel
             $"\n\n- Level : {level} " +
             $"\n- Max Level : {timeManager.timeLevel.level} " +
             $"\n- Quality : {quality} " +
-            $"\n- Anti-Magid Power : {antimagicPower}" +
+            $"\n- Anti-magic Power : {antimagicPower}" +
             $"\n- Time to Level Up : {(timeManager.currentTimesec / timeManager.requiredTimeSec()).ToString("F2")}" +
             $"\n- [Materials to Level Up]\n" + timeManager.transactionsInfo().text.Text() + 
             $"\n" + EffectText();
@@ -34,7 +34,7 @@ public class Artifact : ITEM, ILevel
     }
     string EffectText()
     {
-        string text = "[Effect]\n\n";
+        string text = "[Effect]\n";
         effects.ForEach((x) => text += x.Text() + "\n");
         return text;
     }

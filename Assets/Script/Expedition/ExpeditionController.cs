@@ -32,21 +32,25 @@ public class ExpeditionController : MonoBehaviour
     }
     public void UpdateUnleashExpedition()
     {
-        if (UnleashedNum() > 0)
-        {
-            setActive(toArtifactButton);
-            setActive(toExpeditionButton);
-        }
-        else
-        {
-            setFalse(toArtifactButton);
-            setFalse(toExpeditionButton);
-        }
         for (int i = 0; i < expeditions.Length; i++)
         {
             if (i < UnleashedNum()) expeditions[i].thisCanvas.enabled = true;
             else expeditions[i].thisCanvas.enabled = false;
         }
+    }
+    public void UpdateUnleashButtons()
+    {
+        if (UnleashedNum() > 0) UnleashButtons();
+        else
+        {
+            setFalse(toArtifactButton);
+            setFalse(toExpeditionButton);
+        }
+    }
+    public void UnleashButtons()
+    {
+        setActive(toArtifactButton);
+        setActive(toExpeditionButton);
     }
     private void Awake()
     {

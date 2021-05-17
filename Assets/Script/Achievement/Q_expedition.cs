@@ -73,7 +73,7 @@ public class Q_expedition : ACHIEVEMENT
     //クエストの報酬
     public override void GetQuestPoint()
     {
-        //Expeditionへの遷移ボタンを有効にする処理。
+        main.expeditionCtrl.UnleashButtons();
     }
 
     // Use this for initialization

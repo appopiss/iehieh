@@ -22,9 +22,10 @@ public partial class SaveO
 }
 
 //新しい素材...
+[Serializable]
 public class ArtifactMaterial : NUMBER, IText
 {
-	private readonly ID id;
+	[OdinSerialize] private readonly ID id;
     public override double Number { get => main.SO.artifactMaterials[(int)id]; set => main.SO.artifactMaterials[(int)id] = value; }
     public enum ID
     {
@@ -66,6 +67,9 @@ public class Inventory : Subject, IInventoryUIInfo
 	//宝箱
 	[SerializeField] Button chest1, chest2, chest3;
 
+	//Material表示
+	MaterialShowClass materialShow;
+
 
 
 	// Use this for initialization
@@ -87,11 +91,13 @@ public class Inventory : Subject, IInventoryUIInfo
 		inventoryInfo.AddLeftAction(new LockItem(inventoryInfo.inventory), KeyCode.L);
 		inventoryInfo.AddLeftAction(new DeleteItem(inventoryInfo.inventory), KeyCode.D);
 		inventoryInfo.AddRightaction(new RevertItemToOtherInventory(inventoryInfo.inventory, equipmentInventoryInfo.inventory));
+		inventoryInfo.AddLeftAction(new LevelUpArtifact(inventoryInfo.inventory), KeyCode.E);
 
 		//equipmentInventory.AddLeftAction(new SwapItem(equipmentInventory.inventory));
 		var swap2 = new StackAndSwapItem(equipmentInventoryInfo.inventory);
 		equipmentInventoryInfo.RegisterHoldAction(swap2, new Releaseitem(inputItem), swap2);
 		equipmentInventoryInfo.AddRightaction(new RevertItemToOtherInventory(equipmentInventoryInfo.inventory, inventoryInfo.inventory));
+		equipmentInventoryInfo.AddLeftAction(new LevelUpArtifact(equipmentInventoryInfo.inventory), KeyCode.E);
 
 		main.SO.tier1chest = main.SO.tier1chest ?? new Chest();
 		main.SO.tier2chest = main.SO.tier2chest ?? new Chest();
@@ -99,6 +105,10 @@ public class Inventory : Subject, IInventoryUIInfo
 		chest1.onClick.AddListener(() => main.SO.tier1chest.OpenChest());
 		chest2.onClick.AddListener(() => main.SO.tier2chest.OpenChest());
 		chest3.onClick.AddListener(() => main.SO.tier3chest.OpenChest());
+
+		materialShow = new MaterialShowClass();
+
+		ArtifactUpdate();
 	}
 
 	private void Update()
@@ -108,4 +118,18 @@ public class Inventory : Subject, IInventoryUIInfo
 		chest2.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = UsefulMethod.tDigit(main.SO.tier2chest.ChestNum);
 		chest3.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = UsefulMethod.tDigit(main.SO.tier3chest.ChestNum);
 	}
+
+	async void ArtifactUpdate()
+    {
+        while(true){
+            foreach (var item in equipmentInventoryInfo.inventory.GetItems())
+            {
+				if (!(item is Artifact)) continue;
+				var artifact = item as Artifact;
+				artifact.timeManager.UpdatePerSec();
+            }
+
+			await UniTask.Delay(1000, delayType: DelayType.Realtime);
+        }
+    }
 }

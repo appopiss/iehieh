@@ -1443,7 +1443,7 @@ public class GameController : BASE {
             ableButtons();
             UpgradeMode = achievement;
             currentCanvas = AchievementCanvas;
-            main.expeditionCtrl.UpdateUnleashExpedition();
+            main.expeditionCtrl.UpdateUnleashButtons();
         }
     }
 

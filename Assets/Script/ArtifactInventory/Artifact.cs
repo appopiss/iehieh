@@ -18,14 +18,14 @@ public class Artifact : ITEM, ILevel
     }
     public override string Text()
     {
-        Debug.Log(timeManager == null);
         return $"----ARTIFACT----\n- " +
             $"ID : {id}" +
             $"\n\n- Level : {level} " +
-            $"\n- Max Level : {timeManager.maxLevelCap} " +
+            $"\n- Max Level : {timeManager.timeLevel.level} " +
             $"\n- Quality : {quality} " +
             $"\n- Anti-Magid Power : {antimagicPower}" +
-            $"\n- Time to Level Up : {(timeManager.currentTimesec / timeManager.requiredTimeSec()).ToString("F2")}" + 
+            $"\n- Time to Level Up : {(timeManager.currentTimesec / timeManager.requiredTimeSec()).ToString("F2")}" +
+            $"\n- [Materials to Level Up]\n" + timeManager.transactionsInfo().text.Text() + 
             $"\n" + EffectText();
     }
     public override ITEM CreateNullItem()

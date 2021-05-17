@@ -69,19 +69,29 @@ public class ArtifactMaterialMultipleTransaction : ITransaction, IText
         this.transactions = transactions;
     }
 }
+
+[Serializable]
+public class TimeBasedLevel : ILevel
+{
+    public long level { get => _levelCap; set => _levelCap = value; }
+    [OdinSerialize] private long _levelCap;
+    public long maxLevelCap;
+}
 [Serializable]
 public class TimeBasedLevelUp
 {
     [OdinSerialize] private ILevel level;
-    public long levelCap;
-    public long maxLevelCap;
+    public TimeBasedLevel timeLevel;
+
     public Func<(ITransaction transaction, IText text)> transactionsInfo;
     public Func<float> requiredTimeSec;
     public float currentTimesec;
 
-    public TimeBasedLevelUp(ILevel level, Func<(ITransaction transaction, IText text)> transactionsInfo, Func<float> requiredTimeSec)
+    public TimeBasedLevelUp
+    (ILevel artifactLevel, TimeBasedLevel timeLevel, Func<(ITransaction transaction, IText text)> transactionsInfo, Func<float> requiredTimeSec)
     {
-        this.level = level;
+        this.level = artifactLevel;
+        this.timeLevel = timeLevel;
         this.transactionsInfo = transactionsInfo;
         this.requiredTimeSec = requiredTimeSec;
     }
@@ -96,7 +106,7 @@ public class TimeBasedLevelUp
         if (CanIncreaseLevelCap())
         {
             transactionsInfo().transaction.Pay();
-            maxLevelCap += incrementLevelCap;
+            timeLevel.level += incrementLevelCap;
         }
     }
     //UI用_現在の進行度（%）
@@ -104,7 +114,6 @@ public class TimeBasedLevelUp
     {
         return currentTimesec / requiredTimeSec();
     }
-
 
     void IncreaseCurrentTime(float timesec)
     {
@@ -118,10 +127,10 @@ public class TimeBasedLevelUp
     }
     bool CanIncreaseLevelCap()
     {
-        return transactionsInfo().transaction.CanBuy() && levelCap < maxLevelCap;
+        return transactionsInfo().transaction.CanBuy() && timeLevel.level < timeLevel.maxLevelCap;
     }
     bool CanLevelUp()
     {
-        return level.level < levelCap;
+        return level.level < timeLevel.level;
     }
 }

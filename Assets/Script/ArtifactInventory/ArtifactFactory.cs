@@ -5,26 +5,37 @@ using IdleLibrary.Inventory;
 using IdleLibrary;
 using System;
 
-public class ArtifactFactory
+//アイテム作成用ビルダーインターフェース
+public interface IArtifactBuilder
 {
-    public Artifact CreateArtifact()
+    Artifact BuildArtifact();
+}
+
+public class BuildBronzeArtifact : IArtifactBuilder
+{
+    public Artifact BuildArtifact()
     {
-        var item = new Artifact(-1);
-        //Idを決めます。
+        var _artifact = new Artifact(-1);
+
+        //ブロンズで出てくるidを指定します。例えば0~5など
         var id = UnityEngine.Random.Range(0, 5);
-        item.id = id;
+        _artifact.id = id;
 
-        //クオリティを決めます
-        var quality = UnityEngine.Random.Range(0, 100);
-        item.quality = quality;
+        //例えば0~40までしか出てこない、など
+        var quality = UnityEngine.Random.Range(0, 40);
+        _artifact.quality = quality;
 
-        //TimeBasedActionの設定
-        //例えばレベル3までは単一素材　レベル５からは複数素材が必要
-        var artifactTransaction = new ArtifactMaterialTransaction(ArtifactMaterial.ID.MysteriousStone, new LinearCost(1, 1, item));
-        var artifactTransaction2 = new ArtifactMaterialMultipleTransaction(artifactTransaction, new ArtifactMaterialTransaction(ArtifactMaterial.ID.BlessingPowder, new LinearCost(0, 2, item)));
+        //TimeBasedのレベル設定
+        var timeLevel = new TimeBasedLevel();
+        timeLevel.level = 1;
+        timeLevel.maxLevelCap = 5;
+
+        //コストの設定
+        var artifactTransaction = new ArtifactMaterialTransaction(ArtifactMaterial.ID.MysteriousStone, new LinearCost(1, 1, timeLevel));
+        var artifactTransaction2 = new ArtifactMaterialMultipleTransaction(artifactTransaction, new ArtifactMaterialTransaction(ArtifactMaterial.ID.BlessingPowder, new LinearCost(0, 2, timeLevel)));
         Func<(ITransaction transaction, IText text)> func = () =>
         {
-            if (item.level <= 3)
+            if (timeLevel.level <= 3)
             {
                 return (artifactTransaction, artifactTransaction);
             }
@@ -33,14 +44,28 @@ public class ArtifactFactory
                 return (artifactTransaction2, artifactTransaction2);
             }
         };
-        var timeManager = new TimeBasedLevelUp(item, func, () => 10 * item.level);
-        item.timeManager = timeManager;
+        var timeManager = new TimeBasedLevelUp(_artifact, timeLevel, func, () => 10 * _artifact.level + 10);
+        _artifact.timeManager = timeManager;
 
+        //エフェクトの生成
         List<IEffect> effectList = new List<IEffect>();
-        effectList.Add(new BasicEffect(BasicEffectKind.goldGain, () => item.level * 3, Calway.add));
-        effectList.Add(new BasicEffect(BasicEffectKind.expGain, () => 1 + 0.1 + item.level * 0.1, Calway.mul));
-        item.effects = effectList;
+        effectList.Add(new BasicEffect(BasicEffectKind.goldGain, () => _artifact.level * 3, Calway.add));
+        effectList.Add(new BasicEffect(BasicEffectKind.expGain, () => 1 + 0.1 + _artifact.level * 0.1, Calway.mul));
+        _artifact.effects = effectList;
 
-        return item;
+        return _artifact;
+    }
+}
+
+public class ArtifactFactory
+{
+    private readonly IArtifactBuilder builder;
+    public ArtifactFactory(IArtifactBuilder builder)
+    {
+        this.builder = builder;
+    }
+    public Artifact CreateArtifact()
+    {
+        return builder.BuildArtifact();
     }
 }   

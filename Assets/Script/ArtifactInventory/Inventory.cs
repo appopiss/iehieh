@@ -68,7 +68,9 @@ public class Inventory : Subject, IInventoryUIInfo
 	[SerializeField] Button chest1, chest2, chest3;
 
 	//Material表示
-	MaterialShowClass materialShow;
+	[SerializeField] TextMeshProUGUI materialText, materialNumberText;
+	IText materialShow;
+	IText materialNumberShow;
 
 
 
@@ -107,6 +109,7 @@ public class Inventory : Subject, IInventoryUIInfo
 		chest3.onClick.AddListener(() => main.SO.tier3chest.OpenChest());
 
 		materialShow = new MaterialShowClass();
+		materialNumberShow = new ColorText(new MaterialNumberShowClass(), Color.green);
 
 		ArtifactUpdate();
 	}
@@ -128,7 +131,8 @@ public class Inventory : Subject, IInventoryUIInfo
 				var artifact = item as Artifact;
 				artifact.timeManager.UpdatePerSec();
             }
-
+			materialText.text = materialShow.Text();
+			materialNumberText.text = materialNumberShow.Text();
 			await UniTask.Delay(1000, delayType: DelayType.Realtime);
         }
     }

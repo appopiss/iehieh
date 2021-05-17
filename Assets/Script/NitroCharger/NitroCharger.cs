@@ -35,7 +35,7 @@ public class NitroCharger : BASE {
         else
             tempText += "- Effect : " + "Boost the game speed x2\n";
         tempText += "- Current Nitro : " + tDigit(Duration) + " / " + tDigit(NitroCap()) + "\n";
-        tempText += "- Nitro Produce : 8 seconds offline for 1 Nitro";
+        tempText += "- Nitro Produce : 4 seconds offline for 1 Nitro";
         if (main.S.AutoNitro)
         {
             if (main.S.isAutoNitro)

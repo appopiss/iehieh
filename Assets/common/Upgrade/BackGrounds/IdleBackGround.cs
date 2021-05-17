@@ -53,29 +53,40 @@ public class IdleBackGround : POPTEXT_GoldBar,IPointerDownHandler {
     }
     public IEnumerator GetOfflineBonus(float time = 0)
     {
-        float showTime = 5.0f;
+        float showTime = 10.0f;
         string tempDateTime = main.S.lastTime;
-        yield return new WaitUntil(() => TitleCtrl.isLoaded);
+        yield return new WaitUntil(() => TitleCtrl.isLoaded && TitleCtrl.isOpenedGame);
         float factor = time == 0 ? DeltaTimeFloat(DateTime.FromBinary(Convert.ToInt64(tempDateTime))) : time;
+        OfflineBonus(factor, showTime);
+    }
+    public void OfflineBonus(float factor = 0, float showTime = 10.0f)
+    {
+        string tempStr = optStr + "<size=16><color=orange>OFFLINE BONUS</color>";
+        tempStr += "\n<size=14>You left for <color=green>" + DoubleTimeToDate(factor) + "</color>";
+        tempStr += "\n\n<size=12>" + "<color=green>Stone + " + tDigit(factor * IdleDPS(M_UPGRADE.Attribute.stone));
+        tempStr += "\n" + "<color=green>Crystal + " + tDigit(factor * IdleDPS(M_UPGRADE.Attribute.crystal));
+        tempStr += "\n" + "<color=green>Leaf + " + tDigit(factor * IdleDPS(M_UPGRADE.Attribute.leaf));
+        tempStr += "\n<color=green>Nitro + " + tDigit(factor * 0.25f);
+        tempStr += "\n<color=green>Gem Progress + " + DoubleTimeToDate(factor);
         main.Log("<color=orange>OFFLINE BONUS", showTime);
-        main.Log("You left for <color=red>" + (factor*2).ToString("F0") + "</color> s", showTime);
-        main.SR.stone += factor * IdleDPS( M_UPGRADE.Attribute.stone);
-        main.Log("<color=green>Stone + " + tDigit(factor * IdleDPS( M_UPGRADE.Attribute.stone)), showTime);
-        main.SR.cristal += factor * IdleDPS( M_UPGRADE.Attribute.crystal);
-        main.Log("<color=green>Crystal + " + tDigit(factor * IdleDPS( M_UPGRADE.Attribute.crystal)), showTime);
-        main.SR.leaf += factor * IdleDPS( M_UPGRADE.Attribute.leaf);
-        main.Log("<color=green>Leaf + " + tDigit(factor * IdleDPS( M_UPGRADE.Attribute.leaf)), showTime);
+        main.Log("You left for <color=red>" + DoubleTimeToDate(factor) + "</color>", showTime);
+        main.SR.stone += factor * IdleDPS(M_UPGRADE.Attribute.stone);
+        main.Log("<color=green>Stone + " + tDigit(factor * IdleDPS(M_UPGRADE.Attribute.stone)), showTime);
+        main.SR.cristal += factor * IdleDPS(M_UPGRADE.Attribute.crystal);
+        main.Log("<color=green>Crystal + " + tDigit(factor * IdleDPS(M_UPGRADE.Attribute.crystal)), showTime);
+        main.SR.leaf += factor * IdleDPS(M_UPGRADE.Attribute.leaf);
+        main.Log("<color=green>Leaf + " + tDigit(factor * IdleDPS(M_UPGRADE.Attribute.leaf)), showTime);
         main.S.CurrentNitro += factor * 0.25f;
         main.Log("<color=red>Nitro + " + tDigit(factor * 0.25f), showTime);
         main.expeditionCtrl.OfflineBonus(factor);
-
         foreach (JEM jem in main.jems)
         {
             if (jem.CurrentWorkerNum == 0)
                 continue;
             jem.CurrentExp += main.DRctrl.WorkerPower() * jem.CurrentWorkerNum * factor;
-            main.Log("<color=green>"+jem.gameObject.name + "EXP + " + tDigit(main.DRctrl.WorkerPower() * jem.CurrentWorkerNum * factor), showTime);
+            main.Log("<color=green>" + jem.gameObject.name + "EXP + " + tDigit(main.DRctrl.WorkerPower() * jem.CurrentWorkerNum * factor), showTime);
         }
+        main.Confirm(tempStr);
     }
 
     public double StoneCombo()

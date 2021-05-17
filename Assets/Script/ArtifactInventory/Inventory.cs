@@ -17,6 +17,31 @@ using static BASE;
 public partial class SaveO
 {
 	public IdleLibrary.Inventory.InventoryForSave inventory, equipmentInventory;
+	public Chest tier1chest, tier2chest, tier3chest;
+	public double[] artifactMaterials;
+}
+
+//新しい素材...
+public class ArtifactMaterial : NUMBER, IText
+{
+	private readonly ID id;
+    public override double Number { get => main.SO.artifactMaterials[(int)id]; set => main.SO.artifactMaterials[(int)id] = value; }
+    public enum ID
+    {
+		//Tier1
+		MysteriousStone,
+		BlessingPowder
+    }
+	public ArtifactMaterial(int id)
+    {
+		this.id = (ID)id;
+    }
+	public string Text() => id switch
+	{
+		ID.MysteriousStone => "Mysterious Stone",
+		ID.BlessingPowder => "Blessing Powder",
+		_ => ""
+	};
 }
 
 public class Inventory : Subject, IInventoryUIInfo
@@ -37,6 +62,10 @@ public class Inventory : Subject, IInventoryUIInfo
 
 	public InventoryInfo inventoryInfo;
 	public InventoryInfo equipmentInventoryInfo;
+
+	//宝箱
+	[SerializeField] Button chest1, chest2, chest3;
+
 
 
 	// Use this for initialization
@@ -64,19 +93,19 @@ public class Inventory : Subject, IInventoryUIInfo
 		equipmentInventoryInfo.RegisterHoldAction(swap2, new Releaseitem(inputItem), swap2);
 		equipmentInventoryInfo.AddRightaction(new RevertItemToOtherInventory(equipmentInventoryInfo.inventory, inventoryInfo.inventory));
 
-		Notify();
+		main.SO.tier1chest = main.SO.tier1chest ?? new Chest();
+		main.SO.tier2chest = main.SO.tier2chest ?? new Chest();
+		main.SO.tier3chest = main.SO.tier3chest ?? new Chest();
+		chest1.onClick.AddListener(() => main.SO.tier1chest.OpenChest());
+		chest2.onClick.AddListener(() => main.SO.tier2chest.OpenChest());
+		chest3.onClick.AddListener(() => main.SO.tier3chest.OpenChest());
 	}
 
 	private void Update()
 	{
 		Notify();
-		if (Input.GetMouseButtonDown(1))
-		{
-			inputItem.ReleaseItem();
-		}
-		if (Input.GetMouseButtonUp(0) || Input.GetMouseButtonUp(1))
-		{
-			Notify();
-		}
+		chest1.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = UsefulMethod.tDigit(main.SO.tier1chest.ChestNum);
+		chest2.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = UsefulMethod.tDigit(main.SO.tier2chest.ChestNum);
+		chest3.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = UsefulMethod.tDigit(main.SO.tier3chest.ChestNum);
 	}
 }

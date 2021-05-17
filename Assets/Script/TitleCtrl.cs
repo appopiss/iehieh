@@ -118,9 +118,10 @@ public class TitleCtrl : BASE, IPointerDownHandler {
             setActive(main.LinkCanvas);
             setActive(main.openAdsButton);
         }
+        isOpenedGame = true;
         Destroy(gameObject);
     }
-
+    public static bool isOpenedGame;
     IEnumerator ChangeTitleLogo()
     {
             for (int i = 0; i < 60; i++)

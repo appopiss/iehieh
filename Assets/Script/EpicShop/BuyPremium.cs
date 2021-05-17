@@ -93,6 +93,10 @@ public class BuyPremium : BASE {
         SuperQueueForAlchemy,
         PersistentSuperQueue,
         PersistentFavoriteEquip,
+        TimeWarp2,
+        TimeWarp4,
+        TimeWarp8,
+        TimeWarp24,
     }
 
     // Use this for initializationx
@@ -426,6 +430,22 @@ public class BuyPremium : BASE {
                 LimitCondition = () => main.S.isMonsterGoldCap4;
                 break;
 
+            case GoodsId.TimeWarp2:
+                Cost = () => 800;
+                LimitCondition = () => false;
+                break;
+            case GoodsId.TimeWarp4:
+                Cost = () => 1500;
+                LimitCondition = () => false;
+                break;
+            case GoodsId.TimeWarp8:
+                Cost = () => 2500;
+                LimitCondition = () => false;
+                break;
+            case GoodsId.TimeWarp24:
+                Cost = () => 5000;
+                LimitCondition = () => false;
+                break;
             default:
                 Cost = () => 0;
                 LimitCondition = () => false;
@@ -784,7 +804,18 @@ public class BuyPremium : BASE {
                 main.S.PersistentFavoriteEquip = true;
                 break;
 
-
+            case GoodsId.TimeWarp2:
+                main.idleBackGround.OfflineBonus(2f * 60 * 60);
+                break;
+            case GoodsId.TimeWarp4:
+                main.idleBackGround.OfflineBonus(4f * 60 * 60);
+                break;
+            case GoodsId.TimeWarp8:
+                main.idleBackGround.OfflineBonus(8f * 60 * 60);
+                break;
+            case GoodsId.TimeWarp24:
+                main.idleBackGround.OfflineBonus(24f * 60 * 60);
+                break;
         }
 
         main.S.ECconsumed += Cost();

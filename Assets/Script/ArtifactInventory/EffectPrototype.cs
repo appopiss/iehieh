@@ -14,7 +14,6 @@ public enum EffectType
     DEF_add,
     MATK_add,
     MDEF_add,
-    SPD,
     HP_mul,
     MP_mul,
     ATK_mul,
@@ -27,25 +26,30 @@ public enum EffectType
 public class EffectPrototype
 {
     //Singleton
-    private static List<IEffect> EffectPrototypes = new List<IEffect>();
+    private List<IEffect> EffectPrototypes = new List<IEffect>();
     public EffectPrototype()
     {
-        EffectPrototypes.Add(new BasicEffect(EffectType.HP_add, "HP+", Calway.add));
-        EffectPrototypes.Add(new BasicEffect(EffectType.MP_add, "MP+", Calway.add));
-        EffectPrototypes.Add(new BasicEffect(EffectType.ATK_add, "ATK+", Calway.add));
-        EffectPrototypes.Add(new BasicEffect(EffectType.DEF_add, "DEF+", Calway.add));
-        EffectPrototypes.Add(new BasicEffect(EffectType.MATK_add, "MATK+", Calway.add));
-        EffectPrototypes.Add(new BasicEffect(EffectType.MDEF_add, "MDEF+", Calway.add));
-        EffectPrototypes.Add(new BasicEffect(EffectType.HP_mul, "HP*", Calway.add));
-        EffectPrototypes.Add(new BasicEffect(EffectType.MP_mul, "MP*", Calway.add));
-        EffectPrototypes.Add(new BasicEffect(EffectType.ATK_mul, "ATK*", Calway.add));
-        EffectPrototypes.Add(new BasicEffect(EffectType.MATK_mul, "MATK*", Calway.add));
-        EffectPrototypes.Add(new BasicEffect(EffectType.DEF_mul, "DEF*", Calway.add));
-        EffectPrototypes.Add(new BasicEffect(EffectType.MDEF_mul, "MDEF*", Calway.add));
+        EffectPrototypes.Add(new BasicEffect(EffectType.HP_add, "HP", Calway.add));
+        EffectPrototypes.Add(new BasicEffect(EffectType.MP_add, "MP", Calway.add));
+        EffectPrototypes.Add(new BasicEffect(EffectType.ATK_add, "ATK", Calway.add));
+        EffectPrototypes.Add(new BasicEffect(EffectType.DEF_add, "DEF", Calway.add));
+        EffectPrototypes.Add(new BasicEffect(EffectType.MATK_add, "MATK", Calway.add));
+        EffectPrototypes.Add(new BasicEffect(EffectType.MDEF_add, "MDEF", Calway.add));
+        EffectPrototypes.Add(new BasicEffect(EffectType.HP_mul, "HP", Calway.mul));
+        EffectPrototypes.Add(new BasicEffect(EffectType.MP_mul, "MP", Calway.mul));
+        EffectPrototypes.Add(new BasicEffect(EffectType.ATK_mul, "ATK", Calway.mul));
+        EffectPrototypes.Add(new BasicEffect(EffectType.MATK_mul, "MATK", Calway.mul));
+        EffectPrototypes.Add(new BasicEffect(EffectType.DEF_mul, "DEF", Calway.mul));
+        EffectPrototypes.Add(new BasicEffect(EffectType.MDEF_mul, "MDEF", Calway.mul));
     }
-    public IEffect GetEffect(Enum type)
+    public IEffect GetEffect(EffectType type)
     {
-        IEffect effect = EffectPrototypes.Where(x => x.effectType == type).Single();
+        Debug.Log(EffectPrototypes.Count);
+        IEffect effect = EffectPrototypes.Where(x => (EffectType)x.effectType == type).Single();
         return effect;
+    }
+    public IEnumerable<IEffect> GetEffects()
+    {
+        return EffectPrototypes;
     }
 }

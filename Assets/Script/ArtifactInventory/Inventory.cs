@@ -72,7 +72,8 @@ public class Inventory : Subject, IInventoryUIInfo
 	IText materialShow;
 	IText materialNumberShow;
 
-
+	//StatsBreakdown表示
+	public EffectCalculator effectCalculator;
 
 	// Use this for initialization
 	void Awake()
@@ -111,6 +112,8 @@ public class Inventory : Subject, IInventoryUIInfo
 		materialShow = new MaterialShowClass();
 		materialNumberShow = new ColorText(new MaterialNumberShowClass(), Color.green);
 
+		effectCalculator = new EffectCalculator(equipmentInventoryInfo.inventory);
+
 		ArtifactUpdate();
 	}
 
@@ -125,7 +128,8 @@ public class Inventory : Subject, IInventoryUIInfo
 	async void ArtifactUpdate()
     {
         while(true){
-            foreach (var item in equipmentInventoryInfo.inventory.GetItems())
+			await UniTask.Delay(1000, delayType: DelayType.Realtime);
+			foreach (var item in equipmentInventoryInfo.inventory.GetItems())
             {
 				if (!(item is Artifact)) continue;
 				var artifact = item as Artifact;
@@ -133,7 +137,8 @@ public class Inventory : Subject, IInventoryUIInfo
             }
 			materialText.text = materialShow.Text();
 			materialNumberText.text = materialNumberShow.Text();
-			await UniTask.Delay(1000, delayType: DelayType.Realtime);
+			//効果の更新
+			effectCalculator.UpdateValue();
         }
     }
 }

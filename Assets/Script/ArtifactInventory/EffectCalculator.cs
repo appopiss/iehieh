@@ -15,7 +15,8 @@ public class EffectCalculator : IText
         this.inventory = inventory;
     }
     private Dictionary<Enum, double> calculateDic = new Dictionary<Enum, double>();
-    public void UpdateValue(IdleLibrary.Inventory.Inventory inventory)
+    EffectPrototype protoEffects = new EffectPrototype();
+    public void UpdateValue()
     {
         calculateDic.Clear();
         foreach (var item in inventory.GetItems())
@@ -28,8 +29,16 @@ public class EffectCalculator : IText
                     //IStatsBreakdownなら
                     if(effects is IStatsBreakdown)
                     {
+                        Debug.Log(effects.effectType == null);
                         var stats = effects as IStatsBreakdown;
-                        calculateDic[effects.effectType] += stats.Value();
+                        if (calculateDic.ContainsKey(effects.effectType))
+                        {
+                            calculateDic[effects.effectType] += stats.Value();
+                        }
+                        else
+                        {
+                            calculateDic.Add(effects.effectType, stats.Value());
+                        }
                     }
                 }
             }
@@ -37,22 +46,17 @@ public class EffectCalculator : IText
 
         //テキストの更新
         string text = "";
-        foreach (var item in inventory.GetItems())
+
+        foreach (var effects in protoEffects.GetEffects())
         {
-            if (item is Artifact)
+            if(effects is IStatsBreakdown)
             {
-                var artifact = item as Artifact;
-                foreach (var effects in artifact.effects)
-                {
-                    //IStatsBreakdownなら
-                    if (effects is IStatsBreakdown)
-                    {
-                        var stats = effects as IStatsBreakdown;
-                        text += stats.StatsBreakdownText(calculateDic[effects.effectType]) + "\n";
-                    }
-                }
+                var stats = effects as IStatsBreakdown;
+                if(calculateDic.ContainsKey(effects.effectType))
+                    text += UsefulMethod.optStr + stats.StatsBreakdownText(calculateDic[effects.effectType]) + "\n";
             }
         }
+        _text = text;
     }
     private string _text;
     public string Text() => _text;

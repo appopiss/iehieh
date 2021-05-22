@@ -60,8 +60,8 @@ public class BuildBronzeArtifact : IArtifactBuilder
 
         //エフェクトの生成
         List<IEffect> effectList = new List<IEffect>();
-        //effectList.Add(new BasicEffect(BasicEffectKind.goldGain, () => _artifact.level * 3, Calway.add));
-        //effectList.Add(new BasicEffect(BasicEffectKind.expGain, () => 1 + 0.1 + _artifact.level * 0.1, Calway.mul));
+        effectList.Add(BuildEffect(_artifact.quality, _artifact, EffectType.ATK_add));
+        effectList.Add(BuildEffect(_artifact.quality, _artifact, EffectType.DEF_mul));
         _artifact.effects = effectList;
 
         return _artifact;

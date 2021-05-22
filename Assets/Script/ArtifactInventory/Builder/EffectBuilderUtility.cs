@@ -32,6 +32,7 @@ public partial class ArtifactBuilderUtility
 
         if(result is BasicEffect)
         {
+            Debug.Log("effect‘ã“ü‚µ‚½‚æ");
             (result as BasicEffect).value = effectCalculation;
         }
 

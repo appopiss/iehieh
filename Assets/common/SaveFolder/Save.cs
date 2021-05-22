@@ -656,4 +656,7 @@ public partial class Save
     public bool[] isAchievedSteam;
     public int isIEBSteamAchievementNum;
     public bool[] isPurchasedIEBBonus;
+
+    //AnotherWorld
+    public int buyModeId;
 }

@@ -8,6 +8,7 @@ using static UsefulMethod;
 using Sirenix.Serialization;
 using Sirenix.OdinInspector;
 using Another;
+using IdleLibrary.UI;
 
 namespace Another
 {
@@ -39,7 +40,28 @@ namespace Another
 
         public SaveDeclare SD;
         public saveCtrl saveCtrl;
-        public static Another.Main main;
+        public static Main main;
+        //public SwitchMenu menuCtrl;
+        public BattleController battleCtrl;
+        public StatusController statusCtrl;
+        //public UpgradeController upgradeCtrl;
+        public SkillController skillCtrl;
+        public AreaController areaCtrl;
+        //public CraftController craftCtrl;
+
+        //戦闘ログ
+        public LogController logCtrl;
+        public void Log(string text, float timesec = 3.0f)
+        {
+            logCtrl.Log(text, timesec);
+        }
+        //BuyMode
+        [NonSerialized] public long[] buyModeNumArray = new long[] { 1, 5, 10, 25, 100 };
+        public long BuyModeNum()
+        {
+            return buyModeNumArray[S.buyModeId];
+        }
+
         private void Awake()
         {
             main = this;

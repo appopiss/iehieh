@@ -57,7 +57,8 @@ public class IdleBackGround : POPTEXT_GoldBar,IPointerDownHandler {
         string tempDateTime = main.S.lastTime;
         yield return new WaitUntil(() => TitleCtrl.isLoaded && TitleCtrl.isOpenedGame);
         float factor = time == 0 ? DeltaTimeFloat(DateTime.FromBinary(Convert.ToInt64(tempDateTime))) : time;
-        OfflineBonus(factor, showTime);
+        if (factor < 60f)//オフライン時間が60秒以内だったらなし
+            OfflineBonus(factor, showTime);
     }
     public void OfflineBonus(float factor = 0, float showTime = 10.0f)
     {

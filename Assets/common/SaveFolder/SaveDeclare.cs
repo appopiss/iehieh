@@ -138,9 +138,9 @@ public class SaveDeclare : BASE
         InitializeArray(ref main.S.SwaterCap, 14);
         InitializeArray(ref main.S.ScurrentWater, 14);
         InitializeArray(ref main.S.SwaterValue, 14);
-        InitializeArray(ref main.S.leftItems, 32);
-        InitializeArray(ref main.S.leftItemsQuality, 32);
-        InitializeArray(ref main.S.leftItemsIsLock, 32);
+        InitializeArray(ref main.S.leftItems, 50);
+        InitializeArray(ref main.S.leftItemsQuality, 50);
+        InitializeArray(ref main.S.leftItemsIsLock, 50);
         InitializeArray(ref main.S.isUnlockedAlchemy, 100);
         InitializeArray(ref main.S.isMissionMileStone, 30);
         InitializeArray(ref main.S.isMissionMileStoneHidden, 35);

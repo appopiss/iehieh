@@ -45,8 +45,8 @@ public class ArtifactReward : IExpeditionAction
             //artifactだったら
             if (UnityEngine.Random.Range(0, 2) == 0)
             {
-                var ArtifactFactory = new ArtifactFactory(new BuildBronzeArtifact());
-                var artifact = ArtifactFactory.CreateArtifact();
+                //var ArtifactFactory = new ArtifactFactory(new BuildBronzeArtifact());
+                //var artifact = ArtifactFactory.CreateArtifact();
                 //ここで保存
                 recordArtifact = artifact;
                 action = () =>

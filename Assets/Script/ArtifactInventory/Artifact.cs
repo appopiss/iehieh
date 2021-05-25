@@ -6,6 +6,7 @@ using Cysharp.Threading.Tasks;
 using System;
 using System.Linq;
 using IdleLibrary.Inventory;
+using static UsefulMethod;
 
 [System.Serializable]
 public class Artifact : ITEM, ILevel
@@ -35,11 +36,14 @@ public class Artifact : ITEM, ILevel
     string EffectText()
     {
         string text = "[Effect]\n";
-        effects.ForEach((x) => text += x.Text() + "\n");
+        effects.ForEach((x) => text += optStr + x.Text() + "\n");
+        text += optStr + "\n[Optional Effect]";
+        optEffects.ForEach((x) => text += optStr + x.Text() + "\n");
         return text;
     }
 
     [OdinSerialize] public List<IEffect> effects = new List<IEffect>();
+    [OdinSerialize] public List<IEffect> optEffects = new List<IEffect>();
     [OdinSerialize] public TimeBasedLevelUp timeManager;
     public int quality;
     public double antimagicPower;

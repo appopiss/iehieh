@@ -6,29 +6,12 @@ using IdleLibrary;
 using System;
 using static ArtifactBuilderUtility;
 
-//アイテム作成用ビルダーインターフェース
-public interface IArtifactBuilder
+public class BuildBronzeArtifact
 {
-    Artifact BuildArtifact();
-}
-
-public class BuildBronzeArtifact : IArtifactBuilder
-{
-    public Artifact BuildArtifact()
+    public Artifact BuildArtifact(IBasicInfoSet basicInfoSet)
     {
         var _artifact = new Artifact(-1);
-        _artifact.level = 1;
-
-        //ブロンズで出てくるidを指定します。例えば0~5など
-        var id = UnityEngine.Random.Range(0, 5);
-        _artifact.id = id;
-
-        //例えば0~40までしか出てこない、など
-        var quality = UnityEngine.Random.Range(0, 40);
-        _artifact.quality = quality;
-
-        //antimagicpowerの設定
-        _artifact.antimagicPower = ChooseAntiMagicPower(_artifact.quality);
+        _artifact = basicInfoSet.GetArtifact(_artifact);
 
         //TimeBasedのレベル設定 (どうやって設定するか？)
         var timeLevel = new TimeBasedLevel();
@@ -59,24 +42,20 @@ public class BuildBronzeArtifact : IArtifactBuilder
         _artifact.timeManager = timeManager;
 
         //エフェクトの生成
+        //計算方法の生成
+        var mainCalculator = new MainEffectCalculator(_artifact, _artifact.quality);
+
         List<IEffect> effectList = new List<IEffect>();
-        effectList.Add(BuildEffect(_artifact.quality, _artifact, EffectType.ATK_add));
-        effectList.Add(BuildEffect(_artifact.quality, _artifact, EffectType.DEF_mul));
+        effectList.Add(BuildEffect(_artifact.quality, _artifact, EffectType.HP_add, mainCalculator));
+        effectList.Add(BuildEffect(_artifact.quality, _artifact, EffectType.MP_add, mainCalculator));
         _artifact.effects = effectList;
+
+        //オプショナルエフェクトの作成
+        var optionCalculator = new OptionalEffectCalculator(_artifact);
+        List<IEffect> optionalEffectList = new List<IEffect>();
+        optionalEffectList.Add(BuildEffect(_artifact.quality, _artifact, EffectType.HP_add, optionCalculator));
+        _artifact.optEffects = optionalEffectList;
 
         return _artifact;
     }
 }
-
-public class ArtifactFactory
-{
-    private readonly IArtifactBuilder builder;
-    public ArtifactFactory(IArtifactBuilder builder)
-    {
-        this.builder = builder;
-    }
-    public Artifact CreateArtifact()
-    {
-        return builder.BuildArtifact();
-    }
-}   

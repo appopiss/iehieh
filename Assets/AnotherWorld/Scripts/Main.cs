@@ -41,6 +41,7 @@ namespace Another
         public SaveDeclare SD;
         public saveCtrl saveCtrl;
         public static Main main;
+        public PopupController popupCtrl;
         //public SwitchMenu menuCtrl;
         public BattleController battleCtrl;
         public StatusController statusCtrl;

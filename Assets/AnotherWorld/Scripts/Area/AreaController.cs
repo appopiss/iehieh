@@ -312,10 +312,10 @@ namespace Another
         }
         public string InfoString(int areaId)
         {
-            return optStr + "<size=20>" + AreaString(areaId) + "<Star></size>"
-                + "<size=12>\n\n</size>"
-                + "<size=16>" + localized.Basic(BasicWord.MasteryBonus) + " <color=green> + " + percent(MasteryBonus(areaId)) + "</color>"
-                + " <size=16>( " + localized.Basic(BasicWord.CompletedNum) + " " + ClearedNum(areaId).ToString() + " / " + "Next : " + NextMasteryNum(areaId).ToString() + " )";
+            return optStr + "<size=20>" + AreaString(areaId) + "</size>"
+                + "\n<size=16>\nReward : <sprite=\"chests\" index=0> * 99";
+//                + "<size=16>" + localized.Basic(BasicWord.MasteryBonus) + " <color=green> + " + percent(MasteryBonus(areaId)) + "</color>"
+//                + " <size=16>( " + localized.Basic(BasicWord.CompletedNum) + " " + ClearedNum(areaId).ToString() + " / " + "Next : " + NextMasteryNum(areaId).ToString() + " )";
         }
         public string AreaString(int areaId)
         {
@@ -341,7 +341,7 @@ namespace Another
         }
 
         //敵の出現パターン
-        public void SpawnEnemy(int areaId, int wave)//500,700
+        public void SpawnEnemy(int areaId, int wave)//500,700, 430,450
         {
             switch (areaId)
             {
@@ -655,7 +655,7 @@ namespace Another
             }
             for (int i = 0; i < positions.Count(); i++)
             {
-                main.battleCtrl.SpawnEnemy(species, SelectedColor(rarity), positions[i], level, difficulty);
+                main.battleCtrl.SpawnEnemy(species, SelectedColor(rarity), positions[i] / 2f, level, difficulty);
             }
 
         }

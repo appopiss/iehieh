@@ -70,8 +70,7 @@ namespace Another
         public double exp { get => main.S.ACurrentExp; set => main.S.ACurrentExp = value; }
         [NonSerialized] public RectTransform thisRect;
         [NonSerialized] public Vector2 position;
-        static Vector2 initPosition = Vector2.down * 750;
-        //[NonSerialized] public double hp, mp, atk, matk, def, mdef, spd, fire, ice, thunder, light, dark;
+        static Vector2 initPosition = Vector2.down * 400;
         [NonSerialized] public double currentHp, currentMp;
 
 
@@ -210,13 +209,13 @@ namespace Another
                     switch (currentClass)
                     {
                         case Class.Warrior:
-                            tempValue = 10 + Level() * 0;
+                            tempValue = 5 + Level() * 0;
                             break;
                         case Class.Wizard:
-                            tempValue = 10 + Level() * 0;
+                            tempValue = 5 + Level() * 0;
                             break;
                         case Class.Angel:
-                            tempValue = 10 + Level() * 0;
+                            tempValue = 5 + Level() * 0;
                             break;
                     }
                     break;

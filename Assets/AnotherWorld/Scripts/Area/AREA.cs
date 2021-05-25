@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using UniRx;
+using UniRx.Triggers;
 using static Another.Main;
 using Another;
 using static UsefulMethod;
@@ -10,27 +12,43 @@ using Cysharp.Threading.Tasks;
 using TMPro;
 using static Another.LocalizedText;
 using System.Linq;
+using IdleLibrary.UI;
 
 namespace Another
 {
-    public class AREA : DOWNINFO
+    public class AREA : MonoBehaviour
     {
         [NonSerialized] public int id;//11:1-1, 23:2-3を示す
+        public Button iconButton;
+        [NonSerialized] public Image iconImage;
         [SerializeField] Image iconMonsterImage;
-        [SerializeField] TextMeshProUGUI infoText, missionText, missionRewardText, areaMasteryText;
+        [SerializeField] TextMeshProUGUI infoText;
         [SerializeField] private GameObject silverFrameObject;
+        Func<bool> isOver = () => false;
 
-        protected override void Awake()
+        void Awake()
         {
-            base.Awake();
-            infoSize = new Vector2(800f, 330f);
+            iconImage = iconButton.gameObject.GetComponent<Image>();
         }
         // Start is called before the first frame update
         void Start()
         {
             iconButton.onClick.AddListener(() => main.areaCtrl.StartArea(id));
+            var popup = new Popup(() => isOver(), main.popupCtrl.area.gameObject);
+            SetPointer();
+            popup.SetShowAction(UpdatePopupText);
         }
-
+        void UpdatePopupText()
+        {
+            main.popupCtrl.area.UpdateUI(LocationKind.MouseFollow, main.areaCtrl.InfoString(id));
+            main.popupCtrl.area.UpdateText(MissionString(), MissionRewardString());
+        }
+        public void SetPointer()
+        {
+            var eventTrigger = gameObject.AddComponent<ObservableEventTrigger>();
+            eventTrigger.OnPointerEnterAsObservable().Subscribe(data => { isOver = () => true; });
+            eventTrigger.OnPointerExitAsObservable().Subscribe(data => { isOver = () => false; });
+        }
         // Update is called once per frame
         void Update()
         {
@@ -70,9 +88,6 @@ namespace Another
                     break;
             }
             iconMonsterImage.sprite = main.battleCtrl.enemyCtrl.Sprites(tempSpecies, tempColor, false);
-            missionText.text = MissionString();
-            missionRewardText.text = MissionRewardString();
-            areaMasteryText.text = main.areaCtrl.MasteryString(id);
             if (main.areaCtrl.currentAreaId == id) setActive(silverFrameObject);
             else setFalse(silverFrameObject);
         }

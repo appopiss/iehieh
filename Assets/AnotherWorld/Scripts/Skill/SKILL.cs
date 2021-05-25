@@ -13,6 +13,9 @@ using Cysharp.Threading.Tasks;
 using static Another.LocalizedText;
 using Another;
 using System.Linq;
+using IdleLibrary.UI;
+using UniRx;
+using UniRx.Triggers;
 
 public partial class Save
 {
@@ -24,7 +27,7 @@ public partial class Save
 
 namespace Another
 {
-    public class SKILL : DOWNINFO
+    public class SKILL : MonoBehaviour
     {
         [NonSerialized] public Skill skill;
         void SetValue()
@@ -246,9 +249,10 @@ namespace Another
         private double initDebuffChance, incrementDebuffChance, maxDebuffChance;
         private long initHitCount = 1, maxHitCount = 1;
         private double incrementHitCount;
+        public Button iconButton;
+        [NonSerialized] public Image iconImage;
         [NonSerialized] public float chargetime;
-        [NonSerialized] public bool isShow;
-        [SerializeField] TextMeshProUGUI infoText, effectText, passiveText, costText;
+        [SerializeField] TextMeshProUGUI infoText;
         [SerializeField] Slider proficiencyBar;
         [SerializeField] private GameObject equippedFrameObject;
         public bool isEquipped { get => main.S.AIsEquippedSkills[(int)skill]; set => main.S.AIsEquippedSkills[(int)skill] = value; }
@@ -495,11 +499,12 @@ namespace Another
             }
         }
 
-        protected override void Awake()
+        void Awake()
         {
-            base.Awake();
+            iconImage = iconButton.gameObject.GetComponent<Image>();
             SetValue();
         }
+        Func<bool> isOver = () => false;
         // Start is called before the first frame update
         void Start()
         {
@@ -509,6 +514,21 @@ namespace Another
             Attack();
             UpdateChargetime();
             UpdatePassiveEffect();
+
+            var popup = new Popup(() => isOver(), main.popupCtrl.skill.gameObject);
+            SetPointer();
+            popup.SetShowAction(UpdatePopupText);
+        }
+        void UpdatePopupText()
+        {
+            main.popupCtrl.skill.UpdateUI(LocationKind.MouseFollow, InfoPopString());
+            main.popupCtrl.skill.UpdateText(EffectString(), PassiveEffectString());
+        }
+        public void SetPointer()
+        {
+            var eventTrigger = gameObject.AddComponent<ObservableEventTrigger>();
+            eventTrigger.OnPointerEnterAsObservable().Subscribe(data => { isOver = () => true; });
+            eventTrigger.OnPointerExitAsObservable().Subscribe(data => { isOver = () => false; });
         }
         public virtual void CheckIsShow()
         {
@@ -517,14 +537,11 @@ namespace Another
         // Update is called once per frame
         void Update()
         {
-            if (isShow) UpdateUI();
+            UpdateUI();
         }
         void UpdateUI()
         {
             infoText.text = InfoString();
-            effectText.text = EffectString();
-            passiveText.text = PassiveEffectString();
-            costText.text = CostString();
             UpdateProfBar();
             rankupButton.interactable = CanBuy();
             iconButton.interactable = Rank() > 0;
@@ -533,9 +550,13 @@ namespace Another
         }
         string InfoString()
         {
-            return optStr + "<size=30>" + localized.SkillName(skill) + "    < <color=green>Rank " + Rank().ToString() + "</color> ></size>"
-                + "<size=26>\nDPS : " + tDigit(Dps(), 2) + "<size=12>\n\n</size><size=30><color=green>Lv " + Level().ToString() + "</color> / " + MaxLevel().ToString() + "</size></color>    "
-                + "<size=26>" + localized.Basic(BasicWord.Proficiency) + " : " + tDigit(currentProf, 2) + " / " + tDigit(Proficiency(), 2) + " ( " + percent(ProficiencyPercent()) + " )";
+            return optStr + "<size=16>" + localized.SkillName(skill) + "    < <color=green>Rank " + Rank().ToString() + "</color> >"
+                + "\nDPS : " + tDigit(Dps(), 2) + "\n<color=green>Lv " + Level().ToString() + "</color> / " + MaxLevel().ToString() + "</color>    "
+                + "<size=12>" + localized.Basic(BasicWord.Proficiency) + " : " + tDigit(currentProf, 2) + " / " + tDigit(Proficiency(), 2) + " ( " + percent(ProficiencyPercent()) + " )";
+        }
+        string InfoPopString()
+        {
+            return InfoString() + "\n" + CostString();
         }
         string CostString()
         {
@@ -544,7 +565,7 @@ namespace Another
         }
         string EffectString()
         {
-            string tempString = optStr + "<size=26><u>" + localized.Basic(BasicWord.Effect) + "</u>\n<size=8>\n</size>";
+            string tempString = optStr + "<size=16><u>" + localized.Basic(BasicWord.Effect) + "</u>\n<size=8>\n</size>";
             switch (skillType)
             {
                 case Physical:
@@ -588,10 +609,10 @@ namespace Another
         }
         public string PassiveEffectString()
         {
-            string tempString = optStr + "<size=26><u>" + localized.Basic(BasicWord.PassiveEffect) + "</u><size=8>\n";
+            string tempString = optStr + "<size=16><u>" + localized.Basic(BasicWord.PassiveEffect) + "</u><size=8>\n";
             for (int i = 0; i < passiveEffects.Count(); i++)
             {
-                tempString += optStr + "\n</size><size=26>" + PassiveEffectLineString(i);
+                tempString += optStr + "\n</size><size=16>" + PassiveEffectLineString(i);
             }
             return tempString;
         }

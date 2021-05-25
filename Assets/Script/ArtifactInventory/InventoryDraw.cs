@@ -45,7 +45,7 @@ public class InventoryDraw : MonoBehaviour, IObserver
                 {
                     if (!input.hoveredInventory.GetItem(input.cursorId).isSet) return;
                     pop.UpdateUI(
-                        LocationKind.Corner,
+                        IdleLibrary.UI.LocationKind.Corner,
                         input.hoveredInventory.GetItem(input.cursorId),
                         sprites[input.hoveredInventory.GetItem(input.cursorId).id]);
                 });
@@ -54,7 +54,7 @@ public class InventoryDraw : MonoBehaviour, IObserver
                 statsBreakdownPop.UpdateAsObservable().Where(_ => statsBreakdownPop.gameObject.activeSelf).Subscribe(_ =>
                 {
                     statsBreakdownPop.UpdateUI(
-                        LocationKind.MouseFollow,
+                        IdleLibrary.UI.LocationKind.MouseFollow,
                         inventory_mono.effectCalculator
                         );
                 });

@@ -7,8 +7,36 @@ using IdleLibrary.Inventory;
 using Sirenix.Serialization;
 using static UsefulMethod;
 
+public interface IArtifactTransaction
+{
+    (ITransaction transaction, IText text) GetTransactionInfo(ILevel level);
+}
+
+public class NormalArtifactTransaction : IArtifactTransaction
+{
+    private readonly ArtifactMaterialTransaction normalTransaction, awakeningTransaction;
+    private readonly long awakePoint;
+    public NormalArtifactTransaction(ArtifactMaterialTransaction normalTransaction, ArtifactMaterialTransaction awakeningTransaction, long awakePoint)
+    {
+        this.normalTransaction = normalTransaction;
+        this.awakeningTransaction = awakeningTransaction;
+        this.awakePoint = awakePoint;
+    }
+    public (ITransaction transaction, IText text) GetTransactionInfo(ILevel level)
+    {
+        if (level.level <= awakePoint)
+        {
+            return (normalTransaction, normalTransaction);
+        }
+        else
+        {
+            return (awakeningTransaction, awakeningTransaction);
+        }
+    }
+}
+
 [Serializable]
-public class ArtifactMaterialTransaction : ITransaction, IText
+public class ArtifactMaterialSingleTransaction : ITransaction, IText
 {
     //コストの処理を委譲する。
     public readonly ICost cost;
@@ -29,7 +57,7 @@ public class ArtifactMaterialTransaction : ITransaction, IText
     {
         return $"- {material.Text()}   {tDigit(material.Number)} / {cost.Cost}";
     }
-    public ArtifactMaterialTransaction(ArtifactMaterial.ID id, ICost cost)
+    public ArtifactMaterialSingleTransaction(ArtifactMaterial.ID id, ICost cost)
     {
         ArtifactMaterial material = new ArtifactMaterial((int)id);
         this.material = material;
@@ -39,9 +67,9 @@ public class ArtifactMaterialTransaction : ITransaction, IText
 
 //トランザクションの配列を受け取り、まとめて決済を行います。
 [Serializable]
-public class ArtifactMaterialMultipleTransaction : ITransaction, IText
+public class ArtifactMaterialTransaction : ITransaction, IText
 {
-    public readonly ArtifactMaterialTransaction[] transactions;
+    public readonly ArtifactMaterialSingleTransaction[] transactions;
     MultipleTransaction multipleTransaction;
     public bool CanBuy()
     {
@@ -64,7 +92,7 @@ public class ArtifactMaterialMultipleTransaction : ITransaction, IText
         }
         return text;
     }
-    public ArtifactMaterialMultipleTransaction(params ArtifactMaterialTransaction[] transactions)
+    public ArtifactMaterialTransaction(params ArtifactMaterialSingleTransaction[] transactions)
     {
         this.transactions = transactions;
     }
@@ -76,6 +104,11 @@ public class TimeBasedLevel : ILevel
     public long level { get => _levelCap; set => _levelCap = value; }
     [OdinSerialize] private long _levelCap;
     public long maxLevelCap;
+    public TimeBasedLevel(long maxLevelCap)
+    {
+        this.level = 1;
+        this.maxLevelCap = maxLevelCap;
+    }
 }
 [Serializable]
 public class TimeBasedLevelUp

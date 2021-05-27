@@ -5,7 +5,30 @@ using UnityEngine;
 using IdleLibrary.Inventory;
 using System.Linq;
 
-//ここのエフェクトのプロトタイプを作り、作成時にクローンします
+public enum ArtifactType
+{
+    SlimeBronze,
+    BatBronze,
+    SpiderBronze,
+    FairyBronze,
+    FoxBronze,
+    DevilfishBronze,
+    SlimeIron,
+    BatIron,
+    SpiderIron,
+    FairyIron,
+    FoxIron,
+    DevilfishIron,
+    gold1,
+    gold2,
+    gold3,
+    gold4,
+    gold5,
+    gold6,
+    gold7,
+    gold8,
+    gold9
+}
 public enum EffectType
 {
     HP_add,
@@ -23,11 +46,11 @@ public enum EffectType
 
 }
 //Awakeで辞書を登録する
-public class EffectPrototype
+public class ArtifactPrototype
 {
     //Singleton
     private List<IEffect> EffectPrototypes = new List<IEffect>();
-    public EffectPrototype()
+    public ArtifactPrototype()
     {
         EffectPrototypes.Add(new BasicEffect(EffectType.HP_add, "HP", Calway.add));
         EffectPrototypes.Add(new BasicEffect(EffectType.MP_add, "MP", Calway.add));
@@ -51,5 +74,15 @@ public class EffectPrototype
     public IEnumerable<IEffect> GetEffects()
     {
         return EffectPrototypes;
+    }
+    
+    public Artifact MakeArtifactPrototype(IBasicInfoSet basicInfoSet, TimeBasedLevel levelInfo, IArtifactTransaction transaction, IArtifactTimeCalculator time)
+    {
+        var _artifact = new Artifact(-1);
+        _artifact = basicInfoSet.GetArtifact(_artifact);
+
+        //level設定
+        _artifact.level = 1;
+
     }
 }

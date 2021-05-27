@@ -48,6 +48,4 @@ public class Artifact : ITEM, ILevel
     public int quality;
     public double antimagicPower;
 
-    //Artifact Constructor
-    public Artifact SetBasicInfo(IBasicInfoSet basicInfoSet) { return basicInfoSet.GetArtifact(this); }
 }

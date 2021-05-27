@@ -40,7 +40,7 @@ public class BuildBronzeArtifact
         var time = ChooseTimeToLevelUp(_artifact.quality, _artifact);
         var timeManager = new TimeBasedLevelUp(_artifact, timeLevel, func, time);
         _artifact.timeManager = timeManager;
-
+        
         //エフェクトの生成
         //計算方法の生成
         var mainCalculator = new MainEffectCalculator(_artifact, _artifact.quality);

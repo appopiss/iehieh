@@ -125,7 +125,7 @@ public class TimeBasedLevelUp
     {
         this.level = artifactLevel;
         this.timeLevel = timeLevel;
-        this.transactionsInfo = transactionsInfo;
+        this.transactionsInfo = transactionsInfo == null ? () => (new NullTransaction(), new NullText()) : transactionsInfo;
         this.requiredTimeSec = requiredTimeSec;
     }
     //実時間１秒間あたり１回呼ぶ

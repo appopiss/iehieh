@@ -49,40 +49,50 @@ public enum EffectType
 public class ArtifactPrototype
 {
     //Singleton
-    private List<IEffect> EffectPrototypes = new List<IEffect>();
+    private List<Artifact> EffectPrototypes = new List<Artifact>();
     public ArtifactPrototype()
     {
-        EffectPrototypes.Add(new BasicEffect(EffectType.HP_add, "HP", Calway.add));
-        EffectPrototypes.Add(new BasicEffect(EffectType.MP_add, "MP", Calway.add));
-        EffectPrototypes.Add(new BasicEffect(EffectType.ATK_add, "ATK", Calway.add));
-        EffectPrototypes.Add(new BasicEffect(EffectType.DEF_add, "DEF", Calway.add));
-        EffectPrototypes.Add(new BasicEffect(EffectType.MATK_add, "MATK", Calway.add));
-        EffectPrototypes.Add(new BasicEffect(EffectType.MDEF_add, "MDEF", Calway.add));
-        EffectPrototypes.Add(new BasicEffect(EffectType.HP_mul, "HP", Calway.mul));
-        EffectPrototypes.Add(new BasicEffect(EffectType.MP_mul, "MP", Calway.mul));
-        EffectPrototypes.Add(new BasicEffect(EffectType.ATK_mul, "ATK", Calway.mul));
-        EffectPrototypes.Add(new BasicEffect(EffectType.MATK_mul, "MATK", Calway.mul));
-        EffectPrototypes.Add(new BasicEffect(EffectType.DEF_mul, "DEF", Calway.mul));
-        EffectPrototypes.Add(new BasicEffect(EffectType.MDEF_mul, "MDEF", Calway.mul));
+        EffectPrototypes.Add(MakeArtifactPrototype(new BronzeInfoSetting(), new TimeBasedLevel(10), new NormalArtifactTransaction())
     }
-    public IEffect GetEffect(EffectType type)
+    public Artifact GetArtifact(ArtifactType type)
     {
-        Debug.Log(EffectPrototypes.Count);
-        IEffect effect = EffectPrototypes.Where(x => (EffectType)x.effectType == type).Single();
-        return effect;
-    }
-    public IEnumerable<IEffect> GetEffects()
-    {
-        return EffectPrototypes;
+        return EffectPrototypes[(int)type];
     }
     
-    public Artifact MakeArtifactPrototype(IBasicInfoSet basicInfoSet, TimeBasedLevel levelInfo, IArtifactTransaction transaction, IArtifactTimeCalculator time)
+    public Artifact MakeArtifactPrototype(
+        IBasicInfoSet basicInfoSet,
+        TimeBasedLevel levelInfo,
+        IArtifactTransaction transaction,
+        IArtifactTimeCalculator time,
+        IEffect mainEffect)
     {
         var _artifact = new Artifact(-1);
         _artifact = basicInfoSet.GetArtifact(_artifact);
 
         //levelê›íË
         _artifact.level = 1;
+        var timeManager = new TimeBasedLevelUp(_artifact, levelInfo,
+            () => transaction.GetTransactionInfo(_artifact),
+            () => time.GetRequiredTime(_artifact.quality, _artifact));
 
+        _artifact.timeManager = timeManager;
+
+        //Effectê›íË
+        _artifact.mainEffect = mainEffect;
+
+        return _artifact;
+    }
+
+    public class ArtifactBuilder
+    {
+        private Artifact artifact;
+        public ArtifactBuilder()
+        {
+            artifact = new Artifact(-1);
+        }
+        public Artifact SetBasicInfo(IBasicInfoSet basicInfoSet)
+        {
+            return basicInfoSet.GetArtifact(artifact);
+        }
     }
 }

@@ -36,15 +36,18 @@ public class Artifact : ITEM, ILevel
     string EffectText()
     {
         string text = "[Effect]\n";
-        effects.ForEach((x) => text += optStr + x.Text() + "\n");
+        text += optStr + mainEffect.Text() + "\n";
         text += optStr + "\n[Optional Effect]";
         optEffects.ForEach((x) => text += optStr + x.Text() + "\n");
         return text;
     }
 
-    [OdinSerialize] public List<IEffect> effects = new List<IEffect>();
+    [OdinSerialize] public IEffect mainEffect;
     [OdinSerialize] public List<IEffect> optEffects = new List<IEffect>();
     [OdinSerialize] public TimeBasedLevelUp timeManager;
     public int quality;
     public double antimagicPower;
+
+    //Artifact Constructor
+    public Artifact SetBasicInfo(IBasicInfoSet basicInfoSet) { return basicInfoSet.GetArtifact(this); }
 }

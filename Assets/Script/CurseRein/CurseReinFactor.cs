@@ -8,8 +8,9 @@ using static UsefulMethod;
 //カースレインの報酬をここに書いていく
 public class CurseReinFactor : MonoBehaviour
 {
-	//All Status Up(Mul)
-	public List<Func<double>> AllStatusMul = new List<Func<double>>();
+
+    //All Status Up(Mul)
+    public List<Func<double>> AllStatusMul = new List<Func<double>>();
 
 	//Range Up
 	public List<Func<double>> RangeUp = new List<Func<double>>();

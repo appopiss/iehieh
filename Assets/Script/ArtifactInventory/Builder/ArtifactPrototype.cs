@@ -52,47 +52,14 @@ public class ArtifactPrototype
     private List<Artifact> EffectPrototypes = new List<Artifact>();
     public ArtifactPrototype()
     {
-        EffectPrototypes.Add(MakeArtifactPrototype(new BronzeInfoSetting(), new TimeBasedLevel(10), new NormalArtifactTransaction())
+        EffectPrototypes.Add(MakeArtifactPrototype(new BasicEffect(EffectType.HP_add, "HP+", Calway.add)));
     }
     public Artifact GetArtifact(ArtifactType type)
     {
         return EffectPrototypes[(int)type];
     }
-    
-    public Artifact MakeArtifactPrototype(
-        IBasicInfoSet basicInfoSet,
-        TimeBasedLevel levelInfo,
-        IArtifactTransaction transaction,
-        IArtifactTimeCalculator time,
-        IEffect mainEffect)
+    public IEnumerable<Artifact> GetArtifacts()
     {
-        var _artifact = new Artifact(-1);
-        _artifact = basicInfoSet.GetArtifact(_artifact);
-
-        //levelê›íË
-        _artifact.level = 1;
-        var timeManager = new TimeBasedLevelUp(_artifact, levelInfo,
-            () => transaction.GetTransactionInfo(_artifact),
-            () => time.GetRequiredTime(_artifact.quality, _artifact));
-
-        _artifact.timeManager = timeManager;
-
-        //Effectê›íË
-        _artifact.mainEffect = mainEffect;
-
-        return _artifact;
-    }
-
-    public class ArtifactBuilder
-    {
-        private Artifact artifact;
-        public ArtifactBuilder()
-        {
-            artifact = new Artifact(-1);
-        }
-        public Artifact SetBasicInfo(IBasicInfoSet basicInfoSet)
-        {
-            return basicInfoSet.GetArtifact(artifact);
-        }
+        return EffectPrototypes;
     }
 }

@@ -97,7 +97,7 @@ public class ExpeditionLevel : ILevel
 public class EXPEDITION : BASE
 {
     public ExpeditionKind kind;
-    float[] requiredHours = new float[] { 0.001f, 1.0f, 2.0f, 4.0f, 8.0f, 24.0f };
+    float[] requiredHours = new float[] { 0.5f, 1.0f, 2.0f, 4.0f, 8.0f, 24.0f };
     [NonSerialized] public Canvas thisCanvas;
     public Button startClaimButton, rightButton, leftButton;
     public TextMeshProUGUI nameText, startClaimText, requiredHourText, progressPercentText, bonusText, rewardText;
@@ -123,7 +123,7 @@ public class EXPEDITION : BASE
     public float TimeSpeedFactor()
     {
         if (level == null) return 1;
-        return Math.Min(5, 1f + 0.01f * level.level);
+        return Math.Min(5, 1f + 0.005f * level.level);
     }
     public void UpdateUI()
     {

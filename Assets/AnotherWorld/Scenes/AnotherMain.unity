@@ -12595,965 +12595,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbea1a37590c84b3eb12fc6e04ca2038, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1048508063
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1048508066}
-  - component: {fileID: 1048508064}
-  - component: {fileID: 1048508065}
-  - component: {fileID: 1048508067}
-  - component: {fileID: 1048508068}
-  m_Layer: 0
-  m_Name: MainController
-  m_TagString: mainCtrl
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1048508064
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1048508063}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 519332613b0f248dabd86ed1f60d7271, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tick: 1
-  SR:
-    ascendTime: 
-    rebirthTime: 0
-    realRebirthTime: 0
-    R_time: 0
-    RC_time: 0
-    JP_level: 0
-    JP_enemy: 0
-    JP_craft: 0
-    dungeonPlayTime: []
-    gold: 0
-    currentDungeon: 0
-    isReinClassSprite: 0
-    isDead: 0
-    afterRebirth: 0
-    isDungeon: 
-    favoriteDungeon: 0
-    currentDPS: 0
-    currentEXP: 0
-    currentGOLD: 0
-    floorNum: 0
-    maxFloorNum: 0
-    floorNum1: 0
-    maxFloorNum1: 0
-    floorNum2: 0
-    maxFloorNum2: 0
-    floorNum3: 0
-    maxFloorNum3: 0
-    floorNum4: 0
-    maxFloorNum4: 0
-    currentVillage: 0
-    currentStage: 0
-    currentHp: 0
-    currentMp: 0
-    level: 0
-    currentExp: 0
-    currentSkill: []
-    currentGrobalSkill: []
-    saveSkillId: 
-    saveGrobalSkillId: 
-    stone: 0
-    cristal: 0
-    leaf: 0
-    stoneGoldLevel: 0
-    crystalGoldLevel: 0
-    leafGoldLevel: 0
-    stoneExp: 0
-    crystalExp: 0
-    leafExp: 0
-    R_HP: 0
-    R_MP: 0
-    R_ATK: 0
-    R_DEF: 0
-    R_MATK: 0
-    R_MDEF: 0
-    R_SPD: 0
-    R_GOLD: 0
-    R_EXP: 0
-    R_stone: 0
-    R_crystal: 0
-    R_leaf: 0
-    R_drop: 0
-    spiritWar: 0
-    spiritWiz: 0
-    spiritAng: 0
-    L_random1: 0
-    L_random2: 0
-    L_random3: 0
-    LC_stone: 0
-    LC_cristal: 0
-    LC_leaf: 0
-    LC_stone2: 0
-    LC_cristal2: 0
-    LC_leaf2: 0
-    LC_stone3: 0
-    LC_cristal3: 0
-    LC_leaf3: 0
-    L_stone: 0
-    L_stone2: 0
-    L_stone3: 0
-    L_stone4: 0
-    LS_stone: 0
-    LS_stone2: 0
-    LS_stone3: 0
-    LS_stone4: 0
-    L_cristal: 0
-    L_cristal2: 0
-    L_cristal3: 0
-    L_cristal4: 0
-    LS__cristal: 0
-    LS_cristal2: 0
-    LS_cristal3: 0
-    LS_cristal4: 0
-    L_leaf: 0
-    L_leaf2: 0
-    L_leaf3: 0
-    L_leaf4: 0
-    LS_leaf: 0
-    LS_leaf2: 0
-    LS_leaf3: 0
-    LS_leaf4: 0
-    AtkStone: 0
-    MatkCristal: 0
-    HpLeaf: 0
-    EquipSlotUp: 0
-    GoldBonusUp: 0
-    ExpBonusUp: 0
-    isEquippedforRemember: 
-    isAllClearedEQ: 0
-    P_SwordAttack: 0
-    P_ShieldAttack: 0
-    P_Block: 0
-    P_StaffAttack: 0
-    P_fire: 0
-    P_ice: 0
-    P_thunder: 0
-    P_GodBless: 0
-    P_AngelDistruction: 0
-    P_HoldWing: 0
-    Storage1: 0
-    Storage2: 0
-    Storage3: 0
-    StoneSliderLevel: 0
-    CristalSliderLevel: 0
-    LeafSliderLevel: 0
-    N_stone1: 0
-    N_stone2: 0
-    N_stone3: 0
-    N_stone4: 0
-    N_stone5: 0
-    NS_stone1: 0
-    NS_stone2: 0
-    NS_stone3: 0
-    NS_stone4: 0
-    NS_Stone5: 0
-    N_cristal1: 0
-    N_cristal2: 0
-    N_cristal3: 0
-    N_cristal4: 0
-    N_cristal5: 0
-    NS_cristal1: 0
-    NS_cristal2: 0
-    NS_cristal3: 0
-    NS_cristal4: 0
-    NS_cristal5: 0
-    N_leaf1: 0
-    N_leaf2: 0
-    N_leaf3: 0
-    N_leaf4: 0
-    N_leaf5: 0
-    NS_leaf1: 0
-    NS_leaf2: 0
-    NS_leaf3: 0
-    NS_leaf4: 0
-    NS_leaf5: 0
-    buyMode: 0
-    B_buyMode: 0
-    alchemyQuantity: 0
-    waterCap: 
-    currentWater: 
-    waterValue: []
-    waterAddDPSByPotion: 0
-    reachedCap: 0
-    DPSBankFactor: 0
-    R_gold: 0
-    RC_gold: 0
-    R_exp: 0
-    RC_exp: 0
-    R_materials: 
-    RC_materials: 
-    warrior14: 0
-    earthquake: 0
-    WorkerNum: 0
-    BuyLevel: 0
-    CapLevel: 0
-    currentWorkerNum: 
-  S:
-    AIsMaxHp: 
-    AIsOnlyBase: 
-    AIsNoEq: 
-    AIsNoDmg: 
-    AMinClearTime: []
-    AMaxClearTime: []
-    AMaxGoldGained: []
-    AAreaClearedNum: 
-    ASpendTime: []
-    AIsMissionAll: 
-    ACurrentLevel: 0
-    ACurrentExp: 0
-    ACurrentClass: 0
-    AKillCount: []
-    ACurrentGold: 0
-    ACurrentSlimeCoin: 0
-    ACurrentStone: 0
-    ACurrentCrystal: 0
-    ACurrentLeaf: 0
-    AMaterials: []
-    AIsEquippedSkills: 
-    ASkillLevel: 
-    ASkillRank: 
-    ASkillProf: []
-    isLanguageGotOnce: 0
-    language: 0
-    TotalChiliGathered: 0
-    TotalReinbowFishGathered: 0
-    isAfterReincarnationImplemented: 0
-    isAfterVer1100: 0
-    isAfterVer1101: 0
-    isAfterVer1102: 0
-    isAfterVer1103: 0
-    Queue1_buyNum: 0
-    Queue2_buyNum: 0
-    Queue3_buyNum: 0
-    Queue4_buyNum: 0
-    QueueInSlimeBank_buyNum1: 0
-    QueueInSlimeBank_buyNum2: 0
-    QueueInSlimeBank_buyNum3: 0
-    QueueInSlimeBank_buyNum4: 0
-    AutoLoot: 0
-    boughtSuperRebirth: 0
-    SuperRebirthNum: 0
-    boughtInstantRebirth: 0
-    ResetRebirthUpgradeNum: 0
-    ResetReincarnationUpgradeNum: 0
-    InstantReincarnationNum: 0
-    boughtResetRebirth: 0
-    InstantRebirthNum: 0
-    AdditionalDailyQuest_buyNum: 0
-    MinimumDailyQuest_buyNum: 0
-    OblivionNum: 0
-    AddDQ1: 0
-    AddDQ2: 0
-    AddDQ3: 0
-    RareDQ1: 0
-    RareDQ2: 0
-    ExtraSkillSlot: 0
-    ExtraGlobalSkillSlot: 0
-    ExtraGlobalSkillSlotFirst: 0
-    EquipmentSlotNum: 0
-    EquipmentSlotNum2: 0
-    EquipmentSlotNum3: 0
-    FavoriteEquip: 0
-    ExpandAlchemyInventory1: 0
-    ExpandAlchemyInventory2: 0
-    ExpandAlchemyInventory3: 0
-    ExpandAlchemyInventory4: 0
-    EC1: 0
-    EC2: 0
-    EC3: 0
-    EC4: 0
-    EC5: 0
-    EC6: 0
-    EC7: 0
-    EC8: 0
-    ECF1: 0
-    ECF2: 0
-    ECF3: 0
-    ECF4: 0
-    ECF5: 0
-    ECF6: 0
-    ECS1: 0
-    ECS2: 0
-    ECS3: 0
-    ECS4: 0
-    ECC1: 0
-    AP1: 0
-    APconsumed: 0
-    isDailyAP: 0
-    dailyECnum: 0
-    nitroExplosionTimeLeft: 0
-    NitroCapUpNum: 0
-    isNitro: 0
-    GoldCapByKreds: 0
-    WaterALL: 0
-    AutoExpandAlchemy: 0
-    AutoActiveSkill: 0
-    CustomRange: 0
-    CustomSpeed: 0
-    FavoriteArea: 0
-    AllClearEQ: 0
-    SuperQueue: 0
-    SuperQueueSB: 0
-    AlchemyLock: 0
-    SkillSetSave1: 0
-    SkillSetSave2: 0
-    SkillSetSave3: 0
-    SkillSetSave4: 0
-    SkillSetSaveBuyNum: 0
-    SkillSetSaveLoad: 0
-    AutoNitro: 0
-    AutoMaxSkill: 0
-    SuperQueueMemory: 0
-    PersistentSuperQueue: 0
-    PersistentFavoriteEquip: 0
-    isReinbowFishPurchase: 0
-    isDarkRitualPurchase: 0
-    isEXPMulti1: 0
-    isEXPMulti2: 0
-    isMonsterGoldCap1: 0
-    isMonsterGoldCap2: 0
-    isMonsterGoldCap3: 0
-    isMonsterGoldCap4: 0
-    monsterGoldCapFactor: 0
-    MonsterFluidPurchasedNum: 0
-    isPurchasedSuperQueueAlchemy: 0
-    BC1IEHhapiwaku: 0
-    BC2IEHmonthlycontest: 0
-    BC3IEHhapiwakuMay: 0
-    BC7IEHhapiwakuJune: 0
-    BC8IEHhapiwakuJuly: 0
-    BC9IEHhapiwakuAugustKong: 0
-    BC9IEHhapiwakuAugustArmorGames: 0
-    BC10IEHhapiwakuSeptemberKong: 0
-    BC10IEHhapiwakuSeptemberArmorGames: 0
-    BC11IEHhapiwakuOctoberKong: 0
-    BC11IEHhapiwakuOctoberArmorGames: 0
-    BC4IEHoctobaddie30: 0
-    BC5IEHoctobaddie3: 0
-    BC6IEHoctobaddie1: 0
-    BCSteam: 0
-    isInstalledYC: 0
-    BCYC: 0
-    BCanniversary: 0
-    octoMaxReachedLevel: 0
-    keyItemNum: 
-    key_isUnlocked: 
-    chestNum: 
-    consumedWarP: 0
-    consumedWizP: 0
-    consumedAngP: 0
-    slimeReputation: 0
-    ECbyMission: 0
-    ECbyMissionHidden: 0
-    ECbyKreds: 0
-    ECbyQuest: 0
-    ECbyDailyQuest: 0
-    ECconsumed: 0
-    ECforDebug: 0
-    ECbyRestoredMission: 0
-    ECbyLocalSave: 0
-    Slot_canEquipped: 
-    SlotG_canEquipped: 
-    isDropped: 
-    CurrentNitro: 0
-    isAutoNitro: 0
-    BankUpgradeLevel: 
-    CurseReinClearNum: 
-    CurrentCurseId: 0
-    P_SwordAttack: 0
-    P_ShieldAttack: 0
-    P_Block: 0
-    P_StaffAttack: 0
-    P_fire: 0
-    P_ice: 0
-    P_thunder: 0
-    P_GodBless: 0
-    P_AngelDistruction: 0
-    P_HoldWing: 0
-    isDistributedResetRebirth: 0
-    isNewReleasedIEH: 0
-    dungeonClearNum: 
-    dungeonClearNumForMission: 
-    isMissionCompleted: 
-    isMissionCompletedAfterReincarnation: 
-    isMissionMileStone: 
-    isMissionMileStoneHidden: 
-    isMission325Completed: 0
-    isMission384Completed: 0
-    toggleSave: 
-    HpPotion: 0
-    MpPotion: 0
-    CurePotion: 0
-    SpicyPotion: 0
-    ExpPotion: 0
-    GoldPotion: 0
-    DropPotion: 0
-    PoisonBanana: 0
-    Trap: 0
-    WalkDistance: 0
-    SlimeCoin: 0
-    TempStoreSlimeCoin: 0
-    MissionCount: 0
-    MissionCountHidden: 0
-    M_isCleared: 
-    M_isClearedAfterReincarnation: 
-    M_materialNum: 
-    M_capturedNum: 
-    MissionClearNumAfterReincarnation: 
-    D_spendTime: []
-    totalMissionCleared: 0
-    totalHeartStoneGot: 0
-    bigSlimeNumByBase: 0
-    hidden_bigSlimeNumByBase: 0
-    purpleSlimeNum: 0
-    hidden_purpleSlimeNum: 0
-    metalSlimeNum: 0
-    hidden_metalSlimeNum: 0
-    metalSlimeNum2: 0
-    hidden_metalSlimeNum2: 0
-    slimeBossNum: 0
-    hidden_slimeBossNum: 0
-    normalBatNum: 0
-    hidden_normalBatNum: 0
-    yellowBatNum: 0
-    hidden_yellowBatNum: 0
-    blackBatNum: 0
-    hidden_blackBatNum: 0
-    activeSkillAt15: 0
-    hidden_activeSkillAt15: 0
-    reincarnationTime: 0
-    lastTime: 
-    birthDate: 
-    isContinuePlay: 0
-    allTime: 0
-    realAllTime: 0
-    lastLocalSaveTime: 0
-    lastAdsWatchTime: 0
-    lastRealTimeOnServer: 
-    dateTimeWhenLastSync: 
-    lastLocalTime: 
-    initialized_server_time: 0
-    SEVolume: 0
-    BGMVolume: 0
-    ascendPoint: 0
-    isAscend: 0
-    isOnAscendConfirm: 0
-    isDead: 0
-    dungeonPlayTime: []
-    FirstButton: 0
-    isJobbed: 0
-    isUpgrade: 0
-    isSkillTreeOpen: 0
-    isSkillTree: 0
-    isSkillSet: 0
-    isDungeonOpen: 0
-    isSlimeHideoutTryAgainFirst: 0
-    isSlimeHideoutClear: 0
-    isGlobalSlotEquipped: 0
-    isGlobalSlotbyMissionMilestone: 0
-    isOpenedQuest: 0
-    isWarActiveSkill: 0
-    isWizActiveSkill: 0
-    isAngActiveSkill: 0
-    isUpgradeIcon1: 0
-    isUpgradeIcon2: 0
-    isUpgradeIcon3: 0
-    isUpgradeIcon4: 0
-    isUpgradeIcon5: 0
-    isUpgradeIcon6: 0
-    isUpgradeIcon7: 0
-    isUpgradeIcon8: 0
-    isUpgradeIcon9: 0
-    isUpgradeIcon10: 0
-    isUpgradeIcon11: 0
-    isUpgradeIcon12: 0
-    isUpgradeIcon13: 0
-    isUpgradeIcon14: 0
-    isUpgradeIcon15: 0
-    isZone1: 0
-    isZone2: 0
-    isZone3: 0
-    isZone4: 0
-    isZone5: 0
-    isZone6: 0
-    isZone7: 0
-    isHidden: 0
-    isUnleashedHidden: 0
-    maxFloorNum: 0
-    maxFloorNum1: 0
-    maxFloorNum2: 0
-    maxFloorNum3: 0
-    maxFloorNum4: 0
-    AscendNum: 0
-    AscendNumWhileReincarnation: 0
-    totalEnemyKilled: 0
-    totalSlimeKilled: 0
-    totalEnemiesKilled: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-    totalEnemiesKilledAfterReincarnation: 
-    totalEnemiesCaptured: 
-    timeToLoot: []
-    totalClickNum: 0
-    totalGetStone: 0
-    totalGetCrystal: 0
-    totalGetLeaf: 0
-    totalEnemyCaptured: 0
-    C_totalSlimeKilled: 0
-    C_totalFairyKilled: 0
-    C_totalGolemKilled: 0
-    C_totalBananoonKilled: 0
-    C_totalDeathpiderKilled: 0
-    C_totalMontblangoKilled: 0
-    C_totalDistortionSlimeKilled: 0
-    C_totalOctoKilled: 0
-    C_S_isDefeatedOnce: 0
-    C_F_isDefeatedOnce: 0
-    C_G_isDefeatedOnce: 0
-    C_M_isDefeatedOnce: 0
-    C_D_isDefeatedOnce: 0
-    C_B_isDefeatedOnce: 0
-    C_Dis_isDefeatedOnce: 0
-    C_O_isDefeatedOnce: 0
-    maxLevelReached: 0
-    maxLevelReachedWhileReincarnation: 0
-    job: 0
-    SLv_wariior: 0
-    SLv_slash: 0
-    SLv_doubleSlash: 0
-    SLv_sonicSlash: 0
-    SLv_swingDown: 0
-    SLv_swingAround: 0
-    SLv_chargeSwing: 0
-    SLv_fanSwing: 0
-    SLv_shieldAttack: 0
-    SLv_block: 0
-    SLv_stuffAttack: 0
-    SLv_fireBall: 0
-    SLv_fireStorm: 0
-    SLv_meteoStrike: 0
-    SLv_iceBall: 0
-    SLv_chillingTouch: 0
-    SLv_blizzard: 0
-    SLv_thunderBall: 0
-    SLv_doubleThunderBall: 0
-    SLv_lightningThunder: 0
-    SLv_wingAttack: 0
-    SLv_wingShoot: 0
-    SLv_heal: 0
-    SLv_godBless: 0
-    SLv_muscleInflation: 0
-    SLv_magicImpact: 0
-    SLv_protectWall: 0
-    SLv_haste: 0
-    SLv_angelDistraction: 0
-    SLv_holdWings: 0
-    SPro_warrior: 0
-    SPro_slash: 0
-    SPro_doubleSlash: 0
-    SPro_sonicSlash: 0
-    SPro_swingDown: 0
-    SPro_swingAround: 0
-    SPro_chargeSwing: 0
-    SPro_fanSwing: 0
-    SPro_shieldAttack: 0
-    SPro_block: 0
-    SPro_stuffAttack: 0
-    SPro_fireBall: 0
-    SPro_fireStorm: 0
-    SPro_meteoStrike: 0
-    SPro_iceBall: 0
-    SPro_chillingTouch: 0
-    SPro_blizzard: 0
-    SPro_thunderBall: 0
-    SPro_doubleThunderBall: 0
-    SPro_lightningThunder: 0
-    SPro_wingAttack: 0
-    SPro_wingShoot: 0
-    SPro_heal: 0
-    SPro_godBless: 0
-    SPro_muscleInflation: 0
-    SPro_magicImpact: 0
-    SPro_protectWall: 0
-    SPro_haste: 0
-    SPro_angelDistraction: 0
-    SPro_holdWings: 0
-    SkillSetSaveID: 0
-    WarSaveSkillId1: 
-    WarSaveSkillId2: 
-    WarSaveSkillId3: 
-    WarSaveSkillId4: 
-    WarSaveSkillId5: 
-    WizSaveSkillId1: 
-    WizSaveSkillId2: 
-    WizSaveSkillId3: 
-    WizSaveSkillId4: 
-    WizSaveSkillId5: 
-    AngSaveSkillId1: 
-    AngSaveSkillId2: 
-    AngSaveSkillId3: 
-    AngSaveSkillId4: 
-    AngSaveSkillId5: 
-    canAutoRebirth: 0
-    canAutoRebirthWarrior: 0
-    canAutoRebirthWiz: 0
-    canAutoRebirthAng: 0
-    canAutoRein: 0
-    canAutoReinWarrior: 0
-    canAutoReinWiz: 0
-    canAutoReinAng: 0
-    didAutoRein: 0
-    didAutoRebirth: 0
-    autoReinJob: 0
-    autoRebirthArea: 0
-    P_levelWarR4: 0
-    P_levelWizR4: 0
-    P_levelAngR4: 0
-    canGetExtWarR4: 0
-    canGetExtWizR4: 0
-    canGetExtAngR4: 0
-    P_expWarR4: 0
-    P_expWizR4: 0
-    P_expAngR4: 0
-    canS_warrior: 0
-    canS_slash: 0
-    canS_doubleSlash: 0
-    canS_sonicSlash: 0
-    canS_swingDown: 0
-    canS_swingAround: 0
-    canS_chargeSwing: 0
-    canS_fanSwing: 0
-    canS_shieldAttack: 0
-    canS_block: 0
-    canS_stuffAttack: 0
-    canS_fireBall: 0
-    canS_fireStorm: 0
-    canS_meteoStrike: 0
-    canS_iceBall: 0
-    canS_chillingTouch: 0
-    canS_blizzard: 0
-    canS_thunderBall: 0
-    canS_doubleThunderBall: 0
-    canS_lightningThunder: 0
-    canS_wingAttack: 0
-    canS_wingShoot: 0
-    canS_heal: 0
-    canS_godBless: 0
-    canS_muscleInflation: 0
-    canS_magicImpact: 0
-    canS_protectWall: 0
-    canS_haste: 0
-    canS_angelDistraction: 0
-    canS_holdWings: 0
-    maxDungeonFloorNum: 
-    unleashDungeon1: 0
-    unleashDungeon2: 0
-    unleashDungeon3: 0
-    unleashDungeon4: 0
-    unleashDungeon5: 0
-    unleashDungeon6: 0
-    unleashDungeon7: 0
-    unleashDungeon8: 0
-    unleashDarkRitual: 0
-    unleashBank: 0
-    clear1: 0
-    clear2: 0
-    clear3: 0
-    clear4: 0
-    clear5: 0
-    clear6: 0
-    clear7: 0
-    clear8: 0
-    clear9: 0
-    clear_Slime: 0
-    clear_spider: 0
-    clear_montblango: 0
-    clear_distortion: 0
-    clear_octo: 0
-    iC_fairy: 0
-    iC_golem: 0
-    iC_bananoon: 0
-    iC_slimeBoss: 0
-    iC_slime: 0
-    iC_spider: 0
-    iC_montblango: 0
-    iC_distortion: 0
-    iC_octo: 0
-    mClear_slime: 0
-    mClear_fairy: 0
-    mClear_golem: 0
-    mClear_bananoon: 0
-    mClear_spider: 0
-    mClear_montblango: 0
-    mClear_distortion: 0
-    mClear_octo: 0
-    materialNum: 
-    consumeItemNum: 
-    condition: 
-    leftTime2: []
-    leftTime: []
-    storedNum: 
-    isEquipped: 
-    isFavoriteEquipped: 
-    level: 
-    evolutionNum: 
-    duration:
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
-    hpPortion: 0
-    mpPortion: 0
-    isUnlocked: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-    mode: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-    clearNum: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-    QuestPoint: 0
-    eatSandwich: 0
-    leftItems: 
-    leftItemsQuality: 
-    leftItemsIsLock: 
-    isUnlockedAlchemy: 
-    gainedAlchemyPoint: 0
-    consumedAlchemyPoint: 0
-    vitalityLevel: 0
-    vitalityValue: 0
-    muscleLevel: 0
-    muscleValue: 0
-    wisdomLevel: 0
-    wisdomValue: 0
-    agilityLevel: 0
-    agilityValue: 0
-    maxReachedCap: 0
-    isAuto: 0
-    isAutoUse: 0
-    isSuperQueuedAlchemy: 
-    DailyQuestSavedDate: 
-    TodaysDailyQuestId: 
-    dailyQuestInfoId: 
-    defeatedEnemyNum: 
-    getheredMaterialNum: 
-    isClearedToday: 
-    isQuestInstantiated: 
-    rarity: 
-    questKind: 
-    targetEnemy: 
-    targetMaterial: 
-    WarP: 0
-    WizP: 0
-    AngP: 0
-    A_level: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-    ReincarnationNum: 0
-    RP: 0
-    SRPfromTime: 0
-    SRPfromRebirth: 0
-    SRPfromEquipment: 0
-    SRPfromPrevious: 0
-    SRPfromBankCap: 0
-    SRPfromMaterial: 0
-    SRPfromMission: 0
-    SRPfromMontblango: 0
-    SRPfromLevel: 0
-    SRPfromQuest: 0
-    SRPfromMaterialBase: 0
-    isMontblangoBeated: 0
-    isDistortionBeated: 0
-    SRPconsumed: 0
-    SRPinstantConsumed: 0
-    R_level: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-    SR_level: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-    isSuperRebirth: 0
-    tempLevel: 0
-    stone: 0
-    cristal: 0
-    leaf: 0
-    stoneGoldLevel: 0
-    crystalGoldLevel: 0
-    leafGoldLevel: 0
-    stoneExp: 0
-    crystalExp: 0
-    leafExp: 0
-    stoneUpgradeLevel: 
-    crystalUpgradeLevel: 
-    leafUpgradeLevel: 
-    statusUpgradeLevel: 
-    WorkerNum: 0
-    BuyLevel: 0
-    CapLevel: 0
-    currentWorkerNum: 
-    R_HP: 0
-    R_MP: 0
-    R_ATK: 0
-    R_DEF: 0
-    R_MATK: 0
-    R_MDEF: 0
-    R_SPD: 0
-    R_GOLD: 0
-    R_EXP: 0
-    R_stone: 0
-    R_crystal: 0
-    R_leaf: 0
-    R_drop: 0
-    spiritWar: 0
-    spiritWiz: 0
-    spiritAng: 0
-    SalchemyQuantity: 0
-    SwaterCap: 
-    ScurrentWater: 
-    SwaterValue: []
-    SwaterAddDPSByPotion: 0
-    DPSbankFactor: 0
-    SreachedCap: 0
-    isSuperQueueAssignedforStoneUpgrade: 
-    isSuperQueueAssignedforCrystalUpgrade: 
-    isSuperQueueAssignedforLeafUpgrade: 
-    isSuperQueueAssignedforStatusUpgrade: 
-    isSuperQueueSBAssigned: 
-    dmgTxtLimitOff: 0
-    isDeathPanel: 0
-    dmgTxtLimit: 0
-    customRange: 0
-    customSpeed: 0
-    bgmSliderValue: 0.2
-    seSliderValue: 0.2
-    isDisableTooltip: 0
-    isDisableLootLog: 0
-    isDisableEffect: 0
-    JemLevel: []
-    CurrentExp: []
-    isJemUnlocked: 
-    Queue_unleashed: 0
-    isRainbowFish: 0
-    Q_upgradeLevel: 
-    isS_treasureHunt: 
-    isS_errand: 
-    isS_merciless: 
-    isS_slimeLover: 
-    isPurse: 0
-    isPoppy: 0
-    DefeatBySlimeBall: 0
-    MT_slime: 99999
-    MT_bat: 99999
-    MT_fairy: 99999
-    MT_spider: 99999
-    merciless: 0
-    RainbowFishClearedNum: 0
-    dlcStarter: 0
-    dlcGlobal: 0
-    dlcNitro: 0
-    dlcGold: 0
-    dlcGlobalGotFixed: 0
-    dlcStarterECGot: 0
-    dlcGlobalECGot: 0
-    dlcNitroECGot: 0
-    dlcGoldECGot: 0
-    dlcIeh2ECGot: 0
-    isAchievedSteam: 
-    isIEBSteamAchievementNum: 0
-    isPurchasedIEBBonus: 
-    buyModeId: 0
-  ST:
-    ReincarnationNum: 0
-  saveWar:
-    SkillLevel: 
-    canGetExp: 
-    exp: []
-  saveWiz:
-    SkillLevel: 
-    canGetExp: 
-    exp: []
-  saveAng:
-    SkillLevel: 
-    canGetExp: 
-    exp: []
-  SD: {fileID: 1048508068}
-  saveCtrl: {fileID: 1048508065}
-  popupCtrl: {fileID: 223357328}
-  battleCtrl: {fileID: 1138100939}
-  statusCtrl: {fileID: 8680405920859462252}
-  skillCtrl: {fileID: 474377038}
-  areaCtrl: {fileID: 76540314}
-  logCtrl: {fileID: 808949339}
---- !u!114 &1048508065
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1048508063}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2eda6a53314645c1b1b0aa3e537eb03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1048508066
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1048508063}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 652.74585, y: 495.1662, z: -10491.656}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1048508067
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1048508063}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27820b41a3e2944e682efae251135766, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  language: 0
---- !u!114 &1048508068
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1048508063}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7a6dc37a52774aed9417ac7ab2c2d6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1049851776
 GameObject:
   m_ObjectHideFlags: 0
@@ -19201,7 +18242,6 @@ GameObject:
   - component: {fileID: 1540992826}
   - component: {fileID: 1540992825}
   - component: {fileID: 1540992824}
-  - component: {fileID: 1540992823}
   m_Layer: 5
   m_Name: EffectCanvas
   m_TagString: Untagged
@@ -19258,18 +18298,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1540992823
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1540992821}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c23b4dcc1aec4bf1b5e247fbb4fe744, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1540992824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27717,6 +26745,161 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 5694971459279245451}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2602204959464345325
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2602204959434815563, guid: cd27000018da94d82b65d8d4f0b5a898,
+        type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2602204959434815563, guid: cd27000018da94d82b65d8d4f0b5a898,
+        type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2602204959434815563, guid: cd27000018da94d82b65d8d4f0b5a898,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2602204959434815563, guid: cd27000018da94d82b65d8d4f0b5a898,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2602204959434815563, guid: cd27000018da94d82b65d8d4f0b5a898,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2602204959434815563, guid: cd27000018da94d82b65d8d4f0b5a898,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2602204959434815563, guid: cd27000018da94d82b65d8d4f0b5a898,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2602204959434815563, guid: cd27000018da94d82b65d8d4f0b5a898,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2602204959434815563, guid: cd27000018da94d82b65d8d4f0b5a898,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2602204959434815563, guid: cd27000018da94d82b65d8d4f0b5a898,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2602204959434815563, guid: cd27000018da94d82b65d8d4f0b5a898,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2602204959434815563, guid: cd27000018da94d82b65d8d4f0b5a898,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10491.656
+      objectReference: {fileID: 0}
+    - target: {fileID: 2602204959434815563, guid: cd27000018da94d82b65d8d4f0b5a898,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2602204959434815563, guid: cd27000018da94d82b65d8d4f0b5a898,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2602204959434815563, guid: cd27000018da94d82b65d8d4f0b5a898,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2602204959434815563, guid: cd27000018da94d82b65d8d4f0b5a898,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2602204959434815563, guid: cd27000018da94d82b65d8d4f0b5a898,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 652.74585
+      objectReference: {fileID: 0}
+    - target: {fileID: 2602204959434815563, guid: cd27000018da94d82b65d8d4f0b5a898,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 495.1662
+      objectReference: {fileID: 0}
+    - target: {fileID: 2602204959434815563, guid: cd27000018da94d82b65d8d4f0b5a898,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2602204959434815563, guid: cd27000018da94d82b65d8d4f0b5a898,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2602204959434815563, guid: cd27000018da94d82b65d8d4f0b5a898,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2602204959434815565, guid: cd27000018da94d82b65d8d4f0b5a898,
+        type: 3}
+      propertyPath: logCtrl
+      value: 
+      objectReference: {fileID: 808949339}
+    - target: {fileID: 2602204959434815565, guid: cd27000018da94d82b65d8d4f0b5a898,
+        type: 3}
+      propertyPath: areaCtrl
+      value: 
+      objectReference: {fileID: 76540314}
+    - target: {fileID: 2602204959434815565, guid: cd27000018da94d82b65d8d4f0b5a898,
+        type: 3}
+      propertyPath: popupCtrl
+      value: 
+      objectReference: {fileID: 223357328}
+    - target: {fileID: 2602204959434815565, guid: cd27000018da94d82b65d8d4f0b5a898,
+        type: 3}
+      propertyPath: skillCtrl
+      value: 
+      objectReference: {fileID: 474377038}
+    - target: {fileID: 2602204959434815565, guid: cd27000018da94d82b65d8d4f0b5a898,
+        type: 3}
+      propertyPath: battleCtrl
+      value: 
+      objectReference: {fileID: 1138100939}
+    - target: {fileID: 2602204959434815565, guid: cd27000018da94d82b65d8d4f0b5a898,
+        type: 3}
+      propertyPath: statusCtrl
+      value: 
+      objectReference: {fileID: 8680405920859462252}
+    - target: {fileID: 2602204959434815567, guid: cd27000018da94d82b65d8d4f0b5a898,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 2602204959434815567, guid: cd27000018da94d82b65d8d4f0b5a898,
+        type: 3}
+    - target: {fileID: 2602204959434815602, guid: cd27000018da94d82b65d8d4f0b5a898,
+        type: 3}
+      propertyPath: m_Name
+      value: MainController
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cd27000018da94d82b65d8d4f0b5a898, type: 3}
 --- !u!1 &2757439570369205942
 GameObject:
   m_ObjectHideFlags: 0

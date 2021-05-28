@@ -15,7 +15,7 @@ public class EffectCalculator : IText
         this.inventory = inventory;
     }
     private Dictionary<Enum, double> calculateDic = new Dictionary<Enum, double>();
-    EffectPrototype protoEffects = new EffectPrototype();
+    ArtifactPrototype protoEffects = new ArtifactPrototype();
     public void UpdateValue()
     {
         calculateDic.Clear();
@@ -46,7 +46,10 @@ public class EffectCalculator : IText
 
         //テキストの更新
         string text = "";
+        foreach (var item in collection)
+        {
 
+        }
         foreach (var effects in protoEffects.GetEffects())
         {
             if(effects is IStatsBreakdown)

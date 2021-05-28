@@ -432,19 +432,19 @@ public class BuyPremium : BASE {
 
             case GoodsId.TimeWarp2:
                 Cost = () => 800;
-                LimitCondition = () => false;
+                LimitCondition = () => main.S.isPurchasedTodayTimeWarp2;
                 break;
             case GoodsId.TimeWarp4:
                 Cost = () => 1500;
-                LimitCondition = () => false;
+                LimitCondition = () => main.S.isPurchasedTodayTimeWarp4;
                 break;
             case GoodsId.TimeWarp8:
                 Cost = () => 2500;
-                LimitCondition = () => false;
+                LimitCondition = () => main.S.isPurchasedTodayTimeWarp8;
                 break;
             case GoodsId.TimeWarp24:
                 Cost = () => 5000;
-                LimitCondition = () => false;
+                LimitCondition = () => main.S.isPurchasedTodayTimeWarp24;
                 break;
             default:
                 Cost = () => 0;
@@ -806,15 +806,19 @@ public class BuyPremium : BASE {
 
             case GoodsId.TimeWarp2:
                 main.idleBackGround.OfflineBonus(2f * 60 * 60);
+                main.S.isPurchasedTodayTimeWarp2 = true;
                 break;
             case GoodsId.TimeWarp4:
                 main.idleBackGround.OfflineBonus(4f * 60 * 60);
+                main.S.isPurchasedTodayTimeWarp4 = true;
                 break;
             case GoodsId.TimeWarp8:
                 main.idleBackGround.OfflineBonus(8f * 60 * 60);
+                main.S.isPurchasedTodayTimeWarp8 = true;
                 break;
             case GoodsId.TimeWarp24:
                 main.idleBackGround.OfflineBonus(24f * 60 * 60);
+                main.S.isPurchasedTodayTimeWarp24 = true;
                 break;
         }
 

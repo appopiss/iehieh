@@ -54,6 +54,10 @@ public partial class Save
     public int ExpandAlchemyInventory2;
     public int ExpandAlchemyInventory3;
     public int ExpandAlchemyInventory4;
+    public bool isPurchasedTodayTimeWarp2;
+    public bool isPurchasedTodayTimeWarp4;
+    public bool isPurchasedTodayTimeWarp8;
+    public bool isPurchasedTodayTimeWarp24;
     public int EC1, EC2, EC3, EC4, EC5, EC6, EC7, EC8;
     public int ECF1, ECF2, ECF3, ECF4, ECF5, ECF6, ECS1, ECS2, ECS3, ECS4;
     //５倍を入れておく↓

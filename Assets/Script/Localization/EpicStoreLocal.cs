@@ -108,10 +108,10 @@ public class EpicStoreLocal : MonoBehaviour
                 explain[67].text = "錬金術(Alchemy)で\"Q\"キーを押すことでスーパーキューを割り当てられます. スーパーキューは永久にそれを買い続けます. ";
                 explain[68].text = "スーパーキュー(Super Queue)の設定が、転生(Reincarnation)後も引き継ぐようになります. ";
                 explain[69].text = "Favorite Craftが、進化回数は半分、レベルは１になって、転生(Reincarnation)を通しても引き継ぐようになります. ";
-                explain[70].text = "2時間分のオフラインボーナスを即座に獲得します";
-                explain[71].text = "4時間分のオフラインボーナスを即座に獲得します";
-                explain[72].text = "8時間分のオフラインボーナスを即座に獲得します";
-                explain[73].text = "16時間分のオフラインボーナスを即座に獲得します";
+                explain[70].text = "2時間分のオフラインボーナスを即座に獲得します. (1日1回まで購入可能)";
+                explain[71].text = "4時間分のオフラインボーナスを即座に獲得します. (1日1回まで購入可能)";
+                explain[72].text = "8時間分のオフラインボーナスを即座に獲得します. (1日1回まで購入可能)";
+                explain[73].text = "16時間分のオフラインボーナスを即座に獲得します. (1日1回まで購入可能)";
                 break;
             case Language.chi:
                 explain[0].text = "在Alchemy中, 您可以同时将水储存在所有容器中. ";
@@ -197,10 +197,10 @@ public class EpicStoreLocal : MonoBehaviour
                 explain[67].text = "你也可以通过按\"Q\"键在Alchemy中分配SuperQueue. SuperQueue会一直买下去, 直到永远. ";
                 explain[68].text = "在Reincarnation之后, Super Queue的设置将被继承. ";
                 explain[69].text = "在Reincarnation之后, Favorite Craft的设置将被继承. 进化编号将减半, 等级将为1.";
-                explain[70].text = "立即获得价值2小时的离线奖金!";
-                explain[71].text = "立即获得价值4小时的离线奖金!";
-                explain[72].text = "立即获得价值8小时的离线奖金!";
-                explain[73].text = "立即获得价值24小时的离线奖金!";
+                explain[70].text = "立即获得价值2小时的离线奖金! (每天最多可以购买一次)";
+                explain[71].text = "立即获得价值4小时的离线奖金! (每天最多可以购买一次)";
+                explain[72].text = "立即获得价值8小时的离线奖金! (每天最多可以购买一次)";
+                explain[73].text = "立即获得价值24小时的离线奖金! (每天最多可以购买一次)";
                 break;
             default:
                 for (int i = 0; i < units.Length; i++)

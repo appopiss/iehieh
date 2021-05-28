@@ -603,6 +603,11 @@ public class DQctrl : BASE
                 //Ads用
                 main.S.isDailyAP = false;
                 main.S.dailyECnum = 0;
+                //EpicStoreのTimeWarp用
+                main.S.isPurchasedTodayTimeWarp2 = false;
+                main.S.isPurchasedTodayTimeWarp4 = false;
+                main.S.isPurchasedTodayTimeWarp8 = false;
+                main.S.isPurchasedTodayTimeWarp24 = false;
 
                 SavedDate = DateTime.Now.Year * 10000 + DateTime.Now.Month * 100 + DateTime.Now.Day;
             }

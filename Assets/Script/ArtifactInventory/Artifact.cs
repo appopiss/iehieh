@@ -6,13 +6,13 @@ using Cysharp.Threading.Tasks;
 using System;
 using System.Linq;
 using IdleLibrary.Inventory;
+using IdleLibrary;
 using static UsefulMethod;
 
 [System.Serializable]
 public class Artifact : ITEM, ILevel
 {
-    public long level { get => _level; set => _level = value; }
-    [OdinSerialize] long _level;
+    public long level { get; set; }
     public Artifact(int id) : base(id)
     {
 

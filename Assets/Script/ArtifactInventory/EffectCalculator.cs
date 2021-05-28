@@ -16,6 +16,26 @@ public class EffectCalculator : IText
     }
     private Dictionary<Enum, double> calculateDic = new Dictionary<Enum, double>();
     ArtifactPrototype protoEffects = new ArtifactPrototype();
+    void _UpdateValue(params IEffect[] Effects)
+    {
+        foreach (var effects in Effects)
+        {
+            //IStatsBreakdownなら
+            if (effects is IStatsBreakdown)
+            {
+                Debug.Log(effects.effectType == null);
+                var stats = effects as IStatsBreakdown;
+                if (calculateDic.ContainsKey(effects.effectType))
+                {
+                    calculateDic[effects.effectType] += stats.Value();
+                }
+                else
+                {
+                    calculateDic.Add(effects.effectType, stats.Value());
+                }
+            }
+        }
+    }
     public void UpdateValue()
     {
         calculateDic.Clear();
@@ -24,40 +44,17 @@ public class EffectCalculator : IText
             if(item is Artifact)
             {
                 var artifact = item as Artifact;
-                foreach (var effects in artifact.effects)
-                {
-                    //IStatsBreakdownなら
-                    if(effects is IStatsBreakdown)
-                    {
-                        Debug.Log(effects.effectType == null);
-                        var stats = effects as IStatsBreakdown;
-                        if (calculateDic.ContainsKey(effects.effectType))
-                        {
-                            calculateDic[effects.effectType] += stats.Value();
-                        }
-                        else
-                        {
-                            calculateDic.Add(effects.effectType, stats.Value());
-                        }
-                    }
-                }
+                _UpdateValue(artifact.mainEffect);
+                _UpdateValue(artifact.optEffects.ToArray());
             }
         }
 
         //テキストの更新
         string text = "";
-        foreach (var item in collection)
-        {
-
-        }
-        foreach (var effects in protoEffects.GetEffects())
-        {
-            if(effects is IStatsBreakdown)
-            {
-                var stats = effects as IStatsBreakdown;
-                if(calculateDic.ContainsKey(effects.effectType))
-                    text += UsefulMethod.optStr + stats.StatsBreakdownText(calculateDic[effects.effectType]) + "\n";
-            }
+        foreach (var effects in calculateDic)
+        {  
+           if(calculateDic.ContainsKey(effects.Key))
+               text += UsefulMethod.optStr + stats.StatsBreakdownText(calculateDic[effects.Key]) + "\n";
         }
         _text = text;
     }

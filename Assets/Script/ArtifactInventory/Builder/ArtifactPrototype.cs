@@ -144,21 +144,21 @@ public class SlimeBronzeStatue : ArtifactPrototype
 {
     public override long maxLevel => 10;
     public override long maxMaxLevel => 20;
-    public override BasicEffect effect => (BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.HP_add);
+    public override BasicEffect effect => new BasicEffect((BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.HP_add));
     public override double EffectValue(ILevel level, int quality) => 10 * aug(level, quality);
 }
 public class BatBronzeStatue : ArtifactPrototype
 {
     public override long maxLevel => 10;
     public override long maxMaxLevel => 20;
-    public override BasicEffect effect => (BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.MP_add);
+    public override BasicEffect effect => new BasicEffect((BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.MP_add));
     public override double EffectValue(ILevel level, int quality) => 5 * aug(level, quality);
 }
 public class SpiderBronzeStatue : ArtifactPrototype
 {
     public override long maxLevel => 10;
     public override long maxMaxLevel => 20;
-    public override BasicEffect effect => (BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.ATK_add);
+    public override BasicEffect effect => new BasicEffect((BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.ATK_add));
     public override double EffectValue(ILevel level, int quality) => 1 * aug(level, quality);
 }
 public class FairyBronzeStatue : ArtifactPrototype

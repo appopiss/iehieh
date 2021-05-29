@@ -4,6 +4,7 @@ using UnityEngine;
 using IdleLibrary.Inventory;
 using IdleLibrary;
 using System;
+using System.Runtime;
 using static ArtifactBuilderUtility;
 
 //プロトタイプを使って生成してみる
@@ -14,7 +15,7 @@ public class ArtifactBuilder
         var _artifact = new Artifact(-1);
         _artifact = basicInfoSet.GetArtifact(_artifact);
         //IDをもとにプロトタイプ生成
-        var prototype = ArtifactPrototypeRepository.GetPrototype(_artifact.id);
+        var prototype = ArtifactPrototypeRepository.GetPrototype(_artifact.id).
 
         var timeLevel = new TimeBasedLevel(prototype.maxLevel);
         var func = prototype.GetTransactionInfo(_artifact).GetTransactionInfo(_artifact);

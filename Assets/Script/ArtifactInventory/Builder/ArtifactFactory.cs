@@ -14,7 +14,7 @@ public class ArtifactBuilder
         var _artifact = new Artifact(-1);
         _artifact = basicInfoSet.GetArtifact(_artifact);
         //IDをもとにプロトタイプ生成
-        var prototype = new SlimeBronzeStatue();
+        var prototype = ArtifactPrototypeRepository.GetPrototype(_artifact.id);
 
         var timeLevel = new TimeBasedLevel(prototype.maxLevel);
         var func = prototype.GetTransactionInfo(_artifact).GetTransactionInfo(_artifact);
@@ -25,7 +25,6 @@ public class ArtifactBuilder
 
         //エフェクトの生成
         var effect = prototype.effect;
-        //これはちゃんとセーブされている
         effect.value = () => prototype.EffectValue(_artifact, _artifact.quality);
         _artifact.mainEffect = effect;
 

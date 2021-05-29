@@ -26,12 +26,14 @@ public class ArtifactReward : IExpeditionAction
     }
 
     //デリゲートはローカル変数を保存しないので、事前に抽選結果は保存しておく必要あり
-    [OdinSerialize] private Artifact recordArtifact;
+    [OdinSerialize] private List<Artifact> recordArtifact = new List<Artifact>();
+    
     [OdinSerialize] private (ArtifactMaterial.ID material, double num) recordMaterial;
     [OdinSerialize] private int[] chestTier;
 
     public void OnStart(int chestLotteryNum, float[] chestChance)
     {
+        recordArtifact = new List<Artifact>();
         chestTier = new int[chestLotteryNum];
         recordedAction = new Action[chestLotteryNum];
         for (int i = 0; i < chestLotteryNum; i++)
@@ -46,14 +48,21 @@ public class ArtifactReward : IExpeditionAction
             if (UnityEngine.Random.Range(0, 2) == 0)
             {
                 var factory = new ArtifactBuilder();
-                var artifact = factory.BuildArtifact(new BronzeInfoSetting());
+                var artifact = chestTier[i] switch
+                {
+                    1 => factory.BuildArtifact(new BronzeInfoSetting()),
+                    2 => factory.BuildArtifact(new SilverInfoSetting()),
+                    3 => factory.BuildArtifact(new GoldInfoSetting()),
+                    _ => factory.BuildArtifact(new BronzeInfoSetting())
+                };
                 //ここで保存
-                recordArtifact = artifact;
+                recordArtifact.Add(artifact);
+                var tempArtifact = recordArtifact[recordArtifact.Count-1];
                 action = () =>
                 {
-                    BASE.main.Confirm($"You got new artifact!\n" + recordArtifact.Text());
-                    BASE.main.inventory_mono.inventoryInfo.inventory.SetItemByOrder(recordArtifact);
-                };
+                    BASE.main.Confirm($"You got new artifact!\n" + tempArtifact.Text());
+                    BASE.main.inventory_mono.inventoryInfo.inventory.SetItemByOrder(tempArtifact);
+                };           
             }
             //素材だったら
             else

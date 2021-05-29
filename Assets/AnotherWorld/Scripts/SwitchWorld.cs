@@ -16,10 +16,13 @@ namespace Another
         public CanvasGroup normalCanvas, anotherCanvas;
         void SwitchToAnotherWorld()
         {
-            mainCanvasScaler.referenceResolution = new Vector2(960, 540);
-            mainCanvasScaler.gameObject.GetComponent<AutoCanvasScaler>().width = 960;
-            mainCanvasScaler.gameObject.GetComponent<AutoCanvasScaler>().height = 540;
-            Screen.SetResolution(Screen.width, (int)(Screen.width * (9f / 16)), Screen.fullScreen);
+            //mainCanvasScaler.referenceResolution = new Vector2(960, 540);
+            mainCanvasScaler.referenceResolution = new Vector2(1067, 600);
+            //mainCanvasScaler.gameObject.GetComponent<AutoCanvasScaler>().width = 960;
+            //mainCanvasScaler.gameObject.GetComponent<AutoCanvasScaler>().height = 540;
+            mainCanvasScaler.gameObject.GetComponent<AutoCanvasScaler>().width = 1067;
+            mainCanvasScaler.gameObject.GetComponent<AutoCanvasScaler>().height = 600;
+            Screen.SetResolution((int)(Screen.height * (16 / 9f)), Screen.height, Screen.fullScreen);
             anotherCanvas.alpha = 1;
             anotherCanvas.interactable = true;
             anotherCanvas.blocksRaycasts = true;
@@ -34,7 +37,7 @@ namespace Another
             mainCanvasScaler.referenceResolution = new Vector2(800, 600);
             mainCanvasScaler.gameObject.GetComponent<AutoCanvasScaler>().width = 800;
             mainCanvasScaler.gameObject.GetComponent<AutoCanvasScaler>().height = 600;
-            Screen.SetResolution(Screen.width, (int)(Screen.width * (3f / 4)), Screen.fullScreen);
+            Screen.SetResolution((int)(Screen.height * (16 / 9f)), Screen.height, Screen.fullScreen);
             normalCanvas.alpha = 1;
             normalCanvas.interactable = true;
             normalCanvas.blocksRaycasts = true;

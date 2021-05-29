@@ -1668,7 +1668,7 @@ public abstract class ALLY : BASE, IDamagable
             isMoving = false;
             Vector2 moveDistance = new Vector2(0, 0);
             //yield return new WaitUntil(() => !main.GameController.isAuto);
-            yield return new WaitUntil(() => !isInputText && ( Direction(direction.down) || Direction(direction.up) || Direction(direction.right) || Direction(direction.left)));
+            yield return new WaitUntil(() => !Another.SwitchWorld.isAnotherWorld && !isInputText && ( Direction(direction.down) || Direction(direction.up) || Direction(direction.right) || Direction(direction.left)));
             main.toggles[3].isOn = true;
             isMoving = true;
             //↑

@@ -165,21 +165,21 @@ public class FairyBronzeStatue : ArtifactPrototype
 {
     public override long maxLevel => 10;
     public override long maxMaxLevel => 20;
-    public override BasicEffect effect => (BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.MATK_add);
+    public override BasicEffect effect => new BasicEffect((BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.MATK_add));
     public override double EffectValue(ILevel level, int quality) => 1 * aug(level, quality);
 }
 public class FoxBronzeStatue : ArtifactPrototype
 {
     public override long maxLevel => 10;
     public override long maxMaxLevel => 20;
-    public override BasicEffect effect => (BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.DEF_add);
+    public override BasicEffect effect => new BasicEffect((BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.DEF_add));
     public override double EffectValue(ILevel level, int quality) => 1 * aug(level, quality);
 }
 public class DevilfishBronzeStatue : ArtifactPrototype
 {
     public override long maxLevel => 10;
     public override long maxMaxLevel => 20;
-    public override BasicEffect effect => (BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.MDEF_add);
+    public override BasicEffect effect => new BasicEffect((BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.MDEF_add));
     public override double EffectValue(ILevel level, int quality) => 1 * aug(level, quality);
 }
 
@@ -187,91 +187,91 @@ public class SlimeIronStatue : ArtifactPrototype
 {
     public override long maxLevel => 5;
     public override long maxMaxLevel => 10;
-    public override BasicEffect effect => (BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.HP_mul);
+    public override BasicEffect effect => new BasicEffect((BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.HP_mul));
     public override double EffectValue(ILevel level, int quality) => 10 * aug(level, quality) * 0.01;
 }
 public class BatIronStatue : ArtifactPrototype
 {
     public override long maxLevel => 5;
     public override long maxMaxLevel => 10;
-    public override BasicEffect effect => (BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.MP_mul);
+    public override BasicEffect effect => new BasicEffect((BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.MP_mul));
     public override double EffectValue(ILevel level, int quality) => 5 * aug(level, quality) * 0.01;
 }
 public class SpiderIronStatue : ArtifactPrototype
 {
     public override long maxLevel => 5;
     public override long maxMaxLevel => 10;
-    public override BasicEffect effect => (BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.ATK_mul);
+    public override BasicEffect effect => new BasicEffect((BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.ATK_mul));
     public override double EffectValue(ILevel level, int quality) => 1 * aug(level, quality) * 0.01;
 }
 public class FairyIronStatue : ArtifactPrototype
 {
     public override long maxLevel => 5;
     public override long maxMaxLevel => 10;
-    public override BasicEffect effect => (BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.MATK_mul);
+    public override BasicEffect effect => new BasicEffect((BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.MATK_mul));
     public override double EffectValue(ILevel level, int quality) => 1 * aug(level, quality) * 0.01;
 }
 public class FoxIronStatue : ArtifactPrototype
 {
     public override long maxLevel => 5;
     public override long maxMaxLevel => 10;
-    public override BasicEffect effect => (BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.DEF_mul);
+    public override BasicEffect effect => new BasicEffect((BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.DEF_mul));
     public override double EffectValue(ILevel level, int quality) => 1 * aug(level, quality) * 0.01;
 }
 public class DevilFishIronStatue : ArtifactPrototype
 {
     public override long maxLevel => 5;
     public override long maxMaxLevel => 10;
-    public override BasicEffect effect => (BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.MDEF_mul);
+    public override BasicEffect effect => new BasicEffect((BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.MDEF_mul));
     public override double EffectValue(ILevel level, int quality) => 1 * aug(level, quality) * 0.01;
 }
 public class SlimeGoldenStatue : ArtifactPrototype
 {
     public override long maxLevel => 5;
     public override long maxMaxLevel => 10;
-    public override BasicEffect effect => (BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.GoldGain);
+    public override BasicEffect effect => new BasicEffect((BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.GoldGain));
     public override double EffectValue(ILevel level, int quality) => 1 * aug(level, quality) * 0.01;
 }
 public class BatGoldenStatue : ArtifactPrototype
 {
     public override long maxLevel => 5;
     public override long maxMaxLevel => 10;
-    public override BasicEffect effect => (BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.SlimeBankEfficiency);
+    public override BasicEffect effect => new BasicEffect((BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.SlimeBankEfficiency));
     public override double EffectValue(ILevel level, int quality) => 1 * aug(level, quality) * 0.01;
 }
 public class SpiderGoldenStatue : ArtifactPrototype
 {
     public override long maxLevel => 5;
     public override long maxMaxLevel => 10;
-    public override BasicEffect effect => (BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.Proficiency);
+    public override BasicEffect effect => new BasicEffect((BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.Proficiency));
     public override double EffectValue(ILevel level, int quality) => 1 * aug(level, quality) * 0.01;
 }
 public class FairyGoldenStatue : ArtifactPrototype
 {
     public override long maxLevel => 5;
     public override long maxMaxLevel => 10;
-    public override BasicEffect effect => (BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.Resource);
+    public override BasicEffect effect => new BasicEffect((BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.Resource));
     public override double EffectValue(ILevel level, int quality) => 1 * aug(level, quality) * 0.01;
 }
 public class FoxGoldenStatue : ArtifactPrototype
 {
     public override long maxLevel => 5;
     public override long maxMaxLevel => 10;
-    public override BasicEffect effect => (BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.NitroGain);
+    public override BasicEffect effect => new BasicEffect((BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.NitroGain));
     public override double EffectValue(ILevel level, int quality) => 1 * aug(level, quality) * 0.01;
 }
 public class DevilFishGoldenstatue : ArtifactPrototype
 {
     public override long maxLevel => 5;
     public override long maxMaxLevel => 10;
-    public override BasicEffect effect => (BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.WorkerPower);
+    public override BasicEffect effect => new BasicEffect((BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.WorkerPower));
     public override double EffectValue(ILevel level, int quality) => 5 * aug(level, quality) * 0.01;
 }
 public class UnicornGoldenStatue : ArtifactPrototype
 {
     public override long maxLevel => 5;
     public override long maxMaxLevel => 10;
-    public override BasicEffect effect => (BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.ArtifactPower);
+    public override BasicEffect effect => new BasicEffect((BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.ArtifactPower));
     public override double EffectValue(ILevel level, int quality) => 1 * aug(level, quality) * 0.01;
 }
 

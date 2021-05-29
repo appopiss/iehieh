@@ -73,7 +73,7 @@ public class POPUP : MonoBehaviour
         thisRect.anchorMin = Vector2.one * 0.5f;
         thisRect.anchorMax = Vector2.one * 0.5f;
         thisRect.pivot = Vector2.one * 0.5f;
-        Vector3 position = Input.mousePosition - screenSize * 0.5f;
+        Vector3 position = Input.mousePosition * (1920f / Screen.width) - screenSize * 0.5f;
         if (position.y >= 0 && position.x >= 0)//第一象限
             thisRect.anchoredPosition = position + new Vector3(-thisRect.sizeDelta.x, -thisRect.sizeDelta.y) * 0.6f;
         else if (position.y >= 0 && position.x < 0)//第二象限

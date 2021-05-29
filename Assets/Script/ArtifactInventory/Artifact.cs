@@ -19,12 +19,13 @@ public class Artifact : ITEM, ILevel
     }
     public override string Text()
     {
+        Debug.Log($"Effect {(mainEffect as BasicEffect).value == null}\n time{timeManager.requiredTimeSec == null}\n timeManager {timeManager.transactionsInfo().text == null}");
         return $"----ARTIFACT----\n- " +
             $"ID : {id}" +
             $"\n\n- Level : {level} " +
             $"\n- Max Level : {timeManager.timeLevel.level} " +
             $"\n- Quality : {quality} " +
-            $"\n- Anti-magic Power : {antimagicPower}" +
+            $"\n- Anti-magic Power : {tDigit(antimagicPower)}" +
             $"\n- Time to Level Up : {(timeManager.currentTimesec / timeManager.requiredTimeSec()).ToString("F2")}" +
             $"\n- [Materials to Level Up]\n" + timeManager.transactionsInfo().text.Text() + 
             $"\n" + EffectText();

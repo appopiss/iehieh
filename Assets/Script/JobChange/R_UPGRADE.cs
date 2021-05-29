@@ -107,22 +107,20 @@ public class R_UPGRADE : POPTEXT_JOB
                     Name = "Unleash New Spirit Upgrades";
                     Explain = "Unleash 3 New Spirit Upgrades";
                     CurrentCost = (x) => 1;
-                    CurrentValue = (x) => 3*x;
+                    CurrentValue = (x) => 3 * x;
                     CurrentText = (x) => "Unleash " + tDigit(CurrentValue(x)) + " New Spirit Upgrades";
                     NextText = () => CurrentText(tempLevel + 1);
                     maxLevel = 3;
                     break;
-
-                    //case R_upgradeId.Unleash:
-                    //    Name = "Extra Spirit Upgrades";
-                    //    Explain = "Unleash";
-                    //    CurrentCost = (x) => 1;
-                    //    CurrentValue = (x) => 0.025d * x;
-                    //    CurrentText = (x) => "+ " + percent(CurrentValue(x));
-                    //    NextText = () => CurrentText(tempLevel + 1);
-                    //    maxLevel = 40;
-                    //    break;
-
+                case R_upgradeId.ArtifactEquipSlot:
+                    Name = "Artifact Equipment Slot";
+                    Explain = "Expand Artifact Equipment Slot + 1";
+                    CurrentCost = (x) => (long)Mathf.Pow(2f, x);
+                    CurrentValue = (x) => x;
+                    CurrentText = (x) => "Expand " + tDigit(CurrentValue(x)) + " Artifact Equipment Slot";
+                    NextText = () => CurrentText(tempLevel + 1);
+                    maxLevel = 10;
+                    break;
             }
         }
         else
@@ -338,13 +336,22 @@ public class R_UPGRADE : POPTEXT_JOB
                     Name = "Bank Queue";
                     Explain = "Gain an additional 5 queues for Slime Bank Upgrades.";
                     CurrentCost = (x) => (long)(25000 * Math.Pow(2, x));
-                    CurrentValue = (x) => 5*x;
+                    CurrentValue = (x) => 5 * x;
                     CurrentText = (x) => "Slime Bank Upgrade Queue  + " + tDigit(CurrentValue(x));
                     NextText = () => CurrentText(tempLevel + 1);
                     maxLevel = 5;
                     unlock.UnlockCondition = () => main.rein.R_upgrades[(int)R_UPGRADE.R_upgradeId.Unleash].GetCurrentValue() >= 9;
                     break;
-
+                case SR_upgradeID.ArtifactInventory:
+                    Name = "Artifact Inventory";
+                    Explain = "Expand Artifact Inventory + 3";
+                    CurrentCost = (x) => (long)(1000 * (1 + x) + 100 * Math.Pow(2, x));
+                    CurrentValue = (x) => 3 * x;
+                    CurrentText = (x) => "Expand Artifact Inventory  + " + tDigit(CurrentValue(x));
+                    NextText = () => CurrentText(tempLevel + 1);
+                    maxLevel = 4;
+                    break;
+                    //明日ここから！
             }
             maxLevel = (int)(maxLevel * (1 + maxLevelBonus));
             unlock.orderId = (int)SR_thisId;
@@ -379,7 +386,7 @@ public class R_UPGRADE : POPTEXT_JOB
         NewAngel,
         SpiritEssenceMore,
         Unleash,
-        MaxExpand,
+        ArtifactEquipSlot,
     }
     public R_upgradeId R_thisId;
     public enum SR_upgradeID
@@ -403,6 +410,7 @@ public class R_UPGRADE : POPTEXT_JOB
         PrestigeBargain,
         Queue,
         BankQueue,
+        ArtifactInventory,
     }
     public SR_upgradeID SR_thisId;
     //実際に値を使うときはTempじゃないほうを　使う．

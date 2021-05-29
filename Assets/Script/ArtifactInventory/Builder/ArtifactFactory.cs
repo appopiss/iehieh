@@ -17,15 +17,17 @@ public class ArtifactBuilder
         var prototype = new SlimeBronzeStatue();
 
         var timeLevel = new TimeBasedLevel(prototype.maxLevel);
-        var func = prototype.GetTransactionInfo(_artifact);
+        var func = prototype.GetTransactionInfo(_artifact).GetTransactionInfo(_artifact);
         Func<float> time = () => prototype.GetTimeCaltulator.GetRequiredTime(_artifact.quality, _artifact);
-        var timeManager = new TimeBasedLevelUp(_artifact, timeLevel, () => func.GetTransactionInfo(_artifact), time);
+        var timeManager = new TimeBasedLevelUp(_artifact, timeLevel, () => func, time);
 
         _artifact.timeManager = timeManager;
 
         //エフェクトの生成
         var effect = prototype.effect;
+        //これはちゃんとセーブされている
         effect.value = () => prototype.EffectValue(_artifact, _artifact.quality);
+        _artifact.mainEffect = effect;
 
         //オプショナルエフェクトの作成
         /*

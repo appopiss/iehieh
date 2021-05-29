@@ -143,7 +143,6 @@ namespace Another
         void Start()
         {
             autoMoveButton.onClick.AddListener(SwitchMove);
-            //hpInfoButton.onClick.AddListener(SwitchInfo);
             rangeButton.onClick.AddListener(SwitchRange);
             SwitchMove();
         }
@@ -152,12 +151,10 @@ namespace Another
             isAutoMove = !isAutoMove;
             if (isAutoMove)
             {
-                //setFalse(joystick.gameObject);
                 autoMoveImage.sprite = autoMoveSprites[0];
             }
             else
             {
-                //setActive(joystick.gameObject);
                 autoMoveImage.sprite = autoMoveSprites[1];
             }
         }
@@ -199,6 +196,12 @@ namespace Another
             mpBar.fillAmount = (float)ally.MpPercent();
             expBar.fillAmount = ally.CurrentExpPercent();
             goldBar.fillAmount = CurrentGoldPercent();
+
+            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) { if (isAutoMove) SwitchMove(); ally.MoveHorizontal(1); }
+            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) { if (isAutoMove) SwitchMove(); ally.MoveHorizontal(-1); }
+            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) { if (isAutoMove) SwitchMove(); ally.MoveVertical(1); }
+            if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) { if (isAutoMove) SwitchMove(); ally.MoveVertical(-1); }
+
             //if (isInfo)
             //{
             //    hpInfoText.text = optStr

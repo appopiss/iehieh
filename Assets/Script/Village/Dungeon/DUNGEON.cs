@@ -808,6 +808,8 @@ public abstract class DUNGEON : POPTEXT_DG
     //これはクエストに成功しても失敗しても呼ぶようにする．
     public IEnumerator ShowDeathPanel(bool isWin)
     {
+        //AnotherWorldに行くとここで止まる
+        yield return new WaitUntil(() => !Another.SwitchWorld.isAnotherWorld);
         //clearTime = main.DeathPanel.time;これはspendTimeでやることにした
         clearTime = (float)(spendTime - startTime);
         thisClearTime = clearTime;
@@ -901,7 +903,9 @@ public abstract class DUNGEON : POPTEXT_DG
                                 main.S.didAutoRein = true;
                                 main.S.autoReinJob = ALLY.Job.Warrior;
                                 yield return new WaitForSeconds(0.1f);
-                                main.buttons[4].onClick.Invoke();
+                                //main.buttons[4].onClick.Invoke();
+                                RPmanager.UpdateMaterialPoint();//MaterialによるSEポイントを計算
+                                main.rein.ResetAssignment();
                                 yield return new WaitForSeconds(1f);
                                 StartCoroutine(main.rein.Reincarnate());
                             }
@@ -914,7 +918,9 @@ public abstract class DUNGEON : POPTEXT_DG
                                 main.S.didAutoRein = true;
                                 main.S.autoReinJob = ALLY.Job.Wizard;
                                 yield return new WaitForSeconds(0.1f);
-                                main.buttons[4].onClick.Invoke();
+                                //main.buttons[4].onClick.Invoke();
+                                RPmanager.UpdateMaterialPoint();//MaterialによるSEポイントを計算
+                                main.rein.ResetAssignment();
                                 yield return new WaitForSeconds(1f);
                                 StartCoroutine(main.rein.Reincarnate());
                             }
@@ -927,7 +933,9 @@ public abstract class DUNGEON : POPTEXT_DG
                                 main.S.didAutoRein = true;
                                 main.S.autoReinJob = ALLY.Job.Angel;
                                 yield return new WaitForSeconds(0.1f);
-                                main.buttons[4].onClick.Invoke();
+                                //main.buttons[4].onClick.Invoke();
+                                RPmanager.UpdateMaterialPoint();//MaterialによるSEポイントを計算
+                                main.rein.ResetAssignment();
                                 yield return new WaitForSeconds(1f);
                                 StartCoroutine(main.rein.Reincarnate());
                             }

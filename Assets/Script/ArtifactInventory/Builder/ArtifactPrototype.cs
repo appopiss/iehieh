@@ -94,7 +94,7 @@ public class SlimeBronzeStatue : ArtifactPrototype
     public override long maxLevel => 10;
     public override long maxMaxLevel => 20;
     private BasicEffect _effect = new BasicEffect(EffectType.HP_add, "HP+", Calway.add); public override BasicEffect effect => _effect;
-    public override double EffectValue(ILevel level, int quality) => 10 * level.level * (1 + quality / 100);
+    public override double EffectValue(ILevel level, int quality) => 10 * (level.level + 1) * (1 + quality / 100);
     public override IArtifactTransaction GetTransactionInfo(ILevel level)
     {
         var tier1cost = new ArtifactMaterialSingleTransaction(ArtifactMaterial.ID.MysteriousStone, new LinearCost(1, 2, level));

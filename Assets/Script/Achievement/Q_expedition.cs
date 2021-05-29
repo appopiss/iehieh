@@ -14,7 +14,7 @@ public class Q_expedition : ACHIEVEMENT
     {
         //maxClearNumは最初に書いておこう．Awakeで初期化してるよ．
         AwakeQuest(8, Type.Limited);
-        CliantName = "Tamer";
+        CliantName = "Young Tamer";
         discription[0] = "Defeat 1000 Purple Slimes then you can access Expedition.";
         discription[1] = "Defeat 1000 Purple Bat.";
         discription[2] = "Capture 1 Normal Spider.";

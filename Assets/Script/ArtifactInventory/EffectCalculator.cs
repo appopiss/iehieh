@@ -15,7 +15,7 @@ public class EffectCalculator : IText
         this.inventory = inventory;
     }
     private Dictionary<Enum, double> calculateDic = new Dictionary<Enum, double>();
-    ArtifactPrototype protoEffects = new ArtifactPrototype();
+    //ArtifactPrototype protoEffects = new ArtifactPrototype();
     void _UpdateValue(params IEffect[] Effects)
     {
         foreach (var effects in Effects)
@@ -49,13 +49,15 @@ public class EffectCalculator : IText
             }
         }
 
-        //テキストの更新
+        //テキストの更新 IEffectのインスタンスを取ってこれないので断念...プロトタイプありきの実装だった
         string text = "";
+        /*
         foreach (var effects in calculateDic)
         {  
            if(calculateDic.ContainsKey(effects.Key))
                text += UsefulMethod.optStr + stats.StatsBreakdownText(calculateDic[effects.Key]) + "\n";
         }
+        */
         _text = text;
     }
     private string _text;

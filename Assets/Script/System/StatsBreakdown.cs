@@ -149,15 +149,16 @@ public class StatsBreakdown : BASE {
     {
         string nameText = "";
         string valueText = "";
-        nameText += "<size=16>Additive HP<size=12>";
+        nameText += "<size=14>Additive HP<size=10>";
 
         nameText += "\n - " + main.S.job + " Base ";
         nameText += "\n - Level Up";
         nameText += "\n - Upgrade";
         nameText += "\n - Equipment";
         nameText += "\n - Alchemy";
+        nameText += "\n - Artifact";
 
-        nameText += "\n\n<size=16>Multiplicative HP<size=12>";
+        nameText += "\n\n<size=14>Multiplicative HP<size=10>";
 
         nameText += "\n - Skill Passive Effect";
         nameText += "\n - Equipment";
@@ -169,16 +170,18 @@ public class StatsBreakdown : BASE {
         nameText += "\n - Potion";
         nameText += "\n - Buff";
         nameText += "\n - Mission Milestone";
+        nameText += "\n - Artifact";
 
-        valueText += "<size=16>" + tDigit(main.ally.addHP()) + "<size=12>";
+        valueText += "<size=14>" + tDigit(main.ally.addHP()) + "<size=10>";
 
         valueText += "\n   " + tDigit(main.ally.initialHp);
         valueText += "\n+ " + tDigit(main.ally.L_HP());
         valueText += "\n+ " + tDigit(main.SR.R_HP + main.ally.HP_ritualUpgrade());
         valueText += "\n+ " + tDigit(main.ArtifactFactor.ADD_HP());
         valueText += "\n+ " + tDigit(main.S.vitalityLevel);
+        valueText += "\n+ " + tDigit(ArtifactBonus.HP_ADD);
 
-        valueText += "\n\n<size=16>" + percent(main.ally.mulHP()) + "<size=12>";
+        valueText += "\n\n<size=14>" + percent(main.ally.mulHP()) + "<size=10>";
 
         valueText += "\n   " + percent(main.ally.HP_passiveSkill());
         valueText += "\n* " + percent((1+main.ArtifactFactor.MUL_HP()) * LegendaryEffect.StatsBonus());
@@ -190,6 +193,7 @@ public class StatsBreakdown : BASE {
         valueText += "\n* " + percent(1+main.S.hpPortion);
         valueText += "\n* " + percent(1+main.ally.buffHpFactor);
         valueText += "\n* " + percent(main.MissionMileStoneHidden.StatsFactor());
+        valueText += "\n* " + percent(1 + ArtifactBonus.HP_MUL);
         return new string[] { nameText,valueText};
     }
 
@@ -199,15 +203,16 @@ public class StatsBreakdown : BASE {
         string nameText = "";
         string valueText = "";
 
-        nameText += "<size=16>Additive MP<size=12>";
+        nameText += "<size=14>Additive MP<size=10>";
 
         nameText += "\n - " + main.S.job + " Base ";
         nameText += "\n - Level Up";
         nameText += "\n - Upgrade";
         nameText += "\n - Equipment ";
         nameText += "\n - Alchemy ";
+        nameText += "\n - Artifact";
 
-        nameText += "\n\n<size=16>Multiplicative MP<size=12>";
+        nameText += "\n\n<size=14>Multiplicative MP<size=10>";
 
         nameText += "\n - Skill Passive Effect";
         nameText += "\n - Equipment";
@@ -219,16 +224,18 @@ public class StatsBreakdown : BASE {
         nameText += "\n - Potion";
         //nameText += "\n - Buff";
         nameText += "\n - Mission Milestone";
+        nameText += "\n - Artifact";
 
-        valueText += "<size=16>" + tDigit(main.ally.addMP()) + "<size=12>";
+        valueText += "<size=14>" + tDigit(main.ally.addMP()) + "<size=10>";
 
         valueText += "\n   " + tDigit(main.ally.initialMp);
         valueText += "\n+ " + tDigit(main.ally.L_MP());
         valueText += "\n+ " + tDigit(main.SR.R_MP + main.ally.MP_ritualUpgrade());
         valueText += "\n+ " + tDigit(main.ArtifactFactor.ADD_MP());
         valueText += "\n+ " + tDigit(main.S.vitalityLevel);
+        valueText += "\n+ " + tDigit(ArtifactBonus.MP_ADD);
 
-        valueText += "\n\n<size=16>" + percent(main.ally.mulMP()) + "<size=12>";
+        valueText += "\n\n<size=14>" + percent(main.ally.mulMP()) + "<size=10>";
 
         valueText += "\n   " + percent(main.ally.MP_passiveSkill());
         valueText += "\n* " + percent((1 + main.ArtifactFactor.MUL_MP()) * LegendaryEffect.StatsBonus());
@@ -240,6 +247,7 @@ public class StatsBreakdown : BASE {
         valueText += "\n* " + percent(1 + main.S.mpPortion);
         //valueText += "\n* " + percent(1 + main.ally.buffHpFactor);
         valueText += "\n* " + percent(main.MissionMileStoneHidden.StatsFactor());
+        valueText += "\n* " + percent(1 + ArtifactBonus.MP_MUL);
 
         return new string[] { nameText, valueText };
     }
@@ -248,7 +256,7 @@ public class StatsBreakdown : BASE {
     {
         string nameText = "";
         string valueText = "";
-        nameText += "<size=16>Additive ATK<size=12>";
+        nameText += "<size=14>Additive ATK<size=10>";
 
         nameText += "\n - " + main.S.job + " Base ";
         nameText += "\n - Level Up";
@@ -257,8 +265,9 @@ public class StatsBreakdown : BASE {
         nameText += "\n - Alchemy ";
         nameText += "\n - Slime Bank";
         nameText += "\n - Buff";
+        nameText += "\n - Artifact";
 
-        nameText += "\n\n<size=16>Multiplicative ATK<size=12>";
+        nameText += "\n\n<size=14>Multiplicative ATK<size=10>";
 
         nameText += "\n - Skill Passive Effect";
         nameText += "\n - Equipment";
@@ -269,8 +278,9 @@ public class StatsBreakdown : BASE {
         nameText += "\n - Stance";
         nameText += "\n - Debuff";
         nameText += "\n - Mission Milestone";
+        nameText += "\n - Artifact";
 
-        valueText += "<size=16>" + tDigit(main.ally.addATK()) + "<size=12>";
+        valueText += "<size=14>" + tDigit(main.ally.addATK()) + "<size=10>";
 
         valueText += "\n   " + tDigit(main.ally.initialAtk);
         valueText += "\n+ " + tDigit(main.ally.L_ATK());
@@ -279,8 +289,9 @@ public class StatsBreakdown : BASE {
         valueText += "\n+ " + tDigit(main.S.muscleLevel);
         valueText += "\n+ " + tDigit(main.ally.ATK_bank());
         valueText += "\n+ " + tDigit(main.ally.buffAtkFactor);
+        valueText += "\n+ " + tDigit(ArtifactBonus.ATK_ADD);
 
-        valueText += "\n\n<size=16>" + percent(main.ally.mulATK()) + "<size=12>";
+        valueText += "\n\n<size=14>" + percent(main.ally.mulATK()) + "<size=10>";
 
         valueText += "\n   " + percent(main.ally.ATK_passiveSkill());
         valueText += "\n* " + percent((1 + main.ArtifactFactor.MUL_ATK()) * LegendaryEffect.StatsBonus());
@@ -291,6 +302,7 @@ public class StatsBreakdown : BASE {
         valueText += "\n* " + percent(1 + main.ally.warriorPassiveSwordFactor);
         valueText += "\n* " + percent(main.ally.tempAtkFactor);
         valueText += "\n* " + percent(main.MissionMileStoneHidden.StatsFactor());
+        valueText += "\n* " + percent(1 + ArtifactBonus.ATK_MUL);
 
         return new string[] { nameText, valueText };
     }
@@ -299,7 +311,7 @@ public class StatsBreakdown : BASE {
     {
         string nameText = "";
         string valueText = "";
-        nameText += "<size=16>Additive MATK<size=12>";
+        nameText += "<size=14>Additive MATK<size=10>";
 
         nameText += "\n - " + main.S.job + " Base ";
         nameText += "\n - Level Up";
@@ -308,8 +320,9 @@ public class StatsBreakdown : BASE {
         nameText += "\n - Alchemy ";
         nameText += "\n - Slime Bank";
         nameText += "\n - Buff";
+        nameText += "\n - Artifact";
 
-        nameText += "\n\n<size=16>Multiplicative MATK<size=12>";
+        nameText += "\n\n<size=14>Multiplicative MATK<size=10>";
 
         nameText += "\n - Skill Passive Effect";
         nameText += "\n - Equipment";
@@ -320,8 +333,9 @@ public class StatsBreakdown : BASE {
         nameText += "\n - Stance";
         nameText += "\n - Debuff";
         nameText += "\n - Mission Milestone";
+        nameText += "\n - Artifact";
 
-        valueText += "<size=16>" + tDigit(main.ally.addMATK()) + "<size=12>";
+        valueText += "<size=14>" + tDigit(main.ally.addMATK()) + "<size=10>";
 
         valueText += "\n   " + tDigit(main.ally.initialMAtk);
         valueText += "\n+ " + tDigit(main.ally.L_MATK());
@@ -330,9 +344,9 @@ public class StatsBreakdown : BASE {
         valueText += "\n+ " + tDigit(main.S.wisdomLevel);
         valueText += "\n+ " + tDigit(main.ally.MATK_bank());
         valueText += "\n+ " + tDigit(main.ally.buffMAtkFactor);
+        valueText += "\n+ " + tDigit(ArtifactBonus.MATK_ADD);
 
-
-        valueText += "\n\n<size=16>" + percent(main.ally.mulMATK()) + "<size=12>";
+        valueText += "\n\n<size=14>" + percent(main.ally.mulMATK()) + "<size=10>";
 
         valueText += "\n   " + percent(main.ally.MATK_passiveSkill());
         valueText += "\n* " + percent((1 + main.ArtifactFactor.MUL_MATK()) * LegendaryEffect.StatsBonus());
@@ -343,6 +357,7 @@ public class StatsBreakdown : BASE {
         valueText += "\n* " + percent(1 + main.ally.wizardPassiveStaffFactor);
         valueText += "\n* " + percent(main.ally.tempMatkFactor);
         valueText += "\n* " + percent(main.MissionMileStoneHidden.StatsFactor());
+        valueText += "\n* " + percent(1 + ArtifactBonus.MATK_MUL);
 
         return new string[] { nameText, valueText };
     }
@@ -351,7 +366,7 @@ public class StatsBreakdown : BASE {
     {
         string nameText = "";
         string valueText = "";
-        nameText += "<size=16>Additive DEF<size=12>";
+        nameText += "<size=14>Additive DEF<size=10>";
 
         nameText += "\n - " + main.S.job + " Base ";
         nameText += "\n - Level Up";
@@ -359,8 +374,9 @@ public class StatsBreakdown : BASE {
         nameText += "\n - Equipment ";
         nameText += "\n - Alchemy ";
         nameText += "\n - Buff";
+        nameText += "\n - Artifact";
 
-        nameText += "\n\n<size=16>Multiplicative DEF<size=12>";
+        nameText += "\n\n<size=14>Multiplicative DEF<size=10>";
 
         nameText += "\n - Skill Passive Effect";
         nameText += "\n - Equipment";
@@ -371,8 +387,9 @@ public class StatsBreakdown : BASE {
         nameText += "\n - Stance";
         nameText += "\n - Debuff";
         nameText += "\n - Mission Milestone";
+        nameText += "\n - Artifact";
 
-        valueText += "<size=16>" + tDigit(main.ally.addDEF()) + "<size=12>";
+        valueText += "<size=14>" + tDigit(main.ally.addDEF()) + "<size=10>";
 
         valueText += "\n   " + tDigit(main.ally.initialDef);
         valueText += "\n+ " + tDigit(main.ally.L_DEF());
@@ -380,9 +397,9 @@ public class StatsBreakdown : BASE {
         valueText += "\n+ " + tDigit(main.ArtifactFactor.ADD_DEF());
         valueText += "\n+ " + tDigit(main.S.muscleLevel);
         valueText += "\n+ " + tDigit(main.ally.buffDefFactor);
+        valueText += "\n+ " + tDigit(ArtifactBonus.DEF_ADD);
 
-
-        valueText += "\n\n<size=16>" + percent(main.ally.mulDEF()) + "<size=12>";
+        valueText += "\n\n<size=14>" + percent(main.ally.mulDEF()) + "<size=10>";
 
         valueText += "\n   " + percent(main.ally.DEF_passiveSkill());
         valueText += "\n* " + percent((1 + main.ArtifactFactor.MUL_DEF()) * LegendaryEffect.StatsBonus());
@@ -393,6 +410,7 @@ public class StatsBreakdown : BASE {
         valueText += "\n* " + percent(1 + main.ally.warriorPassiveSwordFactor - main.ally.warriorPassiveShieldFactor);
         valueText += "\n* " + percent(main.ally.tempDefFactor);
         valueText += "\n* " + percent(main.MissionMileStoneHidden.StatsFactor());
+        valueText += "\n* " + percent(1 + ArtifactBonus.DEF_MUL);
 
         return new string[] { nameText, valueText };
     }
@@ -401,7 +419,7 @@ public class StatsBreakdown : BASE {
     {
         string nameText = "";
         string valueText = "";
-        nameText += "<size=16>Additive MDEF<size=12>";
+        nameText += "<size=14>Additive MDEF<size=10>";
 
         nameText += "\n - " + main.S.job + " Base ";
         nameText += "\n - Level Up";
@@ -409,8 +427,9 @@ public class StatsBreakdown : BASE {
         nameText += "\n - Equipment ";
         nameText += "\n - Alchemy ";
         nameText += "\n - Buff";
+        nameText += "\n - Artifact";
 
-        nameText += "\n\n<size=16>Multiplicative MDEF<size=12>";
+        nameText += "\n\n<size=14>Multiplicative MDEF<size=10>";
 
         nameText += "\n - Skill Passive Effect";
         nameText += "\n - Equipment";
@@ -421,8 +440,9 @@ public class StatsBreakdown : BASE {
         nameText += "\n - Stance";
         nameText += "\n - Debuff";
         nameText += "\n - Mission Milestone";
+        nameText += "\n - Artifact";
 
-        valueText += "<size=16>" + tDigit(main.ally.addMDEF()) + "<size=12>";
+        valueText += "<size=14>" + tDigit(main.ally.addMDEF()) + "<size=10>";
 
         valueText += "\n   " + tDigit(main.ally.initialMDef);
         valueText += "\n+ " + tDigit(main.ally.L_MDEF());
@@ -430,9 +450,10 @@ public class StatsBreakdown : BASE {
         valueText += "\n+ " + tDigit(main.ArtifactFactor.ADD_MDEF());
         valueText += "\n+ " + tDigit(main.S.wisdomLevel);
         valueText += "\n+ " + tDigit(main.ally.buffMDefFactor);
+        valueText += "\n+ " + tDigit(ArtifactBonus.MDEF_ADD);
 
 
-        valueText += "\n\n<size=16>" + percent(main.ally.mulMDEF()) + "<size=12>";
+        valueText += "\n\n<size=14>" + percent(main.ally.mulMDEF()) + "<size=10>";
 
         valueText += "\n   " + percent(main.ally.MDEF_passiveSkill());
         valueText += "\n* " + percent((1 + main.ArtifactFactor.MUL_MDEF()) * LegendaryEffect.StatsBonus());
@@ -443,6 +464,7 @@ public class StatsBreakdown : BASE {
         valueText += "\n* " + percent(1 - main.ally.wizardPassiveStaffFactor + main.ally.warriorPassiveShieldFactor);
         valueText += "\n* " + percent(main.ally.tempMdefFactor);
         valueText += "\n* " + percent(main.MissionMileStoneHidden.StatsFactor());
+        valueText += "\n* " + percent(1 + ArtifactBonus.MDEF_MUL);
 
         return new string[] { nameText, valueText };
     }
@@ -451,7 +473,7 @@ public class StatsBreakdown : BASE {
     {
         string nameText = "";
         string valueText = "";
-        nameText += "<size=16>Additive SPD<size=12>";
+        nameText += "<size=14>Additive SPD<size=10>";
 
         nameText += "\n - " + main.S.job + " Base ";
         nameText += "\n - Level Up";
@@ -459,7 +481,7 @@ public class StatsBreakdown : BASE {
         nameText += "\n - Equipment ";
         nameText += "\n - Alchemy ";
 
-        nameText += "\n\n<size=16>Multiplicative SPD<size=12>";
+        nameText += "\n\n<size=14>Multiplicative SPD<size=10>";
 
         nameText += "\n - Skill Passive Effect";
         nameText += "\n - Equipment";
@@ -470,11 +492,11 @@ public class StatsBreakdown : BASE {
         nameText += "\n - Buff";
         nameText += "\n - Mission Milestone";
 
-        nameText += "\n\n<size=16>Bonus SPD<size=12>";
+        nameText += "\n\n<size=14>Bonus SPD<size=10>";
 
         nameText += "\n - Spicy Potion";
 
-        valueText += "<size=16>" + tDigit(main.ally.addSPD()) + "<size=12>";
+        valueText += "<size=14>" + tDigit(main.ally.addSPD()) + "<size=10>";
 
         valueText += "\n   " + tDigit(main.ally.initialSpeed);
         valueText += "\n+ " + tDigit(main.ally.L_SPD());
@@ -483,18 +505,18 @@ public class StatsBreakdown : BASE {
         valueText += "\n+ " + tDigit(main.S.agilityLevel);
 
 
-        valueText += "\n\n<size=16>" + percent(main.ally.mulSPD()) + "<size=12>";
+        valueText += "\n\n<size=14>" + percent(main.ally.mulSPD()) + "<size=10>";
 
         valueText += "\n   " + percent(main.ally.SPD_passiveSkill());
         valueText += "\n* " + percent((1 + main.ArtifactFactor.MUL_SPD()) * LegendaryEffect.StatsBonus());
-        valueText += "\n* " + percent(1 + main.Ascends[12].calculateCurrentValue());
+        valueText += "\n* " + percent(1 + main.Ascends[10].calculateCurrentValue());
         valueText += "\n* " + percent(1 + main.rein.R_factor.StatusIncrease());
         valueText += "\n* " + percent(1 + main.QuestCtrl.R_bananoon());
         //valueText += "\n* " + percent(1 + main.ally.Mile_spd);
         valueText += "\n* " + percent(1 + main.ally.buffSpdFactor);
         valueText += "\n* " + percent(main.MissionMileStoneHidden.StatsFactor());
 
-        valueText += "\n\n<size=16>+ " + tDigit(main.ally.buffSpdFactor2) + "<size=12>";
+        valueText += "\n\n<size=14>+ " + tDigit(main.ally.buffSpdFactor2) + "<size=10>";
 
         valueText += "\n+ " + tDigit(main.ally.buffSpdFactor2);
 
@@ -506,7 +528,7 @@ public class StatsBreakdown : BASE {
         string nameText = "";
         string valueText = "";
 
-        nameText += "<size=16>Multiplicative Gold<size=12>";
+        nameText += "<size=14>Multiplicative Gold<size=10>";
 
         nameText += "\n - Skill Passive Effect";
         nameText += "\n - Equipment";
@@ -516,15 +538,16 @@ public class StatsBreakdown : BASE {
         nameText += "\n - Buff";
         nameText += "\n - IEB Bonus";
         nameText += "\n - DLC";
+        nameText += "\n - Artifact";
 
-        nameText += "\n\n<size=16>Bonus Gold<size=12>";
+        nameText += "\n\n<size=14>Bonus Gold<size=10>";
 
         nameText += "\n - Upgrade";
         nameText += "\n - Equipment";
         nameText += "\n - Reincarnation";
         nameText += "\n - DLC";
 
-        valueText += "<size=16>" + percent(mulGold()) + "<size=12>";
+        valueText += "<size=14>" + percent(mulGold()) + "<size=10>";
 
         valueText += "\n   " + percent(1+GOLD_passiveSkill());
         valueText += "\n* " + percent(1 + main.ArtifactFactor.GOLD());
@@ -537,8 +560,9 @@ public class StatsBreakdown : BASE {
             valueText += "\n* 100.00%";
         valueText += "\n* " + percent(1d + main.iebCtrl.iebBonuses[(int)IEBBONUS.BonusKind.goldgain]);
         valueText += "\n* " + percent(main.GoldGainDLCFactor());
+        valueText += "\n* " + percent(1 + ArtifactBonus.GOLD_GAIN);
 
-        valueText += "\n\n<size=16>" + tDigit(bonusGold()) + "<size=12>";
+        valueText += "\n\n<size=14>" + tDigit(bonusGold()) + "<size=10>";
 
         valueText += "\n+ " + tDigit(main.StatusUpgrade[4].calculateCurrentValue() + main.SR.R_GOLD);
         valueText += "\n+ " + tDigit(main.ArtifactFactor.ADD_GOLD());
@@ -590,7 +614,7 @@ public class StatsBreakdown : BASE {
     {
         string nameText = "";
         string valueText = "";
-        nameText += "<size=16>Additive Gold Cap<size=12>";
+        nameText += "<size=14>Additive Gold Cap<size=10>";
 
         nameText += "\n - Base";
         nameText += "\n - Stone Gold Cap";
@@ -601,7 +625,7 @@ public class StatsBreakdown : BASE {
         nameText += "\n - Epic Store";
         nameText += "\n - Reincarnation";
 
-        nameText += "\n\n<size=16>Multiplicative<size=12>";
+        nameText += "\n\n<size=14>Multiplicative<size=10>";
 
         nameText += "\n - Dark Ritual";
         nameText += "\n - Spirit Upgrade";
@@ -609,7 +633,7 @@ public class StatsBreakdown : BASE {
         nameText += "\n - IEB Bonus";
 
 
-        valueText += "<size=16>" + tDigit(main.GoldCapADD()) + "<size=12>";
+        valueText += "<size=14>" + tDigit(main.GoldCapADD()) + "<size=10>";
 
         valueText += "\n   1000";
         valueText += "\n+ " + tDigit(main.SR.stoneGoldLevel * main.Ascends[0].calculateCurrentValue());
@@ -620,7 +644,7 @@ public class StatsBreakdown : BASE {
         valueText += "\n+ " + tDigit(main.S.GoldCapByKreds);
         valueText += "\n+ " + tDigit(main.rein.R_factor.GoldCap());
 
-        valueText += "\n\n<size=16>" + percent(main.GoldCapMUL()) + "<size=12>";
+        valueText += "\n\n<size=14>" + percent(main.GoldCapMUL()) + "<size=10>";
 
         valueText += "\n   " + percent(1 + main.jems[(int)JEM.ID.GoldCapGem].Effect());
         valueText += "\n* " + percent(1 + main.rein.SR_upgrades[(int)R_UPGRADE.SR_upgradeID.Deeper].GetCurrentValue());
@@ -643,7 +667,7 @@ public class StatsBreakdown : BASE {
         string nameText = "";
         string valueText = "";
 
-        nameText += "<size=16>Multiplicative EXP<size=12>";
+        nameText += "<size=14>Multiplicative EXP<size=10>";
 
         nameText += "\n - Equipment";
         // += "\n - MileStone ";
@@ -651,12 +675,12 @@ public class StatsBreakdown : BASE {
         nameText += "\n - IEB Bonus";
         nameText += "\n - DLC & Epic Store";
 
-        nameText += "\n\n<size=16>Bonus EXP<size=12>";
+        nameText += "\n\n<size=14>Bonus EXP<size=10>";
 
         nameText += "\n - Upgrade";
         nameText += "\n - Reincarnation";
 
-        valueText += "<size=16>" + percent(mulEXP()) + "<size=12>";
+        valueText += "<size=14>" + percent(mulEXP()) + "<size=10>";
 
         valueText += "\n   " + percent(1 + main.ArtifactFactor.MUL_EXP());
         //valueText += "\n* " + percent(1 + main.ally.Mile_exp);
@@ -664,7 +688,7 @@ public class StatsBreakdown : BASE {
         valueText += "\n* " + percent(1d + main.iebCtrl.iebBonuses[(int)IEBBONUS.BonusKind.expgain]);
         valueText += "\n* " + percent(main.ExpGainDLCFactor());
 
-        valueText += "\n\n<size=16>" + tDigit(bonusEXP()) + "<size=12>";
+        valueText += "\n\n<size=14>" + tDigit(bonusEXP()) + "<size=10>";
 
         valueText += "\n+ " + tDigit(main.StatusUpgrade[5].calculateCurrentValue() + main.SR.R_EXP);
         valueText += "\n+ " + tDigit(main.rein.SR_upgrades[(int)R_UPGRADE.SR_upgradeID.Golden].GetCurrentValue()*5);
@@ -694,14 +718,14 @@ public class StatsBreakdown : BASE {
         string nameText = "";
         string valueText = "";
 
-        nameText += "<size=16>Multiplicative Drop<size=12>";
+        nameText += "<size=14>Multiplicative Drop<size=10>";
 
         nameText += "\n - Equipment";
         //nameText += "\n - MileStone ";
         nameText += "\n - Mission MileStone ";
         nameText += "\n - Upgrade";
         nameText += "\n - Area Mastery";
-        valueText += "<size=16>" + TotalDrop() + "<size=12>";
+        valueText += "<size=14>" + TotalDrop() + "<size=10>";
 
         valueText += "\n   " + percent(1 + main.ArtifactFactor.DROP());
         //valueText += "\n* " + percent(1 + main.ally.Mile_drop);
@@ -729,7 +753,7 @@ public class StatsBreakdown : BASE {
         string nameText = "";
         string valueText = "";
 
-        nameText += "<size=16>Skill Proficiency<size=12>";
+        nameText += "<size=14>Skill Proficiency<size=10>";
 
         nameText += "\n - Skill Passive Effect";
         nameText += "\n - Equipment";
@@ -737,8 +761,9 @@ public class StatsBreakdown : BASE {
         nameText += "\n - Dark Ritual ";
         nameText += "\n - IEB Bonus";
         nameText += "\n - Buff";
+        nameText += "\n - Artifact";
 
-        valueText += "<size=16>" + percent(profFactor()) + "<size=12>";
+        valueText += "<size=14>" + percent(profFactor()) + "<size=10>";
 
         if (main.MissionMileStone.IsSkillPassiveEffect()) 
             valueText += "\n   " + percent(1 + main.skillList.WarriorSkills[(int)SkillList.WarriorSkill.sword].warriorFactor +
@@ -769,7 +794,8 @@ public class StatsBreakdown : BASE {
             valueText += "\n* " + percent(1 + main.angelSkillAry[9].Damage() / 100);
         else
             valueText += "\n* 100%";
-     return new string[] { nameText, valueText };
+        valueText += "\n* " + percent(1 + ArtifactBonus.PROFICIENCY);
+        return new string[] { nameText, valueText };
     }
 
 
@@ -784,7 +810,8 @@ public class StatsBreakdown : BASE {
         main.skillList.AngelSkills[(int)SkillList.AngelSkill.wingAttack].angelFactor +
         main.angelSkillAry[9].pas1 + main.angelSkillAry[9].pas2 + main.angelSkillAry[9].pas3) * (1 + main.jems[(int)JEM.ID.Prof].Effect())
         * (1 + main.ArtifactFactor.PROF()) * (1 + main.Ascends[14].calculateCurrentValue()) * (1 + main.angelSkillAry[9].Damage() / 100)
-        * (1d + main.iebCtrl.iebBonuses[(int)IEBBONUS.BonusKind.prof]);
+        * (1d + main.iebCtrl.iebBonuses[(int)IEBBONUS.BonusKind.prof])
+                * (1 + ArtifactBonus.PROFICIENCY);
             }
             else
             {
@@ -793,7 +820,8 @@ public class StatsBreakdown : BASE {
         main.skillList.AngelSkills[(int)SkillList.AngelSkill.wingAttack].angelFactor +
         main.angelSkillAry[9].pas1 + main.angelSkillAry[9].pas2 + main.angelSkillAry[9].pas3) * (1 + main.jems[(int)JEM.ID.Prof].Effect())
         * (1 + main.ArtifactFactor.PROF()) * (1 + main.Ascends[14].calculateCurrentValue())
-        * (1d + main.iebCtrl.iebBonuses[(int)IEBBONUS.BonusKind.prof]);
+        * (1d + main.iebCtrl.iebBonuses[(int)IEBBONUS.BonusKind.prof]) * (1 + ArtifactBonus.PROFICIENCY);
+
             }
         }
         else if (main.ally.job == ALLY.Job.Angel)
@@ -805,7 +833,8 @@ public class StatsBreakdown : BASE {
         main.skillList.AngelSkills[(int)SkillList.AngelSkill.wingAttack].angelFactor +
         main.angelSkillAry[9].pas1 + main.angelSkillAry[9].pas2 + main.angelSkillAry[9].pas3) * (1 + main.jems[(int)JEM.ID.Prof].Effect())
         * (1 + main.ArtifactFactor.PROF()) * (1 + main.Ascends[14].calculateCurrentValue()) * (1 + main.angelSkillAry[9].Damage() / 100)
-                * (1d + main.iebCtrl.iebBonuses[(int)IEBBONUS.BonusKind.prof]);
+                * (1d + main.iebCtrl.iebBonuses[(int)IEBBONUS.BonusKind.prof]) * (1 + ArtifactBonus.PROFICIENCY);
+
                 ;
             }
             else
@@ -815,7 +844,8 @@ public class StatsBreakdown : BASE {
         main.skillList.AngelSkills[(int)SkillList.AngelSkill.wingAttack].angelFactor +
         main.angelSkillAry[9].pas1 + main.angelSkillAry[9].pas2 + main.angelSkillAry[9].pas3) * (1 + main.jems[(int)JEM.ID.Prof].Effect())
         * (1 + main.ArtifactFactor.PROF()) * (1 + main.Ascends[14].calculateCurrentValue())
-                * (1d + main.iebCtrl.iebBonuses[(int)IEBBONUS.BonusKind.prof]);
+                * (1d + main.iebCtrl.iebBonuses[(int)IEBBONUS.BonusKind.prof]) * (1 + ArtifactBonus.PROFICIENCY);
+
                 ;
 
             }
@@ -828,7 +858,8 @@ public class StatsBreakdown : BASE {
                 return (1) *
         (1 + main.skillList.WarriorSkills[(int)SkillList.WarriorSkill.sword].warriorFactor) * (1 + main.jems[(int)JEM.ID.Prof].Effect())
         * (1 + main.ArtifactFactor.PROF()) * (1 + main.Ascends[14].calculateCurrentValue()) * (1 + main.angelSkillAry[9].Damage() / 100)
-                * (1d + main.iebCtrl.iebBonuses[(int)IEBBONUS.BonusKind.prof]);
+                * (1d + main.iebCtrl.iebBonuses[(int)IEBBONUS.BonusKind.prof]) * (1 + ArtifactBonus.PROFICIENCY);
+
                 ;
             }
             else
@@ -836,8 +867,9 @@ public class StatsBreakdown : BASE {
                 return (1 ) *
         (1 + main.skillList.WarriorSkills[(int)SkillList.WarriorSkill.sword].warriorFactor) * (1 + main.jems[(int)JEM.ID.Prof].Effect())
         * (1 + main.ArtifactFactor.PROF()) * (1 + main.Ascends[14].calculateCurrentValue())
-                * (1d + main.iebCtrl.iebBonuses[(int)IEBBONUS.BonusKind.prof]);
-               ;
+                * (1d + main.iebCtrl.iebBonuses[(int)IEBBONUS.BonusKind.prof]) * (1 + ArtifactBonus.PROFICIENCY);
+
+                ;
 
             }
 
@@ -849,7 +881,8 @@ public class StatsBreakdown : BASE {
                 return (1) *
         (1 + main.skillList.WizardSkills[(int)SkillList.WizardSkill.staff].wizardFactor) * (1 + main.jems[(int)JEM.ID.Prof].Effect())
         * (1 + main.ArtifactFactor.PROF()) * (1 + main.Ascends[14].calculateCurrentValue()) * (1 + main.angelSkillAry[9].Damage() / 100)
-                * (1d + main.iebCtrl.iebBonuses[(int)IEBBONUS.BonusKind.prof]);
+                * (1d + main.iebCtrl.iebBonuses[(int)IEBBONUS.BonusKind.prof]) * (1 + ArtifactBonus.PROFICIENCY);
+
                 ;
             }
             else
@@ -857,7 +890,8 @@ public class StatsBreakdown : BASE {
                 return (1 ) *
         (1 + main.skillList.WizardSkills[(int)SkillList.WizardSkill.staff].wizardFactor) * (1 + main.jems[(int)JEM.ID.Prof].Effect())
         * (1 + main.ArtifactFactor.PROF()) * (1 + main.Ascends[14].calculateCurrentValue())
-                * (1d + main.iebCtrl.iebBonuses[(int)IEBBONUS.BonusKind.prof]);
+                * (1d + main.iebCtrl.iebBonuses[(int)IEBBONUS.BonusKind.prof]) * (1 + ArtifactBonus.PROFICIENCY);
+
                 ;
 
             }

@@ -815,6 +815,7 @@ public abstract class ENEMY : BASE//,IPointerDownHandler
              * (1 + main.jems[(int)JEM.ID.GoldGem].Effect())
              * (1 + main.ally.Mile_gold)
              * (1d + main.iebCtrl.iebBonuses[(int)IEBBONUS.BonusKind.goldgain])
+             * (1 + ArtifactBonus.GOLD_GAIN)
              ;
     }
 

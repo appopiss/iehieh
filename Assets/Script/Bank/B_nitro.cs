@@ -70,7 +70,7 @@ public class B_nitro : B_Upgrade
         while (true)
         {
             yield return new WaitUntil(() => level > 0);
-            main.S.CurrentNitro += (float)calculateCurrentValue() / 60;
+            main.S.CurrentNitro += (float)(calculateCurrentValue() / 60f) * (float)(1 + ArtifactBonus.NITRO_GAIN);
             yield return new WaitForSecondsRealtime(60.0f);
         }
     }

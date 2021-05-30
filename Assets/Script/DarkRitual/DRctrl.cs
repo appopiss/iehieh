@@ -127,7 +127,9 @@ public class DRctrl : BASE {
             * (1 + main.bankCtrl.BankUpgrades[(int)B_Upgrade.UpgradeId.taming].calculateCurrentValue())
             * (1 + main.MissionMileStone.JemBonus())
             * WorkerPowerSkillFactor()
-            * (1 + Convert.ToInt32(main.S.isDarkRitualPurchase));
+            * (1 + Convert.ToInt32(main.S.isDarkRitualPurchase))
+            * (1 + ArtifactBonus.WORKER_POWER)
+            ;
 ;    }
 
     double WorkerPowerSkillFactor()
@@ -149,6 +151,8 @@ public class DRctrl : BASE {
             text.Append("\n- Slime Bank   <color=green>* " + percent(1 + main.bankCtrl.BankUpgrades[(int)B_Upgrade.UpgradeId.taming].calculateCurrentValue()) + "</color>");
         if (WorkerPowerSkillFactor() > 1)
             text.Append("\n- Skill   <color=green>* " + percent(WorkerPowerSkillFactor()) + "</color>");
+        if (ArtifactBonus.WORKER_POWER > 0)
+            text.Append("\n- Artifact   <color=green>* " + percent(1 + ArtifactBonus.WORKER_POWER) + "</color>");
         if (main.S.isDarkRitualPurchase)
             text.Append("\n- Epic Store   <color=green>* " + percent(2) + "</color>");
         text.Append("\n<size=14>Total   <color=green>" + percent(WorkerPower()));

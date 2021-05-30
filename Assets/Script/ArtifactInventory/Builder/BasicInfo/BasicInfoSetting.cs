@@ -34,7 +34,7 @@ public class SilverInfoSetting : BaseBasicInfoSet
 }
 public class GoldInfoSetting : BaseBasicInfoSet
 {
-    protected override int ChooseId() => UnityEngine.Random.Range(12, 21);
+    protected override int ChooseId() => UnityEngine.Random.Range(12, 18);
     protected override int ChooseQuality() => UnityEngine.Random.Range(30, 100);
     protected override double ChooseAntiMagicPower(int quality) => quality * UnityEngine.Random.Range(1.2f, 1.5f);
 }

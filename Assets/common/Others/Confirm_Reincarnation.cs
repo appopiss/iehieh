@@ -63,7 +63,7 @@ public class Confirm_Reincarnation : BASE
             upgradeText[0].text += UpLevelR(main.R_upgrades[i]);
         }
         upgradeText[1].text = "";
-        for (int i = 3; i < 5; i++)
+        for (int i = 3; i < 6; i++)
         {
             upgradeText[1].text += UpLevelR(main.R_upgrades[i]);
         }
@@ -73,7 +73,7 @@ public class Confirm_Reincarnation : BASE
             upgradeText[2].text += UpLevelSR(main.SR_upgrades[i]);
         }
         upgradeText[3].text = "";
-        for (int i = 9; i < 18; i++)
+        for (int i = 9; i < 19; i++)
         {
             upgradeText[3].text += UpLevelSR(main.SR_upgrades[i]);
         }

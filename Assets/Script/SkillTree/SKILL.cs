@@ -148,9 +148,13 @@ public class SKILL : POPTEXT_SL {
     public Vector2 InitialManualVector = new Vector2(0, 10);
     public double ProfFactor()
     {
-        return (1 + main.ArtifactFactor.PROF()) * (1 + main.Ascends[14].calculateCurrentValue()) * (1 + main.jems[(int)JEM.ID.Prof].Effect())
-            * LegendaryEffect.SkillEfficiencyBonus() * SumMulDelegate(main.cc.cf.Proficiency)
-                    * (1d + main.iebCtrl.iebBonuses[(int)IEBBONUS.BonusKind.prof]);
+        return (1 + main.ArtifactFactor.PROF())
+            * (1 + main.Ascends[14].calculateCurrentValue())
+            * (1 + main.jems[(int)JEM.ID.Prof].Effect())
+            * LegendaryEffect.SkillEfficiencyBonus()
+            * SumMulDelegate(main.cc.cf.Proficiency)
+            * (1d + main.iebCtrl.iebBonuses[(int)IEBBONUS.BonusKind.prof])
+            * (1 + ArtifactBonus.PROFICIENCY)
         ;
     }
     public double culGetExp()

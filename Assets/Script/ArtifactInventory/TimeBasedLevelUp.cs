@@ -98,18 +98,7 @@ public class ArtifactMaterialTransaction : ITransaction, IText
     }
 }
 
-[Serializable]
-public class TimeBasedLevel : ILevel
-{
-    public long level { get => _levelCap; set => _levelCap = value; }
-    [OdinSerialize] private long _levelCap;
-    public long maxLevelCap;
-    public TimeBasedLevel(long maxLevelCap)
-    {
-        this.level = 1;
-        this.maxLevelCap = maxLevelCap;
-    }
-}
+
 [Serializable]
 public class TimeBasedLevelUp
 {

@@ -70,7 +70,7 @@ public class Confirm_ResetReincarnation : BASE
             upgradeText[0].text += UpLevel(main.SR_upgrades[i]);
         }
         upgradeText[1].text = "";
-        for (int i = 9; i < 18; i++)
+        for (int i = 9; i < 19; i++)
         {
             upgradeText[1].text += UpLevel(main.SR_upgrades[i]);
         }

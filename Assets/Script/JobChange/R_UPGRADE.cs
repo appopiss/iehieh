@@ -115,11 +115,11 @@ public class R_UPGRADE : POPTEXT_JOB
                 case R_upgradeId.ArtifactEquipSlot:
                     Name = "Artifact Equipment Slot";
                     Explain = "Expand Artifact Equipment Slot + 1";
-                    CurrentCost = (x) => (long)Mathf.Pow(2f, x);
+                    CurrentCost = (x) => (long)Mathf.Pow(2, x);
                     CurrentValue = (x) => x;
                     CurrentText = (x) => "Expand " + tDigit(CurrentValue(x)) + " Artifact Equipment Slot";
                     NextText = () => CurrentText(tempLevel + 1);
-                    maxLevel = 10;
+                    maxLevel = 12;
                     break;
             }
         }
@@ -345,13 +345,12 @@ public class R_UPGRADE : POPTEXT_JOB
                 case SR_upgradeID.ArtifactInventory:
                     Name = "Artifact Inventory";
                     Explain = "Expand Artifact Inventory + 3";
-                    CurrentCost = (x) => (long)(1000 * (1 + x) + 100 * Math.Pow(2, x));
+                    CurrentCost = (x) => (long)(1000 * (1 + x) + 100 * Math.Pow(2.5, x));
                     CurrentValue = (x) => 3 * x;
                     CurrentText = (x) => "Expand Artifact Inventory  + " + tDigit(CurrentValue(x));
                     NextText = () => CurrentText(tempLevel + 1);
-                    maxLevel = 4;
+                    maxLevel = 5;
                     break;
-                    //明日ここから！
             }
             maxLevel = (int)(maxLevel * (1 + maxLevelBonus));
             unlock.orderId = (int)SR_thisId;

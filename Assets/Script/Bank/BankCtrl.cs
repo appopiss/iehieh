@@ -159,9 +159,20 @@ public class BankCtrl : BASE {
     public double Effeciency()  
     {
         if (BankUpgrades[(int)B_Upgrade.UpgradeId.BankEfficiency].calculateCurrentValue() == 0)
-            return 500 / ((1+main.alchemyController.bankEfficiencyFactor)*(1+main.MissionMileStone.BankEfficiencyBonus()));
+            return 500 /
+                (
+                (1 + main.alchemyController.bankEfficiencyFactor)
+                * (1 + main.MissionMileStone.BankEfficiencyBonus())
+                * (1 + ArtifactBonus.SLIMEBANK_EFFICIENCY)
+                ) ;
 
-        return 1.0f / (BankUpgrades[(int)B_Upgrade.UpgradeId.BankEfficiency].calculateCurrentValue() * (1 + main.alchemyController.bankEfficiencyFactor) * (1 + main.MissionMileStone.BankEfficiencyBonus()));
+        return 1.0f /
+            (
+            BankUpgrades[(int)B_Upgrade.UpgradeId.BankEfficiency].calculateCurrentValue()
+            * (1 + main.alchemyController.bankEfficiencyFactor)
+            * (1 + main.MissionMileStone.BankEfficiencyBonus())
+            * (1 + ArtifactBonus.SLIMEBANK_EFFICIENCY)
+            );
     }
     public string ShowReputation()
     {

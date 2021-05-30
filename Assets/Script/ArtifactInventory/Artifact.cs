@@ -19,7 +19,6 @@ public class Artifact : ITEM, ILevel
     }
     public override string Text()
     {
-        Debug.Log($"Effect {(mainEffect as BasicEffect).value == null}\n time{timeManager.requiredTimeSec == null}\n timeManager {timeManager.transactionsInfo().text == null}");
         return $"----ARTIFACT----\n- " +
             $"ID : {id}" +
             $"\n\n- Level : {level} " +
@@ -38,7 +37,8 @@ public class Artifact : ITEM, ILevel
     {
         string text = "[Effect]\n";
         text += optStr + mainEffect.Text() + "\n";
-        text += optStr + "\n[Optional Effect]";
+        if (optEffects == null) return text;
+        text += optStr + "\n[Optional Effect]\n";
         optEffects.ForEach((x) => text += optStr + x.Text() + "\n");
         return text;
     }

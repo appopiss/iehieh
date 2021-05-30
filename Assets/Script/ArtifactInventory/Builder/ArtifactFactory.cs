@@ -15,7 +15,7 @@ public class ArtifactBuilder
         var _artifact = new Artifact(-1);
         _artifact = basicInfoSet.GetArtifact(_artifact);
         //IDをもとにプロトタイプ生成
-        var prototype = ArtifactPrototypeRepository.GetPrototype(_artifact.id).
+        var prototype = ArtifactPrototypeRepository.GetPrototype(_artifact.id);
 
         var timeLevel = new TimeBasedLevel(prototype.maxLevel);
         var func = prototype.GetTransactionInfo(_artifact).GetTransactionInfo(_artifact);
@@ -30,13 +30,16 @@ public class ArtifactBuilder
         _artifact.mainEffect = effect;
 
         //オプショナルエフェクトの作成
-        /*
-        var optionCalculator = new OptionalEffectCalculator(_artifact);
-        List<IEffect> optionalEffectList = new List<IEffect>();
-        optionalEffectList.Add(BuildEffect(_artifact.quality, _artifact, EffectType.HP_add, optionCalculator));
-        _artifact.optEffects = optionalEffectList;
-        */
+        IOptionEffectBuilder builder;
+        switch (basicInfoSet)
+        {
+            case BronzeInfoSetting bronze:
+                builder = new BronzeOptionBuilder(); break;
 
+            default:
+                builder = new BronzeOptionBuilder(); break;
+        }
+        _artifact.optEffects = builder.GetEffects();
         return _artifact;
     }
 }

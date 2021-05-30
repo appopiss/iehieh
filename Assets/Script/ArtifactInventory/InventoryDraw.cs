@@ -54,7 +54,7 @@ public class InventoryDraw : MonoBehaviour, IObserver
                 statsBreakdownPop.UpdateAsObservable().Where(_ => statsBreakdownPop.gameObject.activeSelf).Subscribe(_ =>
                 {
                     statsBreakdownPop.UpdateUI(
-                        IdleLibrary.UI.LocationKind.MouseFollow,
+                        IdleLibrary.UI.LocationKind.Corner,
                         inventory_mono.effectCalculator
                         );
                 });

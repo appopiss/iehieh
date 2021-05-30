@@ -43,7 +43,7 @@ public class SaveManager : MonoBehaviour
         saveDataList.Add(new SaveElement<saveWar>(main.saveWar, (x) => LoadFunc(ref main.saveWar, x)));
         saveDataList.Add(new SaveElement<saveAng>(main.saveAng, (x) => LoadFunc(ref main.saveAng, x)));
         saveDataList.Add(new SaveElement<saveRein>(main.ST, (x) => LoadFunc(ref main.ST, x)));
-        saveDataList.Add(new SaveElement<SaveO>(main.SO, (x) => LoadFuncFromOdin(ref main.SO, x)));
+        saveDataList.Add(new SaveElement<SaveO>(main.SO, (x) => LoadFuncFromOdin(ref main.SO, x)) { IsOdinData = true }) ;
 
         // Local
         ISaveLocation<string> local_location = new LocalAndEditorLocation("IncrementalEpicHero", gameObject.name, editorSaveData);
@@ -202,8 +202,8 @@ public class SaveManager : MonoBehaviour
     {
         obj = JsonUtility.FromJson<T>(save_data);
     }
-    void LoadFuncFromOdin<T>(ref T obj, string save_data)
+    void LoadFuncFromOdin(ref SaveO obj, string save_data)
     {
-        obj = IdleLibrary.Save_Odin.Load<T>(save_data);
+        obj = IdleLibrary.Save_Odin.Load<SaveO>(save_data);
     }
 }

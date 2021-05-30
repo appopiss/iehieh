@@ -39,6 +39,7 @@ public enum EffectType
     DEF_add,
     MATK_add,
     MDEF_add,
+    SPD,
     HP_mul,
     MP_mul,
     ATK_mul,
@@ -51,7 +52,18 @@ public enum EffectType
     Resource,
     NitroGain,
     WorkerPower,
-    ArtifactPower
+    ArtifactPower,
+    ATKPro,
+    MATKPro,
+    DEFPro,
+    MDEFPro,
+    GoldGain_Extra,
+    FireResistance,
+    IceResistance,
+    LightResistance,
+    DarkResistance,
+    DebuffResistance,
+    AntiMagicPower
 }
 //Awake‚ÅŽ«‘‚ð“o˜^‚·‚é
 public class ArtifactPrototypeRepository
@@ -131,7 +143,7 @@ public abstract class ArtifactPrototype
     public abstract long maxMaxLevel { get; }
     public abstract BasicEffect effect { get; }
     public abstract double EffectValue(ILevel level,  int quality);
-    protected virtual double aug(ILevel level, int quality) => (level.level + 1) * (1 + quality / 100);
+    protected virtual double aug(ILevel level, int quality) => (level.level + 1) * (1 + (float)quality / 100f);
     public virtual IArtifactTransaction GetTransactionInfo(ILevel level)
     {
         var tier1cost = new ArtifactMaterialSingleTransaction(ArtifactMaterial.ID.MysteriousStone, new LinearCost(1, 2, level));

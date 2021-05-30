@@ -416,7 +416,10 @@ public class IdleBackGround : POPTEXT_GoldBar,IPointerDownHandler {
     public double leafAlchemyFactor;
     double CommonFactor()
     {
-        return (1 + main.MissionMileStone.ResourceBonus()) * Math.Max(main.rein.SR_upgrades[(int)R_UPGRADE.SR_upgradeID.Trainer].GetCurrentValue(), 1);
+        return (1 + main.MissionMileStone.ResourceBonus())
+            * Math.Max(main.rein.SR_upgrades[(int)R_UPGRADE.SR_upgradeID.Trainer].GetCurrentValue(), 1)
+            * (1 + ArtifactBonus.RESOURCE)
+            ;
     }
     double S_factor()
     {

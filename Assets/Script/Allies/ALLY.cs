@@ -462,7 +462,15 @@ public abstract class ALLY : BASE, IDamagable
     }
     public double addHP()
     {
-        return (initialHp + L_HP() + main.ArtifactFactor.ADD_HP()+ main.keyf.A_hp + HP_ritualUpgrade() + main.SR.R_HP + main.S.vitalityLevel);
+        return initialHp
+            + L_HP()
+            + main.ArtifactFactor.ADD_HP()
+            + main.keyf.A_hp
+            + HP_ritualUpgrade()
+            + main.SR.R_HP
+            + main.S.vitalityLevel
+            + ArtifactBonus.HP_ADD
+            ;
     }
     public double mulHP()
     {
@@ -473,6 +481,7 @@ public abstract class ALLY : BASE, IDamagable
             * (1 + Mile_hp) * (1 + main.keyf.M_hp) * (1 + main.rein.R_factor.StatusIncrease()) * SumMulDelegate(main.cc.cf.AllStatusMul)
             * LegendaryEffect.StatsBonus()
             * main.MissionMileStoneHidden.StatsFactor()
+            * (1 + ArtifactBonus.HP_MUL)
             ;
     }
 
@@ -524,8 +533,15 @@ public abstract class ALLY : BASE, IDamagable
     }
     public double addMP()
     {
-        return (initialMp + L_MP() + main.ArtifactFactor.ADD_MP()
-            + MP_ritualUpgrade() + main.SR.R_MP + main.keyf.A_mp + main.S.vitalityLevel);
+        return initialMp
+            + L_MP()
+            + main.ArtifactFactor.ADD_MP()
+            + MP_ritualUpgrade()
+            + main.SR.R_MP
+            + main.keyf.A_mp
+            + main.S.vitalityLevel
+            + ArtifactBonus.MP_ADD
+            ;
     }
     public double mulMP()
     {
@@ -535,6 +551,7 @@ public abstract class ALLY : BASE, IDamagable
                     * (1 + Mile_mp) * (1 + +main.keyf.M_mp) * (1 + main.rein.R_factor.StatusIncrease()) * SumMulDelegate(main.cc.cf.AllStatusMul)
                     * LegendaryEffect.StatsBonus()
                     * main.MissionMileStoneHidden.StatsFactor()
+                    * (1 + ArtifactBonus.MP_MUL)
                     ;
     }
 
@@ -595,9 +612,17 @@ public abstract class ALLY : BASE, IDamagable
     }
     public double addATK()
     {
-        return (initialAtk + L_ATK() + (buffAtkFactor) + main.ArtifactFactor.ADD_ATK()
-            + main.StatusUpgrade[0].calculateCurrentValue() + ATK_bank() + main.SR.R_ATK + main.keyf.A_atk
-            + main.S.muscleLevel);
+        return initialAtk
+            + L_ATK()
+            + (buffAtkFactor)
+            + main.ArtifactFactor.ADD_ATK()
+            + main.StatusUpgrade[0].calculateCurrentValue()
+            + ATK_bank()
+            + main.SR.R_ATK
+            + main.keyf.A_atk
+            + main.S.muscleLevel
+            + ArtifactBonus.ATK_ADD
+            ;
     }
     public double mulATK()
     {
@@ -609,6 +634,7 @@ public abstract class ALLY : BASE, IDamagable
              * SumMulDelegate(main.cc.cf.AllStatusMul)
              * LegendaryEffect.StatsBonus()
             * main.MissionMileStoneHidden.StatsFactor()
+            * (1 + ArtifactBonus.ATK_MUL)
              ;
     }
 
@@ -671,7 +697,7 @@ public abstract class ALLY : BASE, IDamagable
 
     public virtual double MAtk()
     {
-        return addMATK() * mulMATK() * (1+alchemyMAtkFactor);
+        return addMATK() * mulMATK() * (1 + alchemyMAtkFactor);
         ;
     }
 
@@ -679,20 +705,28 @@ public abstract class ALLY : BASE, IDamagable
 
     public double addMATK()
     {
-        return (initialMAtk + L_MATK() + buffMAtkFactor
-            + main.StatusUpgrade[1].calculateCurrentValue() + main.ArtifactFactor.ADD_MATK() + MATK_bank() + main.SR.R_MATK + +main.keyf.A_matk
+        return initialMAtk
+            + L_MATK()
+            + buffMAtkFactor
+            + main.StatusUpgrade[1].calculateCurrentValue()
+            + main.ArtifactFactor.ADD_MATK()
+            + MATK_bank()
+            + main.SR.R_MATK
+            + main.keyf.A_matk
             + main.S.wisdomLevel
-            );
+            + ArtifactBonus.MATK_ADD
+            ;
     }
     public double mulMATK()
     {
         return MATK_passiveSkill() * (1 + main.QuestCtrl.R_fairy()) * (1 + main.Ascends[8].calculateCurrentValue())
                        * (1 + main.ArtifactFactor.MUL_MATK())
               * tempMatkFactor * (1 + Mile_matk)
-                           * (1 + wizardPassiveStaffFactor)*(1+ main.keyf.M_atk)*(1-angelPassiveFactor) * (1 + main.rein.R_factor.StatusIncrease())
+                           * (1 + wizardPassiveStaffFactor) * (1 + main.keyf.M_atk) * (1 - angelPassiveFactor) * (1 + main.rein.R_factor.StatusIncrease())
                            * SumMulDelegate(main.cc.cf.AllStatusMul)
                            * LegendaryEffect.StatsBonus()
             * main.MissionMileStoneHidden.StatsFactor()
+            * (1 + ArtifactBonus.MATK_MUL)
                            ;
     }
     public double MATK_bank()
@@ -758,10 +792,16 @@ public abstract class ALLY : BASE, IDamagable
     }
     public double addDEF()
     {
-        return (initialDef + L_DEF() + (buffDefFactor) + main.ArtifactFactor.ADD_DEF()
-            + DEF_ritualUpgrade() + main.SR.R_DEF + main.keyf.A_def
+        return initialDef
+            + L_DEF()
+            + (buffDefFactor)
+            + main.ArtifactFactor.ADD_DEF()
+            + DEF_ritualUpgrade()
+            + main.SR.R_DEF
+            + main.keyf.A_def
             + main.S.muscleLevel
-            );
+            + ArtifactBonus.DEF_ADD
+            ;
     }
     public double mulDEF()
     {
@@ -772,9 +812,10 @@ public abstract class ALLY : BASE, IDamagable
             * tempDefFactor * (1 + Mile_def)
             * (1 - warriorPassiveSwordFactor)
             * (1 + warriorPassiveShieldFactor)
-            *(1+ main.keyf.M_def) * (1 + main.rein.R_factor.StatusIncrease()) * SumMulDelegate(main.cc.cf.AllStatusMul)
+            * (1 + main.keyf.M_def) * (1 + main.rein.R_factor.StatusIncrease()) * SumMulDelegate(main.cc.cf.AllStatusMul)
             * LegendaryEffect.StatsBonus()
             * main.MissionMileStoneHidden.StatsFactor()
+            * (1 + ArtifactBonus.DEF_MUL)
             ;
     }
 
@@ -827,22 +868,29 @@ public abstract class ALLY : BASE, IDamagable
     }
     public double addMDEF()
     {
-        return (initialMDef + L_MDEF() + (buffMDefFactor) + main.ArtifactFactor.ADD_MDEF()
-            + MDEF_ritualUpgrade() + main.SR.R_MDEF + main.keyf.A_mdef
+        return initialMDef
+            + L_MDEF()
+            + (buffMDefFactor)
+            + main.ArtifactFactor.ADD_MDEF()
+            + MDEF_ritualUpgrade()
+            + main.SR.R_MDEF
+            + main.keyf.A_mdef
             + main.S.wisdomLevel
-            );
+            + ArtifactBonus.MDEF_ADD
+            ;
     }
     public double mulMDEF()
     {
         return MDEF_passiveSkill()
-        * (1 + main.Ascends[9].calculateCurrentValue()) *(1 + main.ArtifactFactor.MUL_MDEF())
+        * (1 + main.Ascends[9].calculateCurrentValue()) * (1 + main.ArtifactFactor.MUL_MDEF())
         * (1 + main.QuestCtrl.R_golem())
         * tempMdefFactor * (1 + Mile_mdef)
         * (1 - wizardPassiveStaffFactor)
          * (1 + warriorPassiveShieldFactor)
-         *(1 + main.keyf.M_mdef) * (1 + main.rein.R_factor.StatusIncrease()) * SumMulDelegate(main.cc.cf.AllStatusMul)
+         * (1 + main.keyf.M_mdef) * (1 + main.rein.R_factor.StatusIncrease()) * SumMulDelegate(main.cc.cf.AllStatusMul)
          * LegendaryEffect.StatsBonus()
          * main.MissionMileStoneHidden.StatsFactor()
+         * (1 + ArtifactBonus.MDEF_MUL)
          ;
     }
     public double MDEF_ritualUpgrade()

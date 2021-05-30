@@ -22,6 +22,7 @@ public interface ISaveElement
     Action<string> LoadAction { get; set; }     // ロードの処理には型の情報が必要だから。
     bool CanParse(string data_str);
     bool CanLoad(object data_obj);
+    bool IsOdinData { get; set; }
 }
 
 /// <summary>
@@ -32,6 +33,7 @@ public class SaveElement<T> : ISaveElement
 {
     public object GetToBeSavedObject() { return ToBeSavedObject; }
     public Action<string> LoadAction { get; set; }
+    public bool IsOdinData { get; set; }
     public bool CanParse(string data_str)
     {
         try { return JsonUtility.FromJson<T>(data_str) != null; }
@@ -72,7 +74,10 @@ public class SaveExecutor : ISaveExecutor
         List<string> dataStrList = new List<string>();
         foreach (var data in saveData)
         {
-            dataStrList.Add(ToJson(data.GetToBeSavedObject()));
+            if(!data.IsOdinData)
+                dataStrList.Add(ToJson(data.GetToBeSavedObject()));
+            else
+                dataStrList.Add(ToJsonByOdin(data.GetToBeSavedObject()));
         }
         // 暗号化
         if (toEncrypt)
@@ -237,6 +242,10 @@ public class SaveExecutor : ISaveExecutor
     string ToJson(object obj)
     {
         return JsonUtility.ToJson(obj);
+    }
+    string ToJsonByOdin(object obj)
+    {
+        return IdleLibrary.Save_Odin.GetJsonFromOdinSave(obj);
     }
 
     string Encrypt(string original_str)

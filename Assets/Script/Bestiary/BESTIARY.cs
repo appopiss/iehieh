@@ -436,7 +436,7 @@ public class BESTIARY : BASE {
             setActive(tempEnemy.gameObject);
             tempEnemy.GetComponent<RectTransform>().anchoredPosition += new Vector2(100000, 0);
             yield return tempEnemy.GetComponent<DropInfo>();
-            if (tempEnemy == null) yield break;
+            //if (tempEnemy == null) yield break;
             tempMaterial = tempEnemy.GetComponent<DropInfo>().AbsoluteDrop();
             AddToHistory(tempMaterial);
             main.S.timeToLoot[(int)thisEnemyKind] = 0;

@@ -16,9 +16,10 @@ public class ArtifactBuilder
         _artifact = basicInfoSet.GetArtifact(_artifact);
         //IDをもとにプロトタイプ生成
         var prototype = ArtifactPrototypeRepository.GetPrototype(_artifact.id);
+        _artifact.ArtifactName = prototype.Name;
 
         var timeLevel = new TimeBasedLevel(prototype.maxLevel);
-        var func = prototype.GetTransactionInfo(_artifact).GetTransactionInfo(_artifact);
+        var func = prototype.GetTransactionInfo(_artifact, _artifact.quality).GetTransactionInfo(_artifact);
         Func<float> time = () => prototype.GetTimeCaltulator.GetRequiredTime(_artifact.quality, _artifact);
         var timeManager = new TimeBasedLevelUp(_artifact, timeLevel, () => func, time);
 

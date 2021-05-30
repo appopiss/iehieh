@@ -123,7 +123,7 @@ public class EXPEDITION : BASE
     public float TimeSpeedFactor()
     {
         if (level == null) return 1;
-        return Math.Min(5, 1f + 0.005f * level.level);
+        return Math.Min(5, 1f + 0.001f * level.level);
     }
     public void UpdateUI()
     {
@@ -132,7 +132,7 @@ public class EXPEDITION : BASE
         UpdateRequiredHour();
         UpdateRightLeftButton();
         nameText.text = optStr + NameString() + "  < <color=green>Lv " + UsefulMethod.tDigit(level.level) + "</color> >";
-        bonusText.text = optStr + "Speed Bonus : <color=green>x " + UsefulMethod.tDigit(TimeSpeedFactor(), 2) + "</color>";
+        bonusText.text = optStr + "Speed Bonus : <color=green>x " + UsefulMethod.tDigit(TimeSpeedFactor(), 3) + "</color>";
         rewardText.text = RewardString(level, expedition.hourId);
     }
     public float Tier1chestChance(ILevel level, int hourId)
@@ -141,23 +141,43 @@ public class EXPEDITION : BASE
     }
     public float Tier2chestChance(ILevel level, int hourId)
     {
-        return 0.09f + Mathf.Clamp(0.0002f * level.level * (1 + hourId), 0, 0.5f);
+        float temp = 0.20f + Mathf.Clamp(0.0002f * level.level * (1 + hourId), 0, 0.40f);
+        switch (hourId)
+        {
+            case 0: temp *= 0; break;
+            case 1: temp *= 0.2f; break;
+            case 2: temp *= 0.5f; break;
+            case 3: temp *= 0.8f; break;
+            case 4: temp *= 1f; break;
+            case 5: temp *= 1f; break;
+        }
+        return temp;
     }
     public float Tier3chestChance(ILevel level, int hourId)
     {
-        return 0.01f + Tier2chestChance(level, hourId) / 2f;
+        float temp = 0.05f + Tier2chestChance(level, hourId) / 2f;
+        switch (hourId)
+        {
+            case 0: temp *= 0; break;
+            case 1: temp *= 0; break;
+            case 2: temp *= 0f; break;
+            case 3: temp *= 0.5f; break;
+            case 4: temp *= 0.8f; break;
+            case 5: temp *= 1; break;
+        }
+        return temp;
     }
     public int ChestLotteryNum(int hourId)
     {
         int tempNum = 0;
         switch (hourId)
         {
-            case 0: tempNum = 3; break;
-            case 1: tempNum = 5; break;
-            case 2: tempNum = 8; break;
-            case 3: tempNum = 15; break;
-            case 4: tempNum = 28; break;
-            case 5: tempNum = 50; break;
+            case 0: tempNum = 1; break;
+            case 1: tempNum = 1; break;
+            case 2: tempNum = 2; break;
+            case 3: tempNum = 2; break;
+            case 4: tempNum = 3; break;
+            case 5: tempNum = 5; break;
         }
         return tempNum;
     }

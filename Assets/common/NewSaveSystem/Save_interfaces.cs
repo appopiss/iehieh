@@ -133,6 +133,7 @@ public class SaveExecutor : ISaveExecutor
             }
         }
         //　オブジェクトに変換可能かチェック
+        /*
         for (int i = 0; i < dataStrList.Length; i++)
         {
             if (saveData[i].CanParse(dataStrList[i]) == false)
@@ -142,6 +143,7 @@ public class SaveExecutor : ISaveExecutor
                 return;
             }
         }
+        */
 
         // ロード可能かチェック
         for (int i = 0; i < dataStrList.Length; i++)

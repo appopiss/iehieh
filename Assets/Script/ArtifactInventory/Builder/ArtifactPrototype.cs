@@ -139,64 +139,87 @@ public class ArtifactPrototypeRepository
 //ˆø”‚ÅArtifact‚ðŽó‚¯Žæ‚é‚æ‚¤‚É‚·‚éH
 public abstract class ArtifactPrototype
 {
+    public abstract string Name { get; }
     public abstract long maxLevel { get;}
     public abstract long maxMaxLevel { get; }
     public abstract BasicEffect effect { get; }
     public abstract double EffectValue(ILevel level,  int quality);
     protected virtual double aug(ILevel level, int quality) => (level.level + 1) * (1 + (float)quality / 100f);
-    public virtual IArtifactTransaction GetTransactionInfo(ILevel level)
+    protected virtual double costFactor(ILevel level, int quality) => level.level + Math.Floor((float)quality / 10);
+    public virtual IArtifactTransaction GetTransactionInfo(ILevel level, int quality)
     {
         var tier1cost = new ArtifactMaterialSingleTransaction(ArtifactMaterial.ID.MysteriousStone, new LinearCost(1, 2, level));
         var tier2cost = new ArtifactMaterialSingleTransaction(ArtifactMaterial.ID.BlessingPowder, new LinearCost(1, 1, level));
         return new NormalArtifactTransaction(new ArtifactMaterialTransaction(tier1cost), new ArtifactMaterialTransaction(tier1cost, tier2cost), 5);
     }
+    protected IArtifactTransaction BronzeTransaction(ILevel level, int quality, ArtifactMaterial.ID id)
+    {
+        var tier1cost = new ArtifactMaterialSingleTransaction(id,
+            new MaterialCost((l, q) => 10 * costFactor(level, quality), level, quality));
+        var tier2cost = new ArtifactMaterialSingleTransaction(ArtifactMaterial.ID.BlessingPowder,
+            new MaterialCost((l, q) => 1, level, quality));
+        return new NormalArtifactTransaction(new ArtifactMaterialTransaction(tier1cost), new ArtifactMaterialTransaction(tier1cost, tier2cost), 10);
+    }
     public IArtifactTimeCalculator GetTimeCaltulator = new ArtifactTimeCaltulator();
 }
 public class SlimeBronzeStatue : ArtifactPrototype
 {
+    public override string Name => "Slime Bronze Statue";
     public override long maxLevel => 10;
     public override long maxMaxLevel => 20;
     public override BasicEffect effect => new BasicEffect((BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.HP_add));
     public override double EffectValue(ILevel level, int quality) => 10 * aug(level, quality);
+    public override IArtifactTransaction GetTransactionInfo(ILevel level, int quality) => BronzeTransaction(level, quality, ArtifactMaterial.ID.MysteriousStone);
 }
 public class BatBronzeStatue : ArtifactPrototype
 {
+    public override string Name => "Bat Bronze Statue";
     public override long maxLevel => 10;
     public override long maxMaxLevel => 20;
     public override BasicEffect effect => new BasicEffect((BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.MP_add));
     public override double EffectValue(ILevel level, int quality) => 5 * aug(level, quality);
+    public override IArtifactTransaction GetTransactionInfo(ILevel level, int quality) => BronzeTransaction(level, quality, ArtifactMaterial.ID.MysteriousCrystal);
 }
 public class SpiderBronzeStatue : ArtifactPrototype
 {
+    public override string Name => "Spider Bronze Statue";
     public override long maxLevel => 10;
     public override long maxMaxLevel => 20;
     public override BasicEffect effect => new BasicEffect((BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.ATK_add));
     public override double EffectValue(ILevel level, int quality) => 1 * aug(level, quality);
+    public override IArtifactTransaction GetTransactionInfo(ILevel level, int quality) => BronzeTransaction(level, quality, ArtifactMaterial.ID.MysteriousStone);
 }
 public class FairyBronzeStatue : ArtifactPrototype
 {
+    public override string Name => "Fairy Bronze Statue";
     public override long maxLevel => 10;
     public override long maxMaxLevel => 20;
     public override BasicEffect effect => new BasicEffect((BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.MATK_add));
     public override double EffectValue(ILevel level, int quality) => 1 * aug(level, quality);
+    public override IArtifactTransaction GetTransactionInfo(ILevel level, int quality) => BronzeTransaction(level, quality, ArtifactMaterial.ID.MysteriousCrystal);
 }
 public class FoxBronzeStatue : ArtifactPrototype
 {
+    public override string Name => "Fox Bronze Statue";
     public override long maxLevel => 10;
     public override long maxMaxLevel => 20;
     public override BasicEffect effect => new BasicEffect((BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.DEF_add));
     public override double EffectValue(ILevel level, int quality) => 1 * aug(level, quality);
+    public override IArtifactTransaction GetTransactionInfo(ILevel level, int quality) => BronzeTransaction(level, quality, ArtifactMaterial.ID.MysteriousStone);
 }
 public class DevilfishBronzeStatue : ArtifactPrototype
 {
+    public override string Name => "Devil Fish Bronze Statue";
     public override long maxLevel => 10;
     public override long maxMaxLevel => 20;
     public override BasicEffect effect => new BasicEffect((BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.MDEF_add));
     public override double EffectValue(ILevel level, int quality) => 1 * aug(level, quality);
+    public override IArtifactTransaction GetTransactionInfo(ILevel level, int quality) => BronzeTransaction(level, quality, ArtifactMaterial.ID.MysteriousCrystal);
 }
 
 public class SlimeIronStatue : ArtifactPrototype
 {
+    public override string Name => "Slime Iron Statue";
     public override long maxLevel => 5;
     public override long maxMaxLevel => 10;
     public override BasicEffect effect => new BasicEffect((BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.HP_mul));
@@ -204,6 +227,7 @@ public class SlimeIronStatue : ArtifactPrototype
 }
 public class BatIronStatue : ArtifactPrototype
 {
+    public override string Name => "Bat Iron Statue";
     public override long maxLevel => 5;
     public override long maxMaxLevel => 10;
     public override BasicEffect effect => new BasicEffect((BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.MP_mul));
@@ -211,6 +235,7 @@ public class BatIronStatue : ArtifactPrototype
 }
 public class SpiderIronStatue : ArtifactPrototype
 {
+    public override string Name => "Spider Iron Statue";
     public override long maxLevel => 5;
     public override long maxMaxLevel => 10;
     public override BasicEffect effect => new BasicEffect((BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.ATK_mul));
@@ -218,6 +243,7 @@ public class SpiderIronStatue : ArtifactPrototype
 }
 public class FairyIronStatue : ArtifactPrototype
 {
+    public override string Name => "Fairy Iron Statue";
     public override long maxLevel => 5;
     public override long maxMaxLevel => 10;
     public override BasicEffect effect => new BasicEffect((BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.MATK_mul));
@@ -225,6 +251,7 @@ public class FairyIronStatue : ArtifactPrototype
 }
 public class FoxIronStatue : ArtifactPrototype
 {
+    public override string Name => "Slime Bronze Statue";
     public override long maxLevel => 5;
     public override long maxMaxLevel => 10;
     public override BasicEffect effect => new BasicEffect((BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.DEF_mul));
@@ -232,6 +259,7 @@ public class FoxIronStatue : ArtifactPrototype
 }
 public class DevilFishIronStatue : ArtifactPrototype
 {
+    public override string Name => "Devil Fish Iron Statue";
     public override long maxLevel => 5;
     public override long maxMaxLevel => 10;
     public override BasicEffect effect => new BasicEffect((BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.MDEF_mul));
@@ -239,6 +267,7 @@ public class DevilFishIronStatue : ArtifactPrototype
 }
 public class SlimeGoldenStatue : ArtifactPrototype
 {
+    public override string Name => "Slime Golden Statue";
     public override long maxLevel => 5;
     public override long maxMaxLevel => 10;
     public override BasicEffect effect => new BasicEffect((BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.GoldGain));
@@ -246,6 +275,7 @@ public class SlimeGoldenStatue : ArtifactPrototype
 }
 public class BatGoldenStatue : ArtifactPrototype
 {
+    public override string Name => "Bat Golden Statue";
     public override long maxLevel => 5;
     public override long maxMaxLevel => 10;
     public override BasicEffect effect => new BasicEffect((BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.SlimeBankEfficiency));
@@ -253,6 +283,7 @@ public class BatGoldenStatue : ArtifactPrototype
 }
 public class SpiderGoldenStatue : ArtifactPrototype
 {
+    public override string Name => "Spider Golden Statue";
     public override long maxLevel => 5;
     public override long maxMaxLevel => 10;
     public override BasicEffect effect => new BasicEffect((BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.Proficiency));
@@ -260,6 +291,7 @@ public class SpiderGoldenStatue : ArtifactPrototype
 }
 public class FairyGoldenStatue : ArtifactPrototype
 {
+    public override string Name => "Fairy Golden Statue";
     public override long maxLevel => 5;
     public override long maxMaxLevel => 10;
     public override BasicEffect effect => new BasicEffect((BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.Resource));
@@ -267,6 +299,7 @@ public class FairyGoldenStatue : ArtifactPrototype
 }
 public class FoxGoldenStatue : ArtifactPrototype
 {
+    public override string Name => "Fox Golden Statue";
     public override long maxLevel => 5;
     public override long maxMaxLevel => 10;
     public override BasicEffect effect => new BasicEffect((BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.NitroGain));
@@ -274,6 +307,7 @@ public class FoxGoldenStatue : ArtifactPrototype
 }
 public class DevilFishGoldenstatue : ArtifactPrototype
 {
+    public override string Name => "Devil Fish Golden Statue";
     public override long maxLevel => 5;
     public override long maxMaxLevel => 10;
     public override BasicEffect effect => new BasicEffect((BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.WorkerPower));
@@ -281,6 +315,7 @@ public class DevilFishGoldenstatue : ArtifactPrototype
 }
 public class UnicornGoldenStatue : ArtifactPrototype
 {
+    public override string Name => "Unicorn Golden Statue";
     public override long maxLevel => 5;
     public override long maxMaxLevel => 10;
     public override BasicEffect effect => new BasicEffect((BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.ArtifactPower));

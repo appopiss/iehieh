@@ -31,7 +31,11 @@ public class ArtifactMaterial : NUMBER, IText
     {
 		//Tier1
 		MysteriousStone,
-		BlessingPowder
+		MysteriousCrystal,
+		MysteriousLeaf,
+		//Tier2
+		BlessingPowder,
+		BlessingShard
     }
 	public ArtifactMaterial(int id)
     {
@@ -40,7 +44,10 @@ public class ArtifactMaterial : NUMBER, IText
 	public string Text() => id switch
 	{
 		ID.MysteriousStone => "Mysterious Stone",
+		ID.MysteriousCrystal => "Mysterious Crystal",
+		ID.MysteriousLeaf => "Mysterious Leaf",
 		ID.BlessingPowder => "Blessing Powder",
+		ID.BlessingShard => "Blessing Shard",
 		_ => ""
 	};
 }

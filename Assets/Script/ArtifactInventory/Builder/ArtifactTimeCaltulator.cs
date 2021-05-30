@@ -11,6 +11,6 @@ public class ArtifactTimeCaltulator : IArtifactTimeCalculator
 {
     public float GetRequiredTime(int quality, ILevel level)
     {
-        return (float)(3600 * level.level * Math.Pow(10, quality / 100));
+        return (float)(3600 * level.level * Math.Pow(10, (float)quality / 100));
     }
 }

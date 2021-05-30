@@ -13,13 +13,14 @@ using static UsefulMethod;
 public class Artifact : ITEM, ILevel
 {
     public long level { get; set; }
+    public string ArtifactName { get; set; }
     public Artifact(int id) : base(id)
     {
 
     }
     public override string Text()
     {
-        return $"----ARTIFACT----\n- " +
+        return $"----ARTIFACT----\n- " + 
             $"ID : {id}" +
             $"\n\n- Level : {level} " +
             $"\n- Max Level : {timeManager.timeLevel.level} " +

@@ -15,11 +15,11 @@ C:/Users/appop/Documents/Git/iehieh
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-60691
+58132
 Successfully changed project path to: C:/Users/appop/Documents/Git/iehieh
 C:/Users/appop/Documents/Git/iehieh
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 82.67 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 85.46 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.0f1 (c7b5465681fb)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.0f1/Editor/Data/Resources/UnitySubsystems
@@ -35,26 +35,454 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.0f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.0f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.0f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56148
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56884
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.0f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.0f1/Editor/Data/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.0f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.003773 seconds.
+Registered in 0.003788 seconds.
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 72.26 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 69.44 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.258 seconds
+- Completed reload, in  1.301 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.012033 seconds.
+Registered in 0.012721 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.94 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+[Steamworks.NET] Could not copy steam_appid.txt into the project root. steam_appid.txt could not be found in 'C:\Users\appop\Documents\Git\iehieh\Assets/Plugins/Steamworks.NET/redist'. Place steam_appid.txt from the Steamworks SDK in the project root manually.
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+RedistInstall:CopyFile (string,string,bool) (at Assets/Editor/Steamworks.NET/RedistInstall.cs:40)
+RedistInstall:.cctor () (at Assets/Editor/Steamworks.NET/RedistInstall.cs:16)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Editor/Steamworks.NET/RedistInstall.cs Line: 40)
+
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.784 seconds
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
+Refreshing native plugins compatible for Editor in 0.80 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2776 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 116.0 MB.
+System memory in use after: 116.2 MB.
+
+Unloading 54 unused Assets to reduce memory usage. Loaded Objects now: 3242.
+Total: 17.668200 ms (FindLiveObjects: 0.466200 ms CreateObjectMapping: 0.455900 ms MarkObjects: 16.666500 ms  DeleteObjects: 0.078400 ms)
+
+========================================================================
+Received Import Request.
+  path: Assets/Script/ArtifactInventory/Artifact.cs
+  artifactKey: Guid(99aae321f8ced654093861eb8dd15936) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Script/ArtifactInventory/Artifact.cs using Guid(99aae321f8ced654093861eb8dd15936) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c48849bbb8937a6459a3092f25415c1b') in 0.026189 seconds
+  Import took 0.030912 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 91.992151 seconds.
+  path: Assets/Script/ArtifactInventory/Builder/ArtifactPrototype.cs
+  artifactKey: Guid(9c096f1e5925b9a4fa58621aeba7d16b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Script/ArtifactInventory/Builder/ArtifactPrototype.cs using Guid(9c096f1e5925b9a4fa58621aeba7d16b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '52a694e3e41eef1326ea201d4a77104b') in 0.002375 seconds
+  Import took 0.009732 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.007111 seconds.
+  path: Assets/Script/ArtifactInventory/Builder/ArtifactPrototype.cs
+  artifactKey: Guid(9c096f1e5925b9a4fa58621aeba7d16b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Script/ArtifactInventory/Builder/ArtifactPrototype.cs using Guid(9c096f1e5925b9a4fa58621aeba7d16b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '52a694e3e41eef1326ea201d4a77104b') in 0.002072 seconds
+  Import took 0.005784 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.011469 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 1.32 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+[Steamworks.NET] Could not copy steam_appid.txt into the project root. steam_appid.txt could not be found in 'C:\Users\appop\Documents\Git\iehieh\Assets/Plugins/Steamworks.NET/redist'. Place steam_appid.txt from the Steamworks SDK in the project root manually.
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+RedistInstall:CopyFile (string,string,bool) (at Assets/Editor/Steamworks.NET/RedistInstall.cs:40)
+RedistInstall:.cctor () (at Assets/Editor/Steamworks.NET/RedistInstall.cs:16)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Editor/Steamworks.NET/RedistInstall.cs Line: 40)
+
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.595 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.85 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2759 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 115.1 MB.
+System memory in use after: 115.3 MB.
+
+Unloading 45 unused Assets to reduce memory usage. Loaded Objects now: 3245.
+Total: 17.035900 ms (FindLiveObjects: 0.316900 ms CreateObjectMapping: 0.157400 ms MarkObjects: 16.533900 ms  DeleteObjects: 0.026100 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 392.651630 seconds.
+  path: Assets/Script/ArtifactInventory/Builder/ArtifactPrototype.cs
+  artifactKey: Guid(9c096f1e5925b9a4fa58621aeba7d16b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Script/ArtifactInventory/Builder/ArtifactPrototype.cs using Guid(9c096f1e5925b9a4fa58621aeba7d16b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd4776e3f55d3e04637e6ebbbc1445b30') in 0.008592 seconds
+  Import took 0.013798 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.010521 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.84 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+[Steamworks.NET] Could not copy steam_appid.txt into the project root. steam_appid.txt could not be found in 'C:\Users\appop\Documents\Git\iehieh\Assets/Plugins/Steamworks.NET/redist'. Place steam_appid.txt from the Steamworks SDK in the project root manually.
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+RedistInstall:CopyFile (string,string,bool) (at Assets/Editor/Steamworks.NET/RedistInstall.cs:40)
+RedistInstall:.cctor () (at Assets/Editor/Steamworks.NET/RedistInstall.cs:16)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Editor/Steamworks.NET/RedistInstall.cs Line: 40)
+
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.614 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.83 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2759 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 115.2 MB.
+System memory in use after: 115.4 MB.
+
+Unloading 45 unused Assets to reduce memory usage. Loaded Objects now: 3248.
+Total: 16.294800 ms (FindLiveObjects: 0.407000 ms CreateObjectMapping: 0.201500 ms MarkObjects: 15.657100 ms  DeleteObjects: 0.028400 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 574.376952 seconds.
+  path: Assets/Script/ArtifactInventory/Builder/ArtifactFactory.cs
+  artifactKey: Guid(d56a9b957da96a94fa757ef6c6a29db8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Script/ArtifactInventory/Builder/ArtifactFactory.cs using Guid(d56a9b957da96a94fa757ef6c6a29db8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6dcd05b15f974f9e37ac664b0077b6b6') in 0.009357 seconds
+  Import took 0.014689 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.011012 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.84 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+[Steamworks.NET] Could not copy steam_appid.txt into the project root. steam_appid.txt could not be found in 'C:\Users\appop\Documents\Git\iehieh\Assets/Plugins/Steamworks.NET/redist'. Place steam_appid.txt from the Steamworks SDK in the project root manually.
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+RedistInstall:CopyFile (string,string,bool) (at Assets/Editor/Steamworks.NET/RedistInstall.cs:40)
+RedistInstall:.cctor () (at Assets/Editor/Steamworks.NET/RedistInstall.cs:16)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Editor/Steamworks.NET/RedistInstall.cs Line: 40)
+
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.705 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.84 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2759 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 115.2 MB.
+System memory in use after: 115.4 MB.
+
+Unloading 45 unused Assets to reduce memory usage. Loaded Objects now: 3251.
+Total: 17.739200 ms (FindLiveObjects: 0.394700 ms CreateObjectMapping: 0.177400 ms MarkObjects: 17.133300 ms  DeleteObjects: 0.032100 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 25.910461 seconds.
+  path: Assets/Script/ArtifactInventory/Builder/ArtifactFactory.cs
+  artifactKey: Guid(d56a9b957da96a94fa757ef6c6a29db8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Script/ArtifactInventory/Builder/ArtifactFactory.cs using Guid(d56a9b957da96a94fa757ef6c6a29db8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '19cddc77d1058b80fa01012d83e7fc6e') in 0.011201 seconds
+  Import took 0.023396 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 51.661890 seconds.
+  path: Assets/Script/ArtifactInventory/PopupIconAndText 1.prefab
+  artifactKey: Guid(5cc66d9591e0ee54e9df4c7e8914d2a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Script/ArtifactInventory/PopupIconAndText 1.prefab using Guid(5cc66d9591e0ee54e9df4c7e8914d2a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '798aff570e5c5314ecbbd716ed351d9b') in 0.101801 seconds
+  Import took 0.106860 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.012206 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.92 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+[Steamworks.NET] Could not copy steam_appid.txt into the project root. steam_appid.txt could not be found in 'C:\Users\appop\Documents\Git\iehieh\Assets/Plugins/Steamworks.NET/redist'. Place steam_appid.txt from the Steamworks SDK in the project root manually.
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+RedistInstall:CopyFile (string,string,bool) (at Assets/Editor/Steamworks.NET/RedistInstall.cs:40)
+RedistInstall:.cctor () (at Assets/Editor/Steamworks.NET/RedistInstall.cs:16)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Editor/Steamworks.NET/RedistInstall.cs Line: 40)
+
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.706 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.90 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2759 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 115.2 MB.
+System memory in use after: 115.4 MB.
+
+Unloading 45 unused Assets to reduce memory usage. Loaded Objects now: 3254.
+Total: 18.196200 ms (FindLiveObjects: 0.410000 ms CreateObjectMapping: 0.173900 ms MarkObjects: 17.560100 ms  DeleteObjects: 0.050400 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.015018 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.86 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+[Steamworks.NET] Could not copy steam_appid.txt into the project root. steam_appid.txt could not be found in 'C:\Users\appop\Documents\Git\iehieh\Assets/Plugins/Steamworks.NET/redist'. Place steam_appid.txt from the Steamworks SDK in the project root manually.
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+RedistInstall:CopyFile (string,string,bool) (at Assets/Editor/Steamworks.NET/RedistInstall.cs:40)
+RedistInstall:.cctor () (at Assets/Editor/Steamworks.NET/RedistInstall.cs:16)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Editor/Steamworks.NET/RedistInstall.cs Line: 40)
+
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.787 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.42 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2760 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 115.3 MB.
+System memory in use after: 115.5 MB.
+
+Unloading 45 unused Assets to reduce memory usage. Loaded Objects now: 3258.
+Total: 17.920300 ms (FindLiveObjects: 0.324300 ms CreateObjectMapping: 0.208700 ms MarkObjects: 17.354600 ms  DeleteObjects: 0.031500 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.012030 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.86 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+[Steamworks.NET] Could not copy steam_appid.txt into the project root. steam_appid.txt could not be found in 'C:\Users\appop\Documents\Git\iehieh\Assets/Plugins/Steamworks.NET/redist'. Place steam_appid.txt from the Steamworks SDK in the project root manually.
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+RedistInstall:CopyFile (string,string,bool) (at Assets/Editor/Steamworks.NET/RedistInstall.cs:40)
+RedistInstall:.cctor () (at Assets/Editor/Steamworks.NET/RedistInstall.cs:16)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Editor/Steamworks.NET/RedistInstall.cs Line: 40)
+
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.740 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.82 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2760 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 115.3 MB.
+System memory in use after: 115.5 MB.
+
+Unloading 45 unused Assets to reduce memory usage. Loaded Objects now: 3261.
+Total: 17.133100 ms (FindLiveObjects: 0.334700 ms CreateObjectMapping: 0.165200 ms MarkObjects: 16.595500 ms  DeleteObjects: 0.035700 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.011403 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 1.04 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+[Steamworks.NET] Could not copy steam_appid.txt into the project root. steam_appid.txt could not be found in 'C:\Users\appop\Documents\Git\iehieh\Assets/Plugins/Steamworks.NET/redist'. Place steam_appid.txt from the Steamworks SDK in the project root manually.
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+RedistInstall:CopyFile (string,string,bool) (at Assets/Editor/Steamworks.NET/RedistInstall.cs:40)
+RedistInstall:.cctor () (at Assets/Editor/Steamworks.NET/RedistInstall.cs:16)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Editor/Steamworks.NET/RedistInstall.cs Line: 40)
+
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.685 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.84 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2760 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 115.3 MB.
+System memory in use after: 115.5 MB.
+
+Unloading 45 unused Assets to reduce memory usage. Loaded Objects now: 3264.
+Total: 17.556800 ms (FindLiveObjects: 0.326400 ms CreateObjectMapping: 0.146600 ms MarkObjects: 17.038500 ms  DeleteObjects: 0.043300 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.011980 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.91 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+[Steamworks.NET] Could not copy steam_appid.txt into the project root. steam_appid.txt could not be found in 'C:\Users\appop\Documents\Git\iehieh\Assets/Plugins/Steamworks.NET/redist'. Place steam_appid.txt from the Steamworks SDK in the project root manually.
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+RedistInstall:CopyFile (string,string,bool) (at Assets/Editor/Steamworks.NET/RedistInstall.cs:40)
+RedistInstall:.cctor () (at Assets/Editor/Steamworks.NET/RedistInstall.cs:16)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Editor/Steamworks.NET/RedistInstall.cs Line: 40)
+
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.723 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.89 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2761 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 115.3 MB.
+System memory in use after: 115.5 MB.
+
+Unloading 45 unused Assets to reduce memory usage. Loaded Objects now: 3268.
+Total: 17.617700 ms (FindLiveObjects: 0.302700 ms CreateObjectMapping: 0.177600 ms MarkObjects: 17.107300 ms  DeleteObjects: 0.028400 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.011708 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.86 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+[Steamworks.NET] Could not copy steam_appid.txt into the project root. steam_appid.txt could not be found in 'C:\Users\appop\Documents\Git\iehieh\Assets/Plugins/Steamworks.NET/redist'. Place steam_appid.txt from the Steamworks SDK in the project root manually.
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+RedistInstall:CopyFile (string,string,bool) (at Assets/Editor/Steamworks.NET/RedistInstall.cs:40)
+RedistInstall:.cctor () (at Assets/Editor/Steamworks.NET/RedistInstall.cs:16)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Editor/Steamworks.NET/RedistInstall.cs Line: 40)
+
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.725 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.87 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2761 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 115.3 MB.
+System memory in use after: 115.5 MB.
+
+Unloading 45 unused Assets to reduce memory usage. Loaded Objects now: 3271.
+Total: 17.867500 ms (FindLiveObjects: 0.445000 ms CreateObjectMapping: 0.252000 ms MarkObjects: 17.137000 ms  DeleteObjects: 0.031800 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.011135 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
@@ -77,36 +505,26 @@ Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.835 seconds
+- Completed reload, in  1.787 seconds
 Platform modules already initialized, skipping
-========================================================================
-Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
-Refreshing native plugins compatible for Editor in 0.80 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 0.85 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2776 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 115.9 MB.
-System memory in use after: 116.1 MB.
+Unloading 2761 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 115.3 MB.
+System memory in use after: 115.5 MB.
 
-Unloading 54 unused Assets to reduce memory usage. Loaded Objects now: 3242.
-Total: 16.860800 ms (FindLiveObjects: 0.292500 ms CreateObjectMapping: 0.145200 ms MarkObjects: 16.343700 ms  DeleteObjects: 0.077300 ms)
-
-========================================================================
-Received Import Request.
-  path: Assets/Script/ArtifactInventory/Builder/ArtifactOptionEffectBuilder.cs
-  artifactKey: Guid(0f81d9b1a75c62c4db63c9fdae83cc7a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Script/ArtifactInventory/Builder/ArtifactOptionEffectBuilder.cs using Guid(0f81d9b1a75c62c4db63c9fdae83cc7a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f103c08e173b7e87403d577bc7f4c811') in 0.024876 seconds
-  Import took 0.029884 seconds .
+Unloading 45 unused Assets to reduce memory usage. Loaded Objects now: 3274.
+Total: 18.327200 ms (FindLiveObjects: 0.414000 ms CreateObjectMapping: 0.194400 ms MarkObjects: 17.683800 ms  DeleteObjects: 0.033600 ms)
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.012729 seconds.
+Registered in 0.011847 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.82 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 0.88 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 [Steamworks.NET] Could not copy steam_appid.txt into the project root. steam_appid.txt could not be found in 'C:\Users\appop\Documents\Git\iehieh\Assets/Plugins/Steamworks.NET/redist'. Place steam_appid.txt from the Steamworks SDK in the project root manually.
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
@@ -124,60 +542,15 @@ Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.750 seconds
+- Completed reload, in  1.704 seconds
 Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.84 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 0.88 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2759 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 115.1 MB.
-System memory in use after: 115.3 MB.
+Unloading 2761 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 115.3 MB.
+System memory in use after: 115.5 MB.
 
-Unloading 45 unused Assets to reduce memory usage. Loaded Objects now: 3245.
-Total: 17.106500 ms (FindLiveObjects: 0.367100 ms CreateObjectMapping: 0.184600 ms MarkObjects: 16.520700 ms  DeleteObjects: 0.031700 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 5803.388614 seconds.
-  path: Assets/Script/ArtifactInventory/Builder/ArtifactOptionEffectBuilder.cs
-  artifactKey: Guid(0f81d9b1a75c62c4db63c9fdae83cc7a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Script/ArtifactInventory/Builder/ArtifactOptionEffectBuilder.cs using Guid(0f81d9b1a75c62c4db63c9fdae83cc7a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '43bd8f6f71e3696b8b4e74936bc428fe') in 0.132876 seconds
-  Import took 0.196534 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.013295 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Native extension for OSXStandalone target not found
-Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.98 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-[Steamworks.NET] Could not copy steam_appid.txt into the project root. steam_appid.txt could not be found in 'C:\Users\appop\Documents\Git\iehieh\Assets/Plugins/Steamworks.NET/redist'. Place steam_appid.txt from the Steamworks SDK in the project root manually.
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object)
-UnityEngine.Debug:LogWarning (object)
-RedistInstall:CopyFile (string,string,bool) (at Assets/Editor/Steamworks.NET/RedistInstall.cs:40)
-RedistInstall:.cctor () (at Assets/Editor/Steamworks.NET/RedistInstall.cs:16)
-System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
-
-(Filename: Assets/Editor/Steamworks.NET/RedistInstall.cs Line: 40)
-
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.791 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.84 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2759 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 115.1 MB.
-System memory in use after: 115.3 MB.
-
-Unloading 45 unused Assets to reduce memory usage. Loaded Objects now: 3248.
-Total: 17.535300 ms (FindLiveObjects: 0.713300 ms CreateObjectMapping: 0.263900 ms MarkObjects: 16.449200 ms  DeleteObjects: 0.107300 ms)
+Unloading 45 unused Assets to reduce memory usage. Loaded Objects now: 3277.
+Total: 17.006600 ms (FindLiveObjects: 0.333900 ms CreateObjectMapping: 0.141300 ms MarkObjects: 16.496500 ms  DeleteObjects: 0.032700 ms)
 
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file

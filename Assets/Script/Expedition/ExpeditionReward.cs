@@ -47,6 +47,7 @@ public class ArtifactReward : IExpeditionAction
         for (int i = 0; i < chestLotteryNum; i++)
         {
             int rand = UnityEngine.Random.Range(0, 10000);
+            Debug.Log(chestChance[2]);
             if (rand < chestChance[2] * 10000) chestTier[i] = 3;
             else if (rand < (chestChance[1] + chestChance[2]) * 10000) chestTier[i] = 2;
             else chestTier[i] = 1;

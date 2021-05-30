@@ -160,6 +160,27 @@ public abstract class ArtifactPrototype
             new MaterialCost((l, q) => 1, level, quality));
         return new NormalArtifactTransaction(new ArtifactMaterialTransaction(tier1cost), new ArtifactMaterialTransaction(tier1cost, tier2cost), 10);
     }
+    protected IArtifactTransaction SilverTransaction(ILevel level, int quality, (ArtifactMaterial.ID id1, ArtifactMaterial.ID id2) id)
+    {
+        var tier1cost = new ArtifactMaterialTransaction(
+            new ArtifactMaterialSingleTransaction(id.id1, new MaterialCost((l, q) => 50 * costFactor(level, quality), level, quality)),
+            new ArtifactMaterialSingleTransaction(id.id2, new MaterialCost((l, q) => 50 * costFactor(level, quality), level, quality))
+       );
+        var tier2cost = new ArtifactMaterialSingleTransaction(ArtifactMaterial.ID.BlessingPowder,
+            new MaterialCost((l, q) => 1, level, quality));
+        return new NormalArtifactTransaction(tier1cost, new ArtifactMaterialTransaction(tier2cost), 10);
+    }
+    protected IArtifactTransaction GoldenTransaction(ILevel level, int quality, (ArtifactMaterial.ID id1, ArtifactMaterial.ID id2, ArtifactMaterial.ID id3) id)
+    {
+        var tier1cost = new ArtifactMaterialTransaction(
+            new ArtifactMaterialSingleTransaction(id.id1, new MaterialCost((l, q) => 100 * costFactor(level, quality), level, quality)),
+            new ArtifactMaterialSingleTransaction(id.id2, new MaterialCost((l, q) => 100 * costFactor(level, quality), level, quality)),
+            new ArtifactMaterialSingleTransaction(id.id3, new MaterialCost((l, q) => 100 * costFactor(level, quality), level, quality))
+       );
+        var tier2cost = new ArtifactMaterialSingleTransaction(ArtifactMaterial.ID.BlessingPowder,
+            new MaterialCost((l, q) => 1, level, quality));
+        return new NormalArtifactTransaction(tier1cost, new ArtifactMaterialTransaction(tier2cost), 10);
+    }
     public IArtifactTimeCalculator GetTimeCaltulator = new ArtifactTimeCaltulator();
 }
 public class SlimeBronzeStatue : ArtifactPrototype
@@ -224,6 +245,8 @@ public class SlimeIronStatue : ArtifactPrototype
     public override long maxMaxLevel => 10;
     public override BasicEffect effect => new BasicEffect((BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.HP_mul));
     public override double EffectValue(ILevel level, int quality) => 10 * aug(level, quality) * 0.01;
+    public override IArtifactTransaction GetTransactionInfo(ILevel level, int quality) => 
+        SilverTransaction(level, quality, (ArtifactMaterial.ID.MysteriousStone, ArtifactMaterial.ID.MysteriousLeaf));
 }
 public class BatIronStatue : ArtifactPrototype
 {
@@ -232,6 +255,8 @@ public class BatIronStatue : ArtifactPrototype
     public override long maxMaxLevel => 10;
     public override BasicEffect effect => new BasicEffect((BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.MP_mul));
     public override double EffectValue(ILevel level, int quality) => 5 * aug(level, quality) * 0.01;
+    public override IArtifactTransaction GetTransactionInfo(ILevel level, int quality) =>
+        SilverTransaction(level, quality, (ArtifactMaterial.ID.MysteriousCrystal, ArtifactMaterial.ID.MysteriousLeaf));
 }
 public class SpiderIronStatue : ArtifactPrototype
 {
@@ -240,6 +265,8 @@ public class SpiderIronStatue : ArtifactPrototype
     public override long maxMaxLevel => 10;
     public override BasicEffect effect => new BasicEffect((BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.ATK_mul));
     public override double EffectValue(ILevel level, int quality) => 1 * aug(level, quality) * 0.01;
+    public override IArtifactTransaction GetTransactionInfo(ILevel level, int quality) =>
+        SilverTransaction(level, quality, (ArtifactMaterial.ID.MysteriousStone, ArtifactMaterial.ID.MysteriousLeaf));
 }
 public class FairyIronStatue : ArtifactPrototype
 {
@@ -248,6 +275,8 @@ public class FairyIronStatue : ArtifactPrototype
     public override long maxMaxLevel => 10;
     public override BasicEffect effect => new BasicEffect((BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.MATK_mul));
     public override double EffectValue(ILevel level, int quality) => 1 * aug(level, quality) * 0.01;
+    public override IArtifactTransaction GetTransactionInfo(ILevel level, int quality) =>
+        SilverTransaction(level, quality, (ArtifactMaterial.ID.MysteriousCrystal, ArtifactMaterial.ID.MysteriousLeaf));
 }
 public class FoxIronStatue : ArtifactPrototype
 {
@@ -256,6 +285,8 @@ public class FoxIronStatue : ArtifactPrototype
     public override long maxMaxLevel => 10;
     public override BasicEffect effect => new BasicEffect((BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.DEF_mul));
     public override double EffectValue(ILevel level, int quality) => 1 * aug(level, quality) * 0.01;
+    public override IArtifactTransaction GetTransactionInfo(ILevel level, int quality) =>
+        SilverTransaction(level, quality, (ArtifactMaterial.ID.MysteriousStone, ArtifactMaterial.ID.MysteriousLeaf));
 }
 public class DevilFishIronStatue : ArtifactPrototype
 {
@@ -264,6 +295,8 @@ public class DevilFishIronStatue : ArtifactPrototype
     public override long maxMaxLevel => 10;
     public override BasicEffect effect => new BasicEffect((BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.MDEF_mul));
     public override double EffectValue(ILevel level, int quality) => 1 * aug(level, quality) * 0.01;
+    public override IArtifactTransaction GetTransactionInfo(ILevel level, int quality) =>
+        SilverTransaction(level, quality, (ArtifactMaterial.ID.MysteriousCrystal, ArtifactMaterial.ID.MysteriousLeaf));
 }
 public class SlimeGoldenStatue : ArtifactPrototype
 {
@@ -272,6 +305,8 @@ public class SlimeGoldenStatue : ArtifactPrototype
     public override long maxMaxLevel => 10;
     public override BasicEffect effect => new BasicEffect((BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.GoldGain));
     public override double EffectValue(ILevel level, int quality) => 1 * aug(level, quality) * 0.01;
+    public override IArtifactTransaction GetTransactionInfo(ILevel level, int quality) =>
+        GoldenTransaction(level, quality, (ArtifactMaterial.ID.MysteriousStone, ArtifactMaterial.ID.MysteriousCrystal,ArtifactMaterial.ID.MysteriousLeaf));
 }
 public class BatGoldenStatue : ArtifactPrototype
 {
@@ -280,6 +315,9 @@ public class BatGoldenStatue : ArtifactPrototype
     public override long maxMaxLevel => 10;
     public override BasicEffect effect => new BasicEffect((BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.SlimeBankEfficiency));
     public override double EffectValue(ILevel level, int quality) => 1 * aug(level, quality) * 0.01;
+    public override IArtifactTransaction GetTransactionInfo(ILevel level, int quality) =>
+    GoldenTransaction(level, quality, (ArtifactMaterial.ID.MysteriousStone, ArtifactMaterial.ID.MysteriousCrystal, ArtifactMaterial.ID.MysteriousLeaf));
+
 }
 public class SpiderGoldenStatue : ArtifactPrototype
 {
@@ -288,6 +326,9 @@ public class SpiderGoldenStatue : ArtifactPrototype
     public override long maxMaxLevel => 10;
     public override BasicEffect effect => new BasicEffect((BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.Proficiency));
     public override double EffectValue(ILevel level, int quality) => 1 * aug(level, quality) * 0.01;
+    public override IArtifactTransaction GetTransactionInfo(ILevel level, int quality) =>
+    GoldenTransaction(level, quality, (ArtifactMaterial.ID.MysteriousStone, ArtifactMaterial.ID.MysteriousCrystal, ArtifactMaterial.ID.MysteriousLeaf));
+
 }
 public class FairyGoldenStatue : ArtifactPrototype
 {
@@ -296,6 +337,9 @@ public class FairyGoldenStatue : ArtifactPrototype
     public override long maxMaxLevel => 10;
     public override BasicEffect effect => new BasicEffect((BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.Resource));
     public override double EffectValue(ILevel level, int quality) => 1 * aug(level, quality) * 0.01;
+    public override IArtifactTransaction GetTransactionInfo(ILevel level, int quality) =>
+    GoldenTransaction(level, quality, (ArtifactMaterial.ID.MysteriousStone, ArtifactMaterial.ID.MysteriousCrystal, ArtifactMaterial.ID.MysteriousLeaf));
+
 }
 public class FoxGoldenStatue : ArtifactPrototype
 {
@@ -304,6 +348,9 @@ public class FoxGoldenStatue : ArtifactPrototype
     public override long maxMaxLevel => 10;
     public override BasicEffect effect => new BasicEffect((BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.NitroGain));
     public override double EffectValue(ILevel level, int quality) => 1 * aug(level, quality) * 0.01;
+    public override IArtifactTransaction GetTransactionInfo(ILevel level, int quality) =>
+    GoldenTransaction(level, quality, (ArtifactMaterial.ID.MysteriousStone, ArtifactMaterial.ID.MysteriousCrystal, ArtifactMaterial.ID.MysteriousLeaf));
+
 }
 public class DevilFishGoldenstatue : ArtifactPrototype
 {
@@ -312,6 +359,9 @@ public class DevilFishGoldenstatue : ArtifactPrototype
     public override long maxMaxLevel => 10;
     public override BasicEffect effect => new BasicEffect((BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.WorkerPower));
     public override double EffectValue(ILevel level, int quality) => 5 * aug(level, quality) * 0.01;
+    public override IArtifactTransaction GetTransactionInfo(ILevel level, int quality) =>
+    GoldenTransaction(level, quality, (ArtifactMaterial.ID.MysteriousStone, ArtifactMaterial.ID.MysteriousCrystal, ArtifactMaterial.ID.MysteriousLeaf));
+
 }
 public class UnicornGoldenStatue : ArtifactPrototype
 {
@@ -320,5 +370,8 @@ public class UnicornGoldenStatue : ArtifactPrototype
     public override long maxMaxLevel => 10;
     public override BasicEffect effect => new BasicEffect((BasicEffect)ArtifactPrototypeRepository.GetEffect(EffectType.ArtifactPower));
     public override double EffectValue(ILevel level, int quality) => 1 * aug(level, quality) * 0.01;
+    public override IArtifactTransaction GetTransactionInfo(ILevel level, int quality) =>
+    GoldenTransaction(level, quality, (ArtifactMaterial.ID.MysteriousStone, ArtifactMaterial.ID.MysteriousCrystal, ArtifactMaterial.ID.MysteriousLeaf));
+
 }
 

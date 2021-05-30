@@ -97,7 +97,7 @@ public class ExpeditionLevel : ILevel
 public class EXPEDITION : BASE
 {
     public ExpeditionKind kind;
-    float[] requiredHours = new float[] { 0.001f, 1.0f, 2.0f, 4.0f, 8.0f, 24.0f };
+    float[] requiredHours = new float[] { 0.5f, 1.0f, 2.0f, 4.0f, 8.0f, 0.001f };
     [NonSerialized] public Canvas thisCanvas;
     public Button startClaimButton, rightButton, leftButton;
     public TextMeshProUGUI nameText, startClaimText, requiredHourText, progressPercentText, bonusText, rewardText;
@@ -111,7 +111,7 @@ public class EXPEDITION : BASE
         level = new ExpeditionLevel(expedition, kind);
         //var cost = new LinearCost(10, 10, level);
         //var transaction = new Transaction(new MaterialNumber(ArtiCtrl.MaterialList.BlackPearl), cost);
-        expedition.SetReward(()=>ChestLotteryNum(expedition.hourId), new float[3] { Tier1chestChance(level, expedition.hourId), Tier2chestChance(level, expedition.hourId), Tier3chestChance(level, expedition.hourId)});
+        expedition.SetReward(() => ChestLotteryNum(expedition.hourId), new float[3] { Tier1chestChance(level, expedition.hourId), Tier2chestChance(level, expedition.hourId), Tier3chestChance(level, expedition.hourId) });
         expedition.SetTransaction(new NullTransaction());
         expedition.SetTimeSpeedFactor(TimeSpeedFactor);
         thisCanvas = gameObject.GetComponent<Canvas>();
@@ -220,6 +220,7 @@ public class EXPEDITION : BASE
     void SwitchRequiredHour(bool isRight)
     {
         expedition.SwitchRequiredHour(isRight);
+        expedition.SetReward(() => ChestLotteryNum(expedition.hourId), new float[3] { Tier1chestChance(level, expedition.hourId), Tier2chestChance(level, expedition.hourId), Tier3chestChance(level, expedition.hourId) });
     }
     string NameString()
     {

@@ -18,17 +18,32 @@ public class Artifact : ITEM, ILevel
     {
 
     }
+    long GetLevel(IEffect effect)
+    {
+        if(effect is ILevel)
+        {
+            var level = effect as ILevel;
+            return level.level;
+        }
+        else
+        {
+            return 1;
+        }
+    }
     public override string Text()
     {
-        return $"----ARTIFACT----\n- " + 
-            $"ID : {id}" +
-            $"\n\n- Level : {level} " +
-            $"\n- Max Level : {timeManager.timeLevel.level} " +
-            $"\n- Quality : {quality} " +
-            $"\n- Anti-magic Power : {tDigit(antimagicPower)}" +
-            $"\n- Time to Level Up : {(timeManager.currentTimesec / timeManager.requiredTimeSec()).ToString("F2")}" +
-            $"\n- [Materials to Level Up]\n" + timeManager.transactionsInfo().text.Text() + 
-            $"\n" + EffectText();
+        string tempStr = optStr;
+        tempStr += $"{ArtifactName} < <color=green>Lv {level}</color> > <color=orange>Quality {quality}</color>\n";
+        tempStr += $"<color=yellow>";
+        optEffects.ForEach((x) => tempStr += optStr + "[ " + x.EffectText + " Lv " + GetLevel(x) + " ] ");
+        tempStr += "</color>\n\n";
+        tempStr += $"Max Level : Lv {timeManager.timeLevel.level}\n";
+        tempStr += "Time to Level Up : " + DoubleTimeToDate(timeManager.requiredTimeSec() - timeManager.currentTimesec) + "\n";
+        tempStr += $"Anti-magic Power : {tDigit(antimagicPower)}";
+        tempStr += "\n\n";
+        tempStr += EffectText();
+        tempStr += $"\n<u>Materials to Increase Max Level</u>\n" + timeManager.transactionsInfo().text.Text();
+        return tempStr;
     }
     public override ITEM CreateNullItem()
     {
@@ -36,11 +51,11 @@ public class Artifact : ITEM, ILevel
     }
     string EffectText()
     {
-        string text = "[Effect]\n";
-        text += optStr + mainEffect.Text() + "\n";
+        string text = "<u>Effect</u>\n";
+        text += optStr + "- " + mainEffect.Text() + "\n";
         if (optEffects == null) return text;
-        text += optStr + "\n[Optional Effect]\n";
-        optEffects.ForEach((x) => text += optStr + x.Text() + "\n");
+        text += optStr + "\n<u>Optional Effect</u>\n";
+        optEffects.ForEach((x) => text += optStr + "- " + x.Text() + "\n");
         return text;
     }
 

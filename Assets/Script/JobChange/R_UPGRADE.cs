@@ -349,10 +349,11 @@ public class R_UPGRADE : POPTEXT_JOB
                     CurrentValue = (x) => 3 * x;
                     CurrentText = (x) => "Expand Artifact Inventory  + " + tDigit(CurrentValue(x));
                     NextText = () => CurrentText(tempLevel + 1);
-                    maxLevel = 5;
+                    maxLevel = 10;
                     break;
             }
-            maxLevel = (int)(maxLevel * (1 + maxLevelBonus));
+            if (SR_thisId != SR_upgradeID.ArtifactInventory)
+                maxLevel = (int)(maxLevel * (1 + maxLevelBonus));
             unlock.orderId = (int)SR_thisId;
         }
 

@@ -85,7 +85,7 @@ public class Inventory : Subject, IInventoryUIInfo
 	// Use this for initialization
 	void Awake()
 	{
-		inventoryInfo = new InventoryInfo(new IdleLibrary.Inventory.Inventory(inputItem, ref BASE.main.SO.inventory, 24), canvas, items, item, inputItem);
+		inventoryInfo = new InventoryInfo(new IdleLibrary.Inventory.Inventory(inputItem, ref BASE.main.SO.inventory, 12), canvas, items, item, inputItem);
 		equipmentInventoryInfo = new InventoryInfo(new IdleLibrary.Inventory.Inventory(inputItem, ref BASE.main.SO.equipmentInventory, 3), EquipmentCanvas, EquippedItems, item, inputItem);
 		inventoryInfo.inventory.extraInventoryNum.RegisterMultiplier(new MultiplierInfo(() => main.rein.SR_upgrades[(int)R_UPGRADE.SR_upgradeID.ArtifactInventory].GetCurrentValue(), MultiplierType.add));
 		equipmentInventoryInfo.inventory.extraInventoryNum.RegisterMultiplier(new MultiplierInfo(() => main.rein.R_upgrades[(int)R_UPGRADE.R_upgradeId.ArtifactEquipSlot].GetCurrentValue(), MultiplierType.add));

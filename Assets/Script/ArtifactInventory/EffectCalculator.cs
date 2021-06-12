@@ -16,8 +16,7 @@ public class EffectCalculator : IText
             if(ArtifactPrototypeRepository.GetEffect(type) is BasicEffect)
             {
                 var basicEffect = ArtifactPrototypeRepository.GetEffect(type) as BasicEffect;
-                var value = basicEffect.calway == Calway.add ? 0 : 1.0;
-                return value;
+                return basicEffect.value();
             }
             else
             {
@@ -41,7 +40,6 @@ public class EffectCalculator : IText
             //IStatsBreakdown‚È‚ç
             if (effects is IStatsBreakdown)
             {
-                Debug.Log(effects.effectType == null);
                 var stats = effects as IStatsBreakdown;
                 if (calculateDic.ContainsKey(effects.effectType))
                 {

@@ -101,7 +101,7 @@ public class Inventory : Subject, IInventoryUIInfo
 		inventoryInfo.RegisterHoldAction(swap, new Releaseitem(inputItem), swap);
 		//inventory.AddLeftAction(new ShowInfoToTextField(inventory.inventory, inventoryItemInfoText));
 		inventoryInfo.AddLeftAction(new LockItem(inventoryInfo.inventory), KeyCode.L);
-		inventoryInfo.AddLeftAction(new DeleteItem(inventoryInfo.inventory), KeyCode.D);
+		inventoryInfo.AddLeftAction(new DeleteItemWithConfirm(inventoryInfo.inventory), KeyCode.D);
 		inventoryInfo.AddRightaction(new RevertItemToOtherInventory(inventoryInfo.inventory, equipmentInventoryInfo.inventory));
 		inventoryInfo.AddLeftAction(new LevelUpArtifact(inventoryInfo.inventory), KeyCode.E);
 

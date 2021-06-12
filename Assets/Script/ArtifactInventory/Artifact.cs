@@ -10,10 +10,11 @@ using IdleLibrary;
 using static UsefulMethod;
 
 [System.Serializable]
-public class Artifact : ITEM, ILevel
+public class Artifact : ITEM
 {
-    public long level { get; set; }
-    public string ArtifactName { get; set; }
+    [OdinSerialize] public ILevel ilevel;
+    public long level { get => ilevel.level; set => ilevel.level = value; }
+    [OdinSerialize] public string ArtifactName { get; set; }
     public Artifact(int id) : base(id)
     {
 
@@ -53,7 +54,7 @@ public class Artifact : ITEM, ILevel
     {
         string text = "<u>Effect</u>\n";
         text += optStr + "- " + mainEffect.Text() + "\n";
-        if (optEffects == null) return text;
+        if (optEffects == null||optEffects[0] is NullEffect) return text;
         text += optStr + "\n<u>Optional Effect</u>\n";
         optEffects.ForEach((x) => text += optStr + "- " + x.Text() + "\n");
         return text;

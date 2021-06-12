@@ -14,20 +14,22 @@ public class ArtifactBuilder
     {
         var _artifact = new Artifact(-1);
         _artifact = basicInfoSet.GetArtifact(_artifact);
+        ILevel ilevel = new MockLevel();
+        _artifact.ilevel = ilevel;
         //IDをもとにプロトタイプ生成
         var prototype = ArtifactPrototypeRepository.GetPrototype(_artifact.id);
         _artifact.ArtifactName = prototype.Name;
 
         var timeLevel = new TimeBasedLevel(prototype.maxLevel);
-        var func = prototype.GetTransactionInfo(_artifact, _artifact.quality).GetTransactionInfo(_artifact);
-        Func<float> time = () => prototype.GetTimeCaltulator.GetRequiredTime(_artifact.quality, _artifact);
-        var timeManager = new TimeBasedLevelUp(_artifact, timeLevel, () => func, time);
+        var func = prototype.GetTransactionInfo(ilevel, _artifact.quality).GetTransactionInfo(ilevel);
+        Func<float> time = () => prototype.GetTimeCaltulator.GetRequiredTime(_artifact.quality, ilevel);
+        var timeManager = new TimeBasedLevelUp(ilevel, timeLevel, () => func, time);
 
         _artifact.timeManager = timeManager;
 
         //エフェクトの生成
         var effect = prototype.effect;
-        effect.value = () => prototype.EffectValue(_artifact, _artifact.quality);
+        effect.value = () => prototype.EffectValue(ilevel, _artifact.quality);
         _artifact.mainEffect = effect;
 
         //オプショナルエフェクトの作成
@@ -36,7 +38,10 @@ public class ArtifactBuilder
         {
             case BronzeInfoSetting bronze:
                 builder = new BronzeOptionBuilder(); break;
-
+            case SilverInfoSetting silver:
+                builder = new SilverOptionBuilder(); break;
+            case GoldInfoSetting gold:
+                builder = new GoldOptionBuilder(); break;
             default:
                 builder = new BronzeOptionBuilder(); break;
         }

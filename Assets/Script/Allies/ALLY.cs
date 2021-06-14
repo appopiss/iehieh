@@ -1671,7 +1671,7 @@ public abstract class ALLY : BASE, IDamagable
         while (true)
         {
             isMoving = false;
-            yield return new WaitUntil(() => main.GameController.isAuto);
+            yield return new WaitUntil(() => !Another.SwitchWorld.isAnotherWorld && main.GameController.isAuto);//another
             if (targetEnemy == null)
             {
                 targetEnemy = SearchEnemy();    

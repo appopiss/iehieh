@@ -470,7 +470,7 @@ namespace Another
         }
         public bool CanAttack()
         {
-            return isEquipped && IsChargedInterval() && main.battleCtrl.ally.IsLive() && IsWithinRange() && IsEnoughMp();
+            return SwitchWorld.isAnotherWorld && isEquipped && IsChargedInterval() && main.battleCtrl.ally.IsLive() && IsWithinRange() && IsEnoughMp();
         }
         async void Attack()
         {

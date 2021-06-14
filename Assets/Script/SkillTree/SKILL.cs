@@ -39,13 +39,13 @@ public class SKILL : POPTEXT_SL {
     public TextMeshProUGUI DpsText;
 
     public bool IsEquipped() {
+        if (Another.SwitchWorld.isAnotherWorld) return false;
         for (int i = 0; i < main.skillSlotCanvasAry.Length; i++)
         {
             if (main.skillSlotCanvasAry[i].currentSkill == main.skillsForCoolTime[skillIndex])
             {
                 return true;
             }
-
         }
         return false;
     }
@@ -285,9 +285,9 @@ public class SKILL : POPTEXT_SL {
     }
     public bool ManualCanAttack()
     {
-        return canMp()&&IsEquipped() && !main.DeathPanel.isPanel; 
+        return !Another.SwitchWorld.isAnotherWorld && canMp() && IsEquipped() && !main.DeathPanel.isPanel;
     }
-    public virtual bool CanBuff() { return isCoolTimeFilled && canMp() && IsEquipped() && !main.DeathPanel.isPanel; ; }
+    public virtual bool CanBuff() { return !Another.SwitchWorld.isAnotherWorld && isCoolTimeFilled && canMp() && IsEquipped() && !main.DeathPanel.isPanel; ; }
 
     public bool updateDuration(Main.Buff buff)
     {

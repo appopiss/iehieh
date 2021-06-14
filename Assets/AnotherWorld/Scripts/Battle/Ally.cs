@@ -324,7 +324,7 @@ namespace Another
         }
         public bool CanAutoMove()
         {
-            return isAutoMove && IsLive() && main.battleCtrl.TargetDistanceToEnemy() > CloseDistance() && !main.battleCtrl.isVanishedAll;
+            return SwitchWorld.isAnotherWorld && isAutoMove && IsLive() && main.battleCtrl.TargetDistanceToEnemy() > CloseDistance() && !main.battleCtrl.isVanishedAll;
         }
         public bool IsWithinMoveRange()
         {
@@ -389,6 +389,7 @@ namespace Another
 
         public void MoveHorizontal(float value)
         {
+            if (!SwitchWorld.isAnotherWorld) return;
             if (!IsLive())
                 return;
             if (value > 0 && IsRangeRight())
@@ -398,6 +399,7 @@ namespace Another
         }
         public void MoveVertical(float value)
         {
+            if (!SwitchWorld.isAnotherWorld) return;
             if (!IsLive())
                 return;
             if (value > 0 && IsRangeUp())

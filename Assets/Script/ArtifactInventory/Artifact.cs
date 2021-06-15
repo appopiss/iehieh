@@ -36,7 +36,7 @@ public class Artifact : ITEM
         string tempStr = optStr;
         tempStr += $"{ArtifactName} < <color=green>Lv {level}</color> > <color=orange>Quality {quality}</color>\n";
         tempStr += $"<color=yellow>";
-        optEffects.ForEach((x) => tempStr += optStr + "[ " + x.EffectText + " Lv " + GetLevel(x) + " ] ");
+        optEffects.ForEach((x) => tempStr += optStr + "[ " + x.EffectName + " Lv " + GetLevel(x) + " ] ");
         tempStr += "</color>\n\n";
         tempStr += $"Max Level : Lv {timeManager.timeLevel.level}\n";
         tempStr += "Time to Level Up : " + DoubleTimeToDate(timeManager.requiredTimeSec() - timeManager.currentTimesec) + "\n";

@@ -131,6 +131,7 @@ namespace Another
                     skillClass = Warrior;
                     skillType = Physical;
                     effectCenter = SkillEffectCenter.Ally;
+                    animation = SkillEffectAnimation.Rotate;
                     initDmg = 20;
                     incrementDmg = 0.5;
                     initMpConsume = 80;
@@ -165,6 +166,7 @@ namespace Another
                     skillClass = Warrior;
                     skillType = Physical;
                     effectCenter = SkillEffectCenter.Ally;
+                    animation = SkillEffectAnimation.Rotate;
                     initDmg = 20;
                     incrementDmg = 0.25;
                     initMpConsume = 120;
@@ -246,6 +248,7 @@ namespace Another
         private Element element;
         private Debuff debuff;
         private SkillEffectCenter effectCenter;
+        private SkillEffectAnimation animation;
         private List<PassiveEffect> passiveEffects = new List<PassiveEffect>();
         [NonSerialized] public double[] statsPassiveFactors = new double[Enum.GetNames(typeof(Stats)).Length];
         private double initDmg, incrementDmg;
@@ -508,7 +511,7 @@ namespace Another
                             //フィールドの中心座標
                             break;
                     }
-                    main.battleCtrl.AttackToEnemy(skill, skillType, element, debuff, DebuffChance(), Damage(), HitCount(), effectCeterPosition, EffectRange());
+                    main.battleCtrl.AttackToEnemy(skill, skillType, element, debuff, DebuffChance(), Damage(), HitCount(), effectCeterPosition, EffectRange(), animation);
                 }
                 await UniTask.Delay(500);
             }

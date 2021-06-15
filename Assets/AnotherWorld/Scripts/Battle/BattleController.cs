@@ -32,7 +32,7 @@ namespace Another
         public SKILLEFFECT[] animationEffectObjects;
         [NonSerialized] public static Vector2 behindPosition = Vector2.down * Screen.height;//待機場所
                                                                                             //AttackToEnemy
-        public void AttackToEnemy(Skill skill, SkillType skillType, Element element, Debuff debuff, double debuffChance, double dmg, long hitCount, Vector2 initPosition, float effectRange)
+        public void AttackToEnemy(Skill skill, SkillType skillType, Element element, Debuff debuff, double debuffChance, double dmg, long hitCount, Vector2 initPosition, float effectRange, SkillEffectAnimation animation)
         {
             ENEMY tempEnemy = enemyCtrl.enemies[0];
             Debuff tempDebuff = debuff;
@@ -52,14 +52,14 @@ namespace Another
                     }
                 }
             }
-            AttackEffect(skill, initPosition, effectRange);
+            AttackEffect(skill, initPosition, effectRange, animation);
         }
-        public void AttackEffect(Skill skill, Vector2 position, float range)
+        public void AttackEffect(Skill skill, Vector2 position, float range, SkillEffectAnimation animation)
         {
             switch (skill)
             {
                 default:
-                    InstantiateEffect(main.skillCtrl.skillEffectSprites[(int)skill], position, range);
+                    InstantiateEffect(main.skillCtrl.skillEffectSprites[(int)skill], position, range, animation);
                     break;
             }
         }
@@ -81,13 +81,13 @@ namespace Another
             }
             SimpleAttackEffect(element, ally.position, 50);
         }
-        public void InstantiateEffect(Sprite sprite, Vector2 position, float range, float showTime = 0.1f)
+        public void InstantiateEffect(Sprite sprite, Vector2 position, float range, SkillEffectAnimation animation = SkillEffectAnimation.Nothing, float showTime = 0.1f)
         {
             for (int i = 0; i < effectObjects.Length; i++)
             {
                 if (!effectObjects[i].isShow)
                 {
-                    effectObjects[i].ShowEffect(sprite, position, range, showTime);
+                    effectObjects[i].ShowEffect(sprite, position, range, showTime, animation);
                     break;
                 }
             }

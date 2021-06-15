@@ -32,9 +32,10 @@ namespace Another
         public SKILLEFFECT[] animationEffectObjects;
         [NonSerialized] public static Vector2 behindPosition = Vector2.down * Screen.height;//待機場所
                                                                                             //AttackToEnemy
-        public void AttackToEnemy(Skill skill, SkillType skillType, Element element, Debuff debuff, double dmg, long hitCount, Vector2 initPosition, float effectRange)
+        public void AttackToEnemy(Skill skill, SkillType skillType, Element element, Debuff debuff, double debuffChance, double dmg, long hitCount, Vector2 initPosition, float effectRange)
         {
             ENEMY tempEnemy = enemyCtrl.enemies[0];
+            Debuff tempDebuff = debuff;
             for (int i = 0; i < enemyCtrl.enemies.Length; i++)
             {
                 tempEnemy = enemyCtrl.enemies[i];
@@ -42,9 +43,11 @@ namespace Another
                 {
                     if (Distance(initPosition, tempEnemy.position) < effectRange)
                     {
+                        if (UnityEngine.Random.Range(0, 10000) < debuffChance * 10000) tempDebuff = debuff;
+                        else tempDebuff = Debuff.Nothing;
                         for (int j = 0; j < hitCount; j++)
                         {
-                            tempEnemy.Attacked(element, debuff, dmg);
+                            tempEnemy.Attacked(element, tempDebuff, dmg);
                         }
                     }
                 }

@@ -167,6 +167,33 @@ namespace Another
         //Damage
         public void Attacked(Element element, Debuff debuff, double dmg)
         {
+            switch (debuff)
+            {
+                case Debuff.Nothing:
+                    break;
+                case Debuff.AtkDown:
+                    break;
+                case Debuff.MatkDown:
+                    break;
+                case Debuff.DefDown:
+                    break;
+                case Debuff.MdefDown:
+                    break;
+                case Debuff.SpdDown:
+                    break;
+                case Debuff.Stop:
+                    break;
+                case Debuff.Electric:
+                    break;
+                case Debuff.Posion:
+                    break;
+                case Debuff.Death:
+                    break;
+                case Debuff.Knockback:
+                    AutoMove(-60f);
+                    break;
+            }
+
             //Criticalの抽選
             double tempChance = element == Element.Nothing ? main.battleCtrl.ally.TotalStats(Stats.PhysCritChance) : main.battleCtrl.ally.TotalStats(Stats.MagCritChance);
             bool isCrit = UnityEngine.Random.Range(0, 10000) < 10000 * tempChance;
@@ -234,10 +261,10 @@ namespace Another
         }
 
         //Move
-        public void AutoMove()
+        public void AutoMove(float factor = 1)
         {
             if (CanAutoMove())
-                position += main.battleCtrl.MoveDirectionToAlly(position) * MoveSpeed();
+                position += main.battleCtrl.MoveDirectionToAlly(position) * MoveSpeed() * factor;
         }
         public bool CanAutoMove()
         {

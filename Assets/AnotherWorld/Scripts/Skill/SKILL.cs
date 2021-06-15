@@ -27,6 +27,12 @@ public partial class Save
 
 namespace Another
 {
+    public enum SkillEffectCenter
+    {
+        Target,
+        Ally,
+        Field,
+    }
     public class SKILL : MonoBehaviour
     {
         [NonSerialized] public Skill skill;
@@ -124,6 +130,7 @@ namespace Another
                 case Skill.SwingAround:
                     skillClass = Warrior;
                     skillType = Physical;
+                    effectCenter = SkillEffectCenter.Ally;
                     initDmg = 20;
                     incrementDmg = 0.5;
                     initMpConsume = 80;
@@ -157,6 +164,7 @@ namespace Another
                 case Skill.FanSwing:
                     skillClass = Warrior;
                     skillType = Physical;
+                    effectCenter = SkillEffectCenter.Ally;
                     initDmg = 20;
                     incrementDmg = 0.25;
                     initMpConsume = 120;
@@ -237,6 +245,7 @@ namespace Another
         private SkillType skillType;
         private Element element;
         private Debuff debuff;
+        private SkillEffectCenter effectCenter;
         private List<PassiveEffect> passiveEffects = new List<PassiveEffect>();
         [NonSerialized] public double[] statsPassiveFactors = new double[Enum.GetNames(typeof(Stats)).Length];
         private double initDmg, incrementDmg;
@@ -440,6 +449,7 @@ namespace Another
             double tempValue = initMpConsume + incrementMpConsume * Level();
             return tempValue;
         }
+
         public long HitCount()
         {
             long tempValue = Math.Min(maxHitCount, initHitCount + (long)(incrementHitCount * Level()));
@@ -452,7 +462,12 @@ namespace Another
         }
         public float EffectRange()
         {
-            float tempValue = Math.Min(maxEffectRange, initEffectRange + incrementEffectRange * Level());
+            float tempValue = Mathf.Min(maxEffectRange, initEffectRange + incrementEffectRange * Level());
+            return tempValue;
+        }
+        public double DebuffChance()
+        {
+            double tempValue = Math.Min(maxDebuffChance, initDebuffChance + incrementDebuffChance * Level());
             return tempValue;
         }
 
@@ -481,7 +496,19 @@ namespace Another
                     chargetime = 0;
                     IncreaseProficiency();
                     main.battleCtrl.ally.ChangeCurrentStats(Stats.Mp, -ConsumeMp());
-                    main.battleCtrl.AttackToEnemy(skill, skillType, element, debuff, Damage(), HitCount(), main.battleCtrl.TargetEnemyFromAlly().position, EffectRange());
+                    Vector2 effectCeterPosition = main.battleCtrl.TargetEnemyFromAlly().position;
+                    switch (effectCenter)
+                    {
+                        case SkillEffectCenter.Target:
+                            break;
+                        case SkillEffectCenter.Ally:
+                            effectCeterPosition = main.battleCtrl.ally.position;
+                            break;
+                        case SkillEffectCenter.Field:
+                            //フィールドの中心座標
+                            break;
+                    }
+                    main.battleCtrl.AttackToEnemy(skill, skillType, element, debuff, DebuffChance(), Damage(), HitCount(), effectCeterPosition, EffectRange());
                 }
                 await UniTask.Delay(500);
             }
